@@ -1,8 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class Command : MonoBehaviour
+public class Command : MonoBehaviour
 {
-    
+    public UnityEvent OnExecution;
+
+    public void Execute()
+    {
+        OnExecution.Invoke();
+    }
 }
