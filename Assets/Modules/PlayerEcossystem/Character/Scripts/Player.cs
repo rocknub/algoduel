@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -7,7 +8,7 @@ namespace Character
     {
         //TODO(Marlus - Maybe) Create a grid to calculate distance
         public float translationDistance;
-        public float motionDuration;
+        [FormerlySerializedAs("motionDuration")] public float defaultMotionDuration;
         public Ease motionEase;
         public float rotationAngle = 90f;
         [Header("Debug")] 
@@ -29,7 +30,7 @@ namespace Character
             {
                 return;
             }
-            motionTween = transform.DOMove(targetPosition, motionDuration).SetEase(motionEase);
+            motionTween = transform.DOMove(targetPosition, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(() => UpdateTargetPosition());
         }
 
@@ -41,7 +42,7 @@ namespace Character
             }
             Vector3 targetRotation = transform.rotation.eulerAngles;
             targetRotation.y += rotationAngle;
-            motionTween = transform.DORotate(targetRotation, motionDuration).SetEase(motionEase);
+            motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(() => UpdateTargetPosition());
         }
         
@@ -53,7 +54,7 @@ namespace Character
             }
             Vector3 targetRotation = transform.rotation.eulerAngles;
             targetRotation.y -= rotationAngle;
-            motionTween = transform.DORotate(targetRotation, motionDuration).SetEase(motionEase);
+            motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(() => UpdateTargetPosition());        }
 
         public Vector3 UpdateTargetPosition()

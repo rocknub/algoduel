@@ -33,13 +33,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire",
+                    "name": " Execute",
                     "type": "Button",
-                    "id": "11dc72bc-48ac-4c86-9542-e4beaa1bdd9d",
+                    "id": "b0d38717-3c42-44e1-9075-d12bb4a9794c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -139,6 +139,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "RotateClockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c19f5b80-55b5-47fd-bc5c-35922b3b886c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1",
+                    "action": " Execute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39fdd1f7-59f4-44cd-908f-66b25e9981c7",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard2",
+                    "action": " Execute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc88fa2d-22af-402d-a78b-3934bd2d6a56",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": " Execute",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

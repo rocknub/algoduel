@@ -29,8 +29,7 @@ Transform:
   m_LocalPosition: {x: -5.3000016, y: -10.971988, z: 10.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6644383245732462562}
+  m_Children: []
   m_Father: {fileID: 6532739057295432171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3293816790041114268
@@ -62,8 +61,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4095856313479395041}
-        m_TargetAssemblyTypeName: Command, Assembly-CSharp
-        m_MethodName: Execute
+        m_TargetAssemblyTypeName: Algorithm.Command, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -75,10 +74,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 57b9f50a-24f0-45d0-93c2-5c6e102d78ec
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 11dc72bc-48ac-4c86-9542-e4beaa1bdd9d
-    m_ActionName: Player/Fire
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 59f76db7-7136-4d3b-8e77-5951f617dd30
@@ -122,8 +117,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6888340716334361911}
-        m_TargetAssemblyTypeName: Command, Assembly-CSharp
-        m_MethodName: Execute
+        m_TargetAssemblyTypeName: Algorithm.Command, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -138,8 +133,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6709385795004805457}
-        m_TargetAssemblyTypeName: Command, Assembly-CSharp
-        m_MethodName: Execute
+        m_TargetAssemblyTypeName: Algorithm.Command, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -155,6 +150,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4077650f-dbd4-4be4-aacd-e04fa7a7c94f
     m_ActionName: Debug/DebugMultiplayer[/Keyboard/ctrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1825828534036570626}
+        m_TargetAssemblyTypeName: Algorithm.Algorithm, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b0d38717-3c42-44e1-9075-d12bb4a9794c
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -325,6 +336,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5672055716098781284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867039850216075832}
+  - component: {fileID: 1825828534036570626}
+  m_Layer: 0
+  m_Name: Algorithm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1867039850216075832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672055716098781284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6532739057295432171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825828534036570626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672055716098781284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d91c7b69a14ac284e1aae2026058ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCommands: 10
+  commandsParent: {fileID: 6644383245732462562}
+  player: {fileID: 6628951969272852649}
 --- !u!1 &7371376408101813221
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,15 +407,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7371376408101813221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -5.300003, y: -10.971988, z: 10.820001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3541696952081567731}
   - {fileID: 3964625671678204071}
   - {fileID: 5772015934558961062}
-  m_Father: {fileID: 8770770063629910876}
+  m_Father: {fileID: 6532739057295432171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7569953614892165268
 GameObject:
@@ -391,6 +449,8 @@ Transform:
   m_Children:
   - {fileID: 4888475286040611009}
   - {fileID: 8770770063629910876}
+  - {fileID: 6644383245732462562}
+  - {fileID: 1867039850216075832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &6628951969272852649
@@ -406,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationDistance: 4
-  motionDuration: 0.5
+  defaultMotionDuration: 0.5
   motionEase: 4
   rotationAngle: 90
   showGizmos: 1
