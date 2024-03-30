@@ -64,7 +64,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4095856313479395041}
         m_TargetAssemblyTypeName: Command, Assembly-CSharp
         m_MethodName: Execute
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -124,7 +124,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6888340716334361911}
         m_TargetAssemblyTypeName: Command, Assembly-CSharp
         m_MethodName: Execute
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -140,7 +140,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6709385795004805457}
         m_TargetAssemblyTypeName: Command, Assembly-CSharp
         m_MethodName: Execute
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -151,6 +151,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 34659694-b1c5-4cb2-9ff1-0e44f21cfbb3
     m_ActionName: Player/RotateCounterClockwise[/Keyboard/leftArrow,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4077650f-dbd4-4be4-aacd-e04fa7a7c94f
+    m_ActionName: Debug/DebugMultiplayer[/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -401,8 +405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e8bd409c0c4caf88baa84c26128186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingDistance: 0
-  rotationTarget: 90
+  translationDistance: 4
+  motionDuration: 0.5
+  motionEase: 4
+  rotationAngle: 90
+  showGizmos: 1
 --- !u!1 &8671626508046000197
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace Character
@@ -7,42 +6,66 @@ namespace Character
     public class Player : MonoBehaviour
     {
         //TODO(Marlus - Maybe) Create a grid to calculate distance
-        public float movingDistance;
-        public float rotationTarget = 90f;
+        public float translationDistance;
+        public float motionDuration;
+        public Ease motionEase;
+        public float rotationAngle = 90f;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
 
-        private Vector3 lastFramePosition;
+        private Tween motionTween;
+        private Vector3 targetPosition;
+        
+        public bool IsActing => motionTween is { active: true };
 
-        public bool IsMoving => lastFramePosition != transform.position;
-
-        private void Awake()
+        private void OnValidate()
         {
-            lastFramePosition = transform.position;
+            UpdateTargetPosition();
         }
 
         public void Move()
         {
-            if (IsMoving)
+            if (IsActing)
             {
                 return;
             }
-            
+            motionTween = transform.DOMove(targetPosition, motionDuration).SetEase(motionEase);
+            motionTween.OnComplete(() => UpdateTargetPosition());
         }
 
         public void RotateClockwise()
         {
-            Debug.Log($"{name} should rotate {rotationTarget} units");
+            if (IsActing)
+            {
+                return;
+            }
+            Vector3 targetRotation = transform.rotation.eulerAngles;
+            targetRotation.y += rotationAngle;
+            motionTween = transform.DORotate(targetRotation, motionDuration).SetEase(motionEase);
+            motionTween.OnComplete(() => UpdateTargetPosition());
         }
         
         public void RotateCounterClockwise()
         {
-            Debug.Log($"{name} should rotate {-rotationTarget} units");
+            if (IsActing)
+            {
+                return;
+            }
+            Vector3 targetRotation = transform.rotation.eulerAngles;
+            targetRotation.y -= rotationAngle;
+            motionTween = transform.DORotate(targetRotation, motionDuration).SetEase(motionEase);
+            motionTween.OnComplete(() => UpdateTargetPosition());        }
+
+        public Vector3 UpdateTargetPosition()
+        {
+            targetPosition = transform.position + transform.forward * translationDistance;
+            return targetPosition;
         }
 
-        public Vector3 GetTargetPosition()
+        public void GoToOrigin()
         {
-            return transform.position + transform.forward * movingDistance;
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            UpdateTargetPosition();
         }
 
         private void OnDrawGizmosSelected()
@@ -50,7 +73,7 @@ namespace Character
             if (showGizmos == false)
                 return;
             Gizmos.color = Color.red;
-            Vector3 TargetPosition = GetTargetPosition();
+            Vector3 TargetPosition = targetPosition;
             Gizmos.DrawLine(TargetPosition, TargetPosition + Vector3.up * 100f);
         }
     }
