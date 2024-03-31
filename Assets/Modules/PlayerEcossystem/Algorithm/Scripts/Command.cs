@@ -6,9 +6,11 @@ namespace Algorithm
 {
     public class Command : MonoBehaviour
     {
+        [SerializeField] private Sprite icon;
         public UnityEvent OnExecution;
         public UnityAction<Command> DoLoad;
 
+        public Sprite Icon => icon;
 
         public Command Execute()
         {

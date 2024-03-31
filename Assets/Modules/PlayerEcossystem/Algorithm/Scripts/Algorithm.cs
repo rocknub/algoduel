@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Character;
-using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Algorithm
@@ -11,10 +12,15 @@ namespace Algorithm
     {
         [SerializeField] private int maxCommands = 10;
         [SerializeField] private Transform commandsParent;
-        [CanBeNull][SerializeField] private Player player; 
+        [SerializeField] private Player player;
         
-        private Queue<Command> commandSequence;
+        [SerializeField] private UnityEvent<int> OnMaximumDefined;
+        [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
+        [SerializeField] private UnityEvent<int> OnExecution;
 
+        private int currentExecutionIndex = 0;
+        private Command[] commandSequence;
+        
         private void Start()
         {
             SetCommandCallbacks();
@@ -28,32 +34,50 @@ namespace Algorithm
             {
                 if (commandsParent.GetChild(i).TryGetComponent(out command))
                 {
-                    command.DoLoad += EnqueueCommand;
+                    command.DoLoad += InsertCommand;
                 }
             }
         }
 
-        private void EnqueueCommand(Command command)
+        public void DefineMaximumSlots(int? maximum = null)
         {
             if (commandSequence == null)
-                commandSequence = new Queue<Command>(maxCommands);
-            else if (commandSequence.Count >= maxCommands)
+            {
+                commandSequence = new Command[maximum ?? maxCommands];
+            }
+            else
+            {
+                Command tempArray = commandSequence.Clone();
+                commandSequence = new Command[maximum ?? maxCommands];
+                for (var i = 0; i < tempArray.Length; i++)
+                {
+                    commandSequence[i] = tempArray[i];
+                }
+            }
+            OnMaximumDefined.Invoke(maximum ?? maxCommands);
+        }
+
+        private void InsertCommand(Command command)
+        {
+            if (commandSequence == null)
+                DefineMaximumSlots();
+            else if (commandSequence.Length >= maxCommands)
                 return;
-            commandSequence.Enqueue(command);
+            commandSequence[currentExecutionIndex] = command;
+            OnCommandLoaded.Invoke(command, commandSequence.Length);
             Debug.Log($"{command.name} has been added to algorithm");
         }
 
         private void ExecuteNextCommand()
         {
             var command = commandSequence.Dequeue().Execute();
-            Debug.Log($"{command.name} has been executed");
+            OnExecution.Invoke(commandSequence.Count);
         }
 
         private IEnumerator ExecuteCoroutine()
         {
             if (commandSequence == null || commandSequence.Count == 0)
                 yield break;
-            Debug.Log("Executing");
             while (commandSequence.Count > 0)
             {
                 ExecuteNextCommand();
