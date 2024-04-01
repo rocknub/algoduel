@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Character;
@@ -17,9 +18,9 @@ namespace Algorithm
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
         [SerializeField] private UnityEvent<int> OnExecution;
+        [SerializeField] private UnityEvent OnClearance;
 
-        private int currentExecutionIndex = 0;
-        private Command[] commandSequence;
+        private List<Command> commandSequence;
         
         private void Start()
         {
@@ -41,47 +42,58 @@ namespace Algorithm
 
         public void DefineMaximumSlots(int? maximum = null)
         {
+            maximum ??= maxCommands;
             if (commandSequence == null)
             {
-                commandSequence = new Command[maximum ?? maxCommands];
+                commandSequence = new List<Command>(maximum.Value);
             }
-            else
+            else if (commandSequence.Capacity != maximum)
             {
-                Command tempArray = commandSequence.Clone();
-                commandSequence = new Command[maximum ?? maxCommands];
+                int copyLength = maximum.Value < commandSequence.Capacity ? maximum.Value : commandSequence.Capacity;
+                Command[] tempArray = new Command[maximum.Value];
+                commandSequence.CopyTo(0, tempArray, 0, copyLength);
+                commandSequence = new List<Command>(maximum.Value);
                 for (var i = 0; i < tempArray.Length; i++)
                 {
                     commandSequence[i] = tempArray[i];
                 }
             }
-            OnMaximumDefined.Invoke(maximum ?? maxCommands);
+            OnMaximumDefined.Invoke(maximum.Value);
+            maxCommands = maximum.Value;
+        }
+
+        public void Clear()
+        {
+            commandSequence.Clear();
+            OnClearance.Invoke();
         }
 
         private void InsertCommand(Command command)
         {
             if (commandSequence == null)
                 DefineMaximumSlots();
-            else if (commandSequence.Length >= maxCommands)
+            else if (commandSequence.Count >= maxCommands)
                 return;
-            commandSequence[currentExecutionIndex] = command;
-            OnCommandLoaded.Invoke(command, commandSequence.Length);
-            Debug.Log($"{command.name} has been added to algorithm");
+            commandSequence.Add(command);
+            OnCommandLoaded.Invoke(command, commandSequence.Count - 1);
         }
 
-        private void ExecuteNextCommand()
+        private void ExecuteCommand(int executionIndex)
         {
-            var command = commandSequence.Dequeue().Execute();
-            OnExecution.Invoke(commandSequence.Count);
+            var command = commandSequence[executionIndex].Execute();
+            OnExecution.Invoke(executionIndex);
         }
 
         private IEnumerator ExecuteCoroutine()
         {
             if (commandSequence == null || commandSequence.Count == 0)
                 yield break;
-            while (commandSequence.Count > 0)
+            var currentExecutionIndex = 0;
+            while (currentExecutionIndex < commandSequence.Count)
             {
-                ExecuteNextCommand();
+                ExecuteCommand(currentExecutionIndex);
                 yield return new WaitWhile(() => player.IsActing);
+                currentExecutionIndex++;
             }
         }
         public void Execute(InputAction.CallbackContext ctx)
