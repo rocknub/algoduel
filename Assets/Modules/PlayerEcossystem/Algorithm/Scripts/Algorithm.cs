@@ -18,9 +18,11 @@ namespace Algorithm
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
         [SerializeField] private UnityEvent<int> OnExecution;
+        [SerializeField] private UnityEvent OnSequenceEnd;
         [SerializeField] private UnityEvent OnClearance;
 
         private List<Command> commandSequence;
+        private Coroutine executionRoutine;
         
         private void Start()
         {
@@ -64,12 +66,16 @@ namespace Algorithm
 
         public void Clear()
         {
+            if (executionRoutine != null)
+                return;
             commandSequence.Clear();
             OnClearance.Invoke();
         }
 
         private void InsertCommand(Command command)
         {
+            if (executionRoutine != null)
+                return;
             if (commandSequence == null)
                 DefineMaximumSlots();
             else if (commandSequence.Count >= maxCommands)
@@ -95,12 +101,14 @@ namespace Algorithm
                 yield return new WaitWhile(() => player.IsActing);
                 currentExecutionIndex++;
             }
+            executionRoutine = null;
+            OnSequenceEnd.Invoke();
         }
         public void Execute(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || executionRoutine != null)
                 return;
-            StartCoroutine(ExecuteCoroutine());
+            executionRoutine = StartCoroutine(ExecuteCoroutine());
         }
     }
 }

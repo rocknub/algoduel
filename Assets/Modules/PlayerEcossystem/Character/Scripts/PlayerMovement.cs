@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,6 +21,11 @@ namespace Character
         public bool IsActing => motionTween is { active: true };
 
         private void OnValidate()
+        {
+            UpdateTargetPosition();
+        }
+
+        private void Start()
         {
             UpdateTargetPosition();
         }

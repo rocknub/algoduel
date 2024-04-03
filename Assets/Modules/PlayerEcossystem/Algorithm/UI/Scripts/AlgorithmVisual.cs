@@ -1,49 +1,54 @@
 using System.Collections.Generic;
 using Algorithm;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AlgorithmVisual : MonoBehaviour
 {
     [SerializeField] private Transform commandSlotsParent;
-    [SerializeField] private GameObject commandSlotModel;
+    [SerializeField] private Image[] bgPanels;
+    [SerializeField] private float commandTransitionDuration;
+    [SerializeField] private float defaultSlotAlpha;
+    [SerializeField] private float selectedSlotAlpha;
 
     private List<Transform> commandSlots;
+    private Image currentActiveSlot;
 
-    private void GetAllSlots()
+    public void EmphasizeSlot(int index)
     {
-        commandSlots ??= new List<Transform>(commandSlotsParent.childCount);
-        for (int i = 0; i < commandSlotsParent.childCount; i++)
+        if (currentActiveSlot != null)
         {
-            commandSlots.Add(commandSlotsParent.GetChild(i));
+            currentActiveSlot.DOFade(defaultSlotAlpha, commandTransitionDuration);
+        }
+        currentActiveSlot = commandSlotsParent.GetChild(index).GetComponent<Image>();
+        currentActiveSlot.DOFade(selectedSlotAlpha, commandTransitionDuration);
+    }
+
+    public void DisableSlotFocus()
+    {
+        if (currentActiveSlot != null)
+        {
+            currentActiveSlot.DOFade(defaultSlotAlpha, commandTransitionDuration);
+            currentActiveSlot = null;
         }
     }
 
-    // public void RedefineSlotQuantity(int quantity)
-    // {
-    //     int i = 0;
-    //     while (i < quantity)
-    //     {
-    //         if (i >= commandSlotsParent.childCount)
-    //         {
-    //             GameObject commandSlot = Instantiate(commandSlotModel, commandSlotsParent, false);
-    //         }
-    //         i++;
-    //     }
-    //
-    //     while (i < commandSlotsParent.childCount)
-    //     {
-    //         
-    //     }        
-    // }
+    public void FlashPanels()
+    {
+        foreach (var panel in bgPanels)
+        {
+            panel.DOFade(1, commandTransitionDuration).SetLoops(2, LoopType.Yoyo);
+        }
+    }
 
     public void EnableCommandVisualization(Command command, int position)
     {
-        Debug.Log($"Enabling visualization for {command.name} in position: {position}");
-        Image commandIcon = commandSlotsParent.GetChild(position).GetCompone<Image>(true);
-        Debug.Log(commandIcon.name);
+        Image commandIcon = commandSlotsParent.GetChild(position).GetChild(0).GetComponent<Image>();
         commandIcon.sprite = command.Icon;
+        commandIcon.DOFade(0, 0);
         commandIcon.gameObject.SetActive(true);
+        commandIcon.DOFade(1, commandTransitionDuration);
     }
 
     public void DisableAllSlotIcons()

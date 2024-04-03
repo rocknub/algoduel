@@ -186,6 +186,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a8ded0db-6e71-4bda-a745-8a3f6ccb3b8b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": " Execute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1848c17b-24a5-49f8-8327-aaa84842a640",
                     "path": "<Keyboard>/k",
                     "interactions": "",
@@ -202,6 +213,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard2",
+                    "action": "Clear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "100f4be7-85e9-46e1-be90-be74cae08664",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1",
+                    "action": "Clear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dac50554-b95d-46c2-8eb9-689033876a4e",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Clear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79467e3c-0251-42b9-b136-1d8577e5d365",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Clear",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -806,6 +806,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3964021761095606992, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964021761095606992, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 4199396858119709682, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1151,6 +1161,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 6172682818177879709, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172682818177879709, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 6229335783922352200, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1345,6 +1365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ProtoPlayer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569953614892165268, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7574359650617294824, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -1803,6 +1828,59 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5147491216280837356}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1196715014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196715015}
+  - component: {fileID: 1196715016}
+  m_Layer: 6
+  m_Name: FloorBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1196715015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196715014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2272103696993695829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1196715016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196715014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 26, y: 2, z: 26}
+  m_Center: {x: 0, y: 0, z: -0.43609142}
 --- !u!1 &1684482963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,7 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
-  m_MaxPlayerCount: 4
+  m_MaxPlayerCount: 2
   m_AllowJoining: 1
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
@@ -2128,7 +2206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6177104045123705279, guid: 4926e3091af41484ebd17638293248d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1196715015}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4926e3091af41484ebd17638293248d9, type: 3}
 --- !u!4 &2272103696993695829 stripped
