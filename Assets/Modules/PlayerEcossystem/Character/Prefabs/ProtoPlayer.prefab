@@ -778,7 +778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCommands: 10
   commandsParent: {fileID: 6644383245732462562}
-  player: {fileID: 6628951969272852649}
+  playerMovement: {fileID: 6628951969272852649}
   OnMaximumDefined:
     m_PersistentCalls:
       m_Calls: []
@@ -1076,6 +1076,23 @@ MonoBehaviour:
   defaultMotionDuration: 0.5
   motionEase: 4
   rotationAngle: 90
+  OnTransformReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1825828534036570626}
+        m_TargetAssemblyTypeName: Algorithm.Algorithm, Assembly-CSharp
+        m_MethodName: HaltExecution
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  fallEase: 3
+  fallDuration: 0.5
   showGizmos: 1
 --- !u!114 &6473101205355555385
 MonoBehaviour:
@@ -1227,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8981026034697937206}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

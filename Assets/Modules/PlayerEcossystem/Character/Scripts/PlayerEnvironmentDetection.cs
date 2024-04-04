@@ -20,6 +20,13 @@ namespace Character
         {
             return Physics.Raycast(transform.position, transform.forward, distance, obstacleMask);
         }
+
+        public bool CheckForObstacles(Vector3 target)
+        {
+            Vector3 anormalDir = target - transform.position;
+            float distance = anormalDir.magnitude;
+            return Physics.Raycast(transform.position, anormalDir/distance, distance, obstacleMask);
+        }
         
         private void OnDrawGizmosSelected()
         {
