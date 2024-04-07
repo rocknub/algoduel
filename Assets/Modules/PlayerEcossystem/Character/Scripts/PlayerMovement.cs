@@ -8,7 +8,8 @@ namespace Character
     {
         //TODO(Marlus - Maybe) Create a grid to calculate distance
         [Header("Directed Movements")]
-        [SerializeField] private float translationDistance;
+        [SerializeField] private float translationDistanceDefault;
+        [SerializeField] private float translationDistanceAlternate;
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
         [SerializeField] private float rotationAngle = 90f;
@@ -47,7 +48,6 @@ namespace Character
             {
                 if (envDetection.CheckForObstacles(targetPosition))
                 {
-                    Debug.Log("Target up ahead!");
                     targetPosition = transform.position;
                 }
             }
@@ -96,10 +96,19 @@ namespace Character
             motionTween.OnComplete(ResetTransform);
         }
 
+        [ContextMenu("Update Target Position")]
         public Vector3 UpdateTargetPosition()
         {
+
+            float translationDistance = IsHorizontallyDirected() ? translationDistanceAlternate : translationDistanceDefault;
             targetPosition = transform.position + transform.forward * translationDistance;
             return targetPosition;
+        }
+
+        public bool IsHorizontallyDirected()
+        {
+            float absoluteRotation = Mathf.Abs(transform.localRotation.eulerAngles.y);
+            return Mathf.Approximately(absoluteRotation, 90) || Mathf.Approximately(absoluteRotation, 270);
         }
 
         public void ResetTransform()

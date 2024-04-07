@@ -1072,7 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e8bd409c0c4caf88baa84c26128186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationDistance: 4
+  translationDistanceDefault: 4
+  translationDistanceAlternate: 3.5
   defaultMotionDuration: 0.5
   motionEase: 4
   rotationAngle: 90
@@ -1112,6 +1113,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
+  positionOffset: {x: 0, y: 0, z: 0}
   showGizmos: 1
   obstacleCheckDebugDistance: 4
 --- !u!1 &8671626508046000197
