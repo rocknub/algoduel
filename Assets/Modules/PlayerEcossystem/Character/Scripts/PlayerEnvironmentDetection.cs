@@ -7,25 +7,28 @@ namespace Character
     {
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private LayerMask obstacleMask;
+        [SerializeField] private Vector3 positionOffset;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
         [SerializeField] private float obstacleCheckDebugDistance;
 
+        public Vector3 originPosition => transform.position + positionOffset;
+
         public bool IsAboveGround()
         {
-            return Physics.Raycast(transform.position, -transform.up, 100, groundMask);
+            return Physics.Raycast(originPosition, -transform.up, 100, groundMask);
         }
 
         public bool CheckForObstacles(float distance)
         {
-            return Physics.Raycast(transform.position, transform.forward, distance, obstacleMask);
+            return Physics.Raycast(originPosition, transform.forward, distance, obstacleMask);
         }
 
         public bool CheckForObstacles(Vector3 target)
         {
-            Vector3 anormalDir = target - transform.position;
+            Vector3 anormalDir = target - originPosition;
             float distance = anormalDir.magnitude;
-            return Physics.Raycast(transform.position, anormalDir/distance, distance, obstacleMask);
+            return Physics.Raycast(originPosition, anormalDir/distance, distance, obstacleMask);
         }
         
         private void OnDrawGizmosSelected()
@@ -33,9 +36,9 @@ namespace Character
             if (showGizmos == false)
                 return;
             Gizmos.color = IsAboveGround() ? Color.blue : Color.red;
-            Gizmos.DrawLine(transform.position, transform.position - transform.up * 100f);
+            Gizmos.DrawLine(originPosition, originPosition - transform.up * 100f);
             Gizmos.color = CheckForObstacles(obstacleCheckDebugDistance) ? Color.red : Color.blue;
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward * obstacleCheckDebugDistance);
+            Gizmos.DrawLine(originPosition, originPosition + transform.forward * obstacleCheckDebugDistance);
         }
     }
 }
