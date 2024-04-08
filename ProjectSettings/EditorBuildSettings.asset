@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Modules/PlayerEcossystem/Algorithm/Scenes/ProtoArena.unity
+    path: Assets/Modules/Scenes/ProtoArena.unity
     guid: 61f4554c5ef164049981662e869c825d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9c6745656b12d454d8535bfd4b02b04e,

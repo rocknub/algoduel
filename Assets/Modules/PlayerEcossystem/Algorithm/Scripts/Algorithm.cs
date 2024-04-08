@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Character;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Algorithm
 {
@@ -13,7 +12,7 @@ namespace Algorithm
     {
         [SerializeField] private int maxCommands = 10;
         [SerializeField] private Transform commandsParent;
-        [SerializeField] private Player player;
+        [FormerlySerializedAs("player")] [SerializeField] private PlayerMovement playerMovement;
         
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
@@ -98,7 +97,7 @@ namespace Algorithm
             while (currentExecutionIndex < commandSequence.Count)
             {
                 ExecuteCommand(currentExecutionIndex);
-                yield return new WaitWhile(() => player.IsActing);
+                yield return new WaitWhile(() => playerMovement.IsActing);
                 currentExecutionIndex++;
             }
             executionRoutine = null;
@@ -109,6 +108,13 @@ namespace Algorithm
             if (ctx.performed == false || executionRoutine != null)
                 return;
             executionRoutine = StartCoroutine(ExecuteCoroutine());
+        }
+
+        public void HaltExecution()
+        {
+            StopCoroutine(executionRoutine);
+            executionRoutine = null;
+            OnSequenceEnd.Invoke();
         }
     }
 }

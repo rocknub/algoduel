@@ -35,11 +35,11 @@ public class MultiplayerManager : MonoBehaviour
     {
         if (playerInputManager.playerCount > maxPlayers)
             return;
-        Player player = playerInput.transform.GetComponentInParent<Player>();
-        player.gameObject.SetActive(true);
-        player.transform.SetParent(playersOrigins[playerInputManager.playerCount-1], false);
-        player.GoToOrigin();
-        Debug.Log($"{player.name} is Player {playerInputManager.playerCount}");
+        PlayerMovement playerMovement = playerInput.transform.GetComponentInParent<PlayerMovement>();
+        playerMovement.gameObject.SetActive(true);
+        playerMovement.transform.SetParent(playersOrigins[playerInputManager.playerCount-1], false);
+        playerMovement.ResetTransform();
+        Debug.Log($"{playerMovement.name} is Player {playerInputManager.playerCount}");
     }
     
     
