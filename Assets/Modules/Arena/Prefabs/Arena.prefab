@@ -42,9 +42,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112692643150723552}
-  - component: {fileID: 728686429243781168}
   m_Layer: 6
-  m_Name: FloorBox
+  m_Name: FloorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,28 +64,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6177104045123705279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &728686429243781168
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677429366432436445}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 0
-  m_Mesh: {fileID: 6240159341419647114, guid: b2998a8d03d205747aee58e57a614e73, type: 3}
 --- !u!1001 &2676746290675822197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -525,22 +502,22 @@ PrefabInstance:
     - target: {fileID: 8632055958874330854, guid: b2998a8d03d205747aee58e57a614e73,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 8632055958874330854, guid: b2998a8d03d205747aee58e57a614e73,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.01
+      value: -1.94
       objectReference: {fileID: 0}
     - target: {fileID: 8670761335428686811, guid: b2998a8d03d205747aee58e57a614e73,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.05
+      value: -2.86
       objectReference: {fileID: 0}
     - target: {fileID: 8670761335428686811, guid: b2998a8d03d205747aee58e57a614e73,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.47
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 8670761335428686811, guid: b2998a8d03d205747aee58e57a614e73,
         type: 3}
