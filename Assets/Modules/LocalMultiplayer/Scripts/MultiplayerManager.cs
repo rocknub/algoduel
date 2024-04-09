@@ -1,46 +1,68 @@
-using Character;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem.Users;
 
-[RequireComponent(typeof(PlayerInputManager))]
 public class MultiplayerManager : MonoBehaviour
 {
-    public PlayerInputManager playerInputManager;
-    public Transform playersOriginsParent;
-    public Transform[] playersOrigins;
-    public int maxPlayers;
+    public PlayerInput[] playerInputs;
+    public InputActionReference inputAction;
 
     private void Start()
     {
-        playerInputManager = GetComponent<PlayerInputManager>();
-        playerInputManager.onPlayerJoined += SetPlayerTransform;
-
-        SetPlayersOrigins();
+        SetDevicesAndSchemes();
     }
 
-    private Transform[] SetPlayersOrigins()
+    public void SetDevicesAndSchemes()
     {
-        maxPlayers = playerInputManager.maxPlayerCount < playersOriginsParent.childCount
-            ? playerInputManager.maxPlayerCount
-            : playersOriginsParent.childCount;
-        playersOrigins = new Transform[maxPlayers];
-        for (int i = 0; i < maxPlayers; i++)
+        foreach (var inputUser in InputUser.all)
         {
-            playersOrigins[i] = playersOriginsParent.GetChild(i);
+            Debug.Log($"{inputUser.index}");   
+            inputUser.UnpairDevices();
         }
-        return playersOrigins;
+        InputUser.listenForUnpairedDeviceActivity = 1;
+        InputUser.onUnpairedDeviceUsed += UnpairedDeviceResponse;
     }
 
-    public void SetPlayerTransform(PlayerInput playerInput)
+    [ContextMenu("Debug Controls")]
+    public void DebugControls()
     {
-        if (playerInputManager.playerCount > maxPlayers)
-            return;
-        PlayerMovement playerMovement = playerInput.transform.GetComponentInParent<PlayerMovement>();
-        playerMovement.gameObject.SetActive(true);
-        playerMovement.transform.SetParent(playersOrigins[playerInputManager.playerCount-1], false);
-        playerMovement.ResetTransform();
-        Debug.Log($"{playerMovement.name} is Player {playerInputManager.playerCount}");
+        foreach (var binding in inputAction.action.bindings)
+        {
+            Debug.Log($"Binding Name = {binding.path}");
+            var control = InputSystem.FindControl(binding.path);
+            var parsed = InputControlPath.Parse(binding.path);
+            foreach (var pathPart in parsed)
+            {
+                Debug.Log(pathPart.name);
+            }
+            Debug.Log($"Binding Control = {InputSystem.FindControl(binding.path)}");
+            // Debug.Log();
+        }
     }
-    
-    
+
+    public void UnpairedDeviceResponse(InputControl control, InputEventPtr ptr)
+    {
+        if (control is not ButtonControl)
+        {
+            return;
+        }
+
+        InputControl foundControl;
+        foreach (var binding in inputAction.action.bindings)
+        {
+            foundControl = InputControlPath.TryFindControl(control, binding.path);
+            if (foundControl != null)
+                break;
+        }
+        
+        Debug.Log("Found Control Name = " + control.name);
+        
+        Debug.Log($"Unpaired Device Used: " +
+                  $"\n Control Name = {control.name}" +
+                  $"\n Device Name = {control.device.name}" +
+                  $"\n Parent Name = {control.parent.name}");
+    }
 }
