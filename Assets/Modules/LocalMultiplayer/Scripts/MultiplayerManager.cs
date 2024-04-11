@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -9,7 +9,10 @@ public class MultiplayerManager : MonoBehaviour
 {
     public PlayerInput[] playerInputs;
     public InputActionReference inputAction;
+    public bool prioritizeGamepad;
 
+    private int playerIndex = 0;
+    
     private void Start()
     {
         SetDevicesAndSchemes();
@@ -19,7 +22,6 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (var inputUser in InputUser.all)
         {
-            Debug.Log($"{inputUser.index}");   
             inputUser.UnpairDevices();
         }
         InputUser.listenForUnpairedDeviceActivity = 1;
@@ -46,23 +48,34 @@ public class MultiplayerManager : MonoBehaviour
     public void UnpairedDeviceResponse(InputControl control, InputEventPtr ptr)
     {
         if (control is not ButtonControl)
-        {
             return;
-        }
 
-        InputControl foundControl;
+        InputBinding? foundBinding = null;
+        var parsedPathComponents = new InputControlPath.ParsedPathComponent[inputAction.action.bindings.Count];
         foreach (var binding in inputAction.action.bindings)
         {
-            foundControl = InputControlPath.TryFindControl(control, binding.path);
-            if (foundControl != null)
-                break;
+            parsedPathComponents = InputControlPath.Parse(binding.path).ToArray();
+            if (parsedPathComponents[1].name.Equals(control.name) == false) continue;
+            foundBinding = binding;
+            break;
         }
-        
-        Debug.Log("Found Control Name = " + control.name);
-        
-        Debug.Log($"Unpaired Device Used: " +
-                  $"\n Control Name = {control.name}" +
-                  $"\n Device Name = {control.device.name}" +
-                  $"\n Parent Name = {control.parent.name}");
+
+        if (foundBinding == null)
+            return;
+
+        if (playerInputs[playerIndex].devices.Count > 0)
+        {
+            if ((prioritizeGamepad && foundBinding.Value.path.ToLower().Contains("gamepad") == false) == false)
+            {
+                return;
+            }
+        }
+        InputUser.PerformPairingWithDevice(control.device, playerInputs[playerIndex].user,
+            InputUserPairingOptions.UnpairCurrentDevicesFromUser);
+        playerInputs[playerIndex].user.ActivateControlScheme(foundBinding.Value.groups);
+        playerIndex++;
+
+        if (playerIndex > playerInputs.Length)
+            playerIndex = 0;
     }
 }

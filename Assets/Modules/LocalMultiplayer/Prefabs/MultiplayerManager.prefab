@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: 2655339248648963309}
   inputAction: {fileID: 1796331569566262565, guid: a051864c643cf21418eb0ee87bba50f3,
     type: 3}
+  prioritizeGamepad: 0
 --- !u!1 &3111376436135346923
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293816790041114268, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard2
       objectReference: {fileID: 0}
     - target: {fileID: 3452082506636375516, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -1740,6 +1746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293816790041114268, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard1
       objectReference: {fileID: 0}
     - target: {fileID: 3796486927464164288, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
