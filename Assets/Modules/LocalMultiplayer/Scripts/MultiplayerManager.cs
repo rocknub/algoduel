@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,10 +13,22 @@ public class MultiplayerManager : MonoBehaviour
     public bool prioritizeGamepad;
 
     private int playerIndex = 0;
+    private InputDevice keyboardDevice;
     
     private void Start()
     {
         SetDevicesAndSchemes();
+    }
+
+    private void Update()
+    {
+        if (keyboardDevice != null)
+        {
+            // if (keyboardDevice.device.)
+            // {
+            //     Debug.Log("Keyboard used!");
+            // }
+        }
     }
 
     public void SetDevicesAndSchemes()
@@ -63,19 +76,29 @@ public class MultiplayerManager : MonoBehaviour
         if (foundBinding == null)
             return;
 
-        if (playerInputs[playerIndex].devices.Count > 0)
-        {
-            if ((prioritizeGamepad && foundBinding.Value.path.ToLower().Contains("gamepad") == false) == false)
-            {
-                return;
-            }
-        }
-        InputUser.PerformPairingWithDevice(control.device, playerInputs[playerIndex].user,
-            InputUserPairingOptions.UnpairCurrentDevicesFromUser);
-        playerInputs[playerIndex].user.ActivateControlScheme(foundBinding.Value.groups);
-        playerIndex++;
+        var input = playerInputs[playerIndex];
+        //To be used if gamepads are somehow meant to be prioritized
+        // if (input.devices.Count > 0)
+        // {
+        //     if ((prioritizeGamepad && foundBinding.Value.path.ToLower().Contains("gamepad") == false) == false)
+        //     {
+        //         return;
+        //     }
+        // }
 
-        if (playerIndex > playerInputs.Length)
-            playerIndex = 0;
+        var user = input.user;
+        InputUser.PerformPairingWithDevice(control.device, user,
+            InputUserPairingOptions.UnpairCurrentDevicesFromUser);
+        user.ActivateControlScheme(foundBinding.Value.groups);
+
+        if (foundBinding.Value.path.ToLower().Contains("keyboard") && keyboardDevice == null)
+        {
+            keyboardDevice = user.pairedDevices[0];
+        }
+
+        if (++playerIndex <= playerInputs.Length - 1) return;
+        
+        playerIndex = 0;
+        Debug.Log(playerIndex);
     }
 }
