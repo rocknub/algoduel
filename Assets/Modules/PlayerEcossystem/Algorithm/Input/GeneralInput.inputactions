@@ -208,22 +208,22 @@
                 },
                 {
                     "name": "",
-                    "id": "b1c0f331-bde2-4b95-ad38-85abd78809a4",
-                    "path": "<Keyboard>/delete",
+                    "id": "100f4be7-85e9-46e1-be90-be74cae08664",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard2",
+                    "groups": "Keyboard1",
                     "action": "Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "100f4be7-85e9-46e1-be90-be74cae08664",
-                    "path": "<Keyboard>/c",
+                    "id": "b1c0f331-bde2-4b95-ad38-85abd78809a4",
+                    "path": "<Keyboard>/delete",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard1",
+                    "groups": "Keyboard2",
                     "action": "Clear",
                     "isComposite": false,
                     "isPartOfComposite": false
