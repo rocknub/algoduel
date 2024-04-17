@@ -131,7 +131,10 @@ MonoBehaviour:
   - {fileID: 2655339248648963309}
   inputAction: {fileID: 1796331569566262565, guid: a051864c643cf21418eb0ee87bba50f3,
     type: 3}
-  prioritizeGamepad: 0
+  OnControlUserPrePaired: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+    type: 2}
+  OnBothUsersPrePaired: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+    type: 2}
 --- !u!1 &3111376436135346923
 GameObject:
   m_ObjectHideFlags: 0

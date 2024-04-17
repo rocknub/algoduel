@@ -1,20 +1,27 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.Serialization;
 
 public class MultiplayerManager : MonoBehaviour
 {
     public PlayerInput[] playerInputs;
     public InputActionReference inputAction;
-    public bool prioritizeGamepad;
+
+    [Header("Game Events")] 
+    [SerializeField] private IntGameEvent OnControlUserPrePaired;
+    [FormerlySerializedAs("OnBothUsersPrePaired")] [SerializeField] private GameEvent OnPairingConcluded;
 
     private int playerIndex = 0;
     private InputDevice keyboardDevice;
-    
+    private Tuple<InputUser, InputDevice>[] prePairedUsersAndDevices;
+
     private void Start()
     {
         SetDevicesAndSchemes();
@@ -24,10 +31,7 @@ public class MultiplayerManager : MonoBehaviour
     {
         if (keyboardDevice != null)
         {
-            // if (keyboardDevice.device.)
-            // {
-            //     Debug.Log("Keyboard used!");
-            // }
+            //For detecting if keyboard was used
         }
     }
 
@@ -39,6 +43,7 @@ public class MultiplayerManager : MonoBehaviour
         }
         InputUser.listenForUnpairedDeviceActivity = 1;
         InputUser.onUnpairedDeviceUsed += UnpairedDeviceResponse;
+        prePairedUsersAndDevices = new Tuple<InputUser, InputDevice>[playerInputs.Length];
     }
 
     [ContextMenu("Debug Controls")]
@@ -62,6 +67,8 @@ public class MultiplayerManager : MonoBehaviour
     {
         if (control is not ButtonControl)
             return;
+        if (playerIndex > playerInputs.Length-1)
+            return;
 
         InputBinding? foundBinding = null;
         var parsedPathComponents = new InputControlPath.ParsedPathComponent[inputAction.action.bindings.Count];
@@ -77,28 +84,30 @@ public class MultiplayerManager : MonoBehaviour
             return;
 
         var input = playerInputs[playerIndex];
-        //To be used if gamepads are somehow meant to be prioritized
-        // if (input.devices.Count > 0)
-        // {
-        //     if ((prioritizeGamepad && foundBinding.Value.path.ToLower().Contains("gamepad") == false) == false)
-        //     {
-        //         return;
-        //     }
-        // }
-
         var user = input.user;
-        InputUser.PerformPairingWithDevice(control.device, user,
-            InputUserPairingOptions.UnpairCurrentDevicesFromUser);
-        user.ActivateControlScheme(foundBinding.Value.groups);
+        PrePairUserAndDevice(control.device, user, foundBinding.Value);
+        playerIndex++;
+    }
 
-        if (foundBinding.Value.path.ToLower().Contains("keyboard") && keyboardDevice == null)
+    private void PrePairUserAndDevice(InputDevice device, InputUser user, InputBinding binding)
+    {
+        prePairedUsersAndDevices[playerIndex] = new Tuple<InputUser, InputDevice>(user, device);
+        user.ActivateControlScheme(binding.groups);
+        OnControlUserPrePaired.Raise(playerIndex);
+        if (playerIndex >= playerInputs.Length - 1)
         {
-            keyboardDevice = user.pairedDevices[0];
+            ConcludeUserDevicePairing();
         }
+    }
 
-        if (++playerIndex <= playerInputs.Length - 1) return;
-        
-        playerIndex = 0;
-        Debug.Log(playerIndex);
+    public void ConcludeUserDevicePairing()
+    {
+        foreach (var userDeviceTuple in prePairedUsersAndDevices)
+        {
+            InputUser.PerformPairingWithDevice(userDeviceTuple.Item2, userDeviceTuple.Item1,
+                InputUserPairingOptions.UnpairCurrentDevicesFromUser);
+        }
+        InputUser.listenForUnpairedDeviceActivity = 0;
+        OnPairingConcluded.Raise();
     }
 }

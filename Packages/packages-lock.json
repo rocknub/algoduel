@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.danieleverland.scriptableobjectarchitecture": {
+      "version": "https://github.com/DanielEverland/ScriptableObject-Architecture.git#release/stable",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5dc57a5954a1c876e135d404296601828e3866d6"
+    },
     "com.unity.burst": {
       "version": "1.8.7",
       "depth": 1,
