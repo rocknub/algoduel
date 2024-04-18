@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -16,6 +15,8 @@ public class DevicePromptUI : MonoBehaviour
     private void Start()
     {
         rectT = GetComponent<RectTransform>();
+        // var newRect = rectT.rect;
+        // rectT.rect.Set(newRect.x, newRect.y, newRect.width, Screen.height);
     }
 
     public void TryChangeTextToConfirmInteraction(int secretKey)
@@ -26,8 +27,7 @@ public class DevicePromptUI : MonoBehaviour
 
      public void DetractPanel()
     {
-        var width = rectT.rect.width;
-        rectT.DOMoveX(rectT.position.x + width * (invertPanelMovement ? -1 : 1), movementDuration);
+        rectT.DOMoveX(rectT.position.x + Screen.width/2 * (invertPanelMovement ? -1 : 1), movementDuration);
     }
     
     
