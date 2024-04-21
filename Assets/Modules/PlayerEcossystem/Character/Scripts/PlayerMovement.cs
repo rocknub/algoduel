@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -12,8 +13,10 @@ namespace Character
         [SerializeField] private float translationDistanceAlternate;
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
-        [SerializeField] private float rotationAngle = 90f;
-        public UnityEvent OnTransformReset;
+        [SerializeField] private float rotationAngle = 90f; 
+        [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
+        [SerializeField] private UnityEvent<float, float> onTranslation;
+        [SerializeField] private UnityEvent<float, float> onRotation;
         [Header("Uncontrolled Movements")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallDuration;
@@ -24,7 +27,7 @@ namespace Character
         private Vector3 targetPosition;
         private PlayerEnvironmentDetection envDetection;
         
-        public bool IsActing => motionTween is { active: true };
+        // public bool IsActing => motionTween is { active: true };
 
         private void OnValidate()
         {
@@ -115,7 +118,7 @@ namespace Character
         {
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             UpdateTargetPosition();
-            OnTransformReset.Invoke();
+            onTransformReset.Invoke();
         }
 
         private void OnDrawGizmosSelected()

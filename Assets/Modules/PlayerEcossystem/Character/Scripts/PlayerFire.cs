@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Character
 {
@@ -10,7 +9,7 @@ namespace Character
         
         public override void DoIt()
         {
-            Debug.Log("Should Fire!");
+            Debug.Log($"{transform.parent.name} Should Fire!");
             // GameObject.Instantiate(projectilePrefab, fireOrigin, false);
         }
     }
