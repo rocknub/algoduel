@@ -12,7 +12,7 @@ namespace Algorithm
     {
         [SerializeField] private int maxCommands = 10;
         [SerializeField] private Transform commandsParent;
-        [FormerlySerializedAs("player")] [SerializeField] private PlayerMovement playerMovement;
+        [FormerlySerializedAs("player")] [SerializeField] private PlayerManager player;
         
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
@@ -97,7 +97,8 @@ namespace Algorithm
             while (currentExecutionIndex < commandSequence.Count)
             {
                 ExecuteCommand(currentExecutionIndex);
-                yield return new WaitWhile(() => playerMovement.IsActing);
+                // yield return new WaitWhile(() => playerMovement.IsActing);
+                yield return new WaitUntil(() => player.CanAct);
                 currentExecutionIndex++;
             }
             executionRoutine = null;

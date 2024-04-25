@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace Character
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : PlayerBehaviour
     {
         //TODO(Marlus - Maybe) Create a grid to calculate distance
         [Header("Directed Movements")]
@@ -15,8 +15,8 @@ namespace Character
         [SerializeField] private Ease motionEase;
         [SerializeField] private float rotationAngle = 90f; 
         [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
-        [SerializeField] private UnityEvent<float, float> onTranslation;
-        [SerializeField] private UnityEvent<float, float> onRotation;
+        [SerializeField] private UnityEvent<MovementData> onTranslation;
+        [SerializeField] private UnityEvent<MovementData> onRotation;
         [Header("Uncontrolled Movements")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallDuration;
@@ -25,10 +25,8 @@ namespace Character
 
         private Tween motionTween;
         private Vector3 targetPosition;
-        private PlayerEnvironmentDetection envDetection;
+        private PlayerEnvironmentDetection envDetection => manager.EnvironmentDetection;
         
-        // public bool IsActing => motionTween is { active: true };
-
         private void OnValidate()
         {
             UpdateTargetPosition();
@@ -36,13 +34,14 @@ namespace Character
 
         private void Start()
         {
-            envDetection = GetComponent<PlayerEnvironmentDetection>();
             UpdateTargetPosition();
         }
+        
+        public override bool IsActing() => motionTween is { active: true };
 
         public void Move()
         {
-            if (IsActing)
+            if (IsActing())
             {
                 return;
             }
@@ -56,11 +55,12 @@ namespace Character
             }
             motionTween = transform.DOMove(targetPosition, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(ActionCompletionCallback);
+            onTranslation.Invoke(new MovementData(transform.position, targetPosition, defaultMotionDuration));
         }
 
         public void RotateClockwise()
         {
-            if (IsActing)
+            if (IsActing())
             {
                 return;
             }
@@ -68,11 +68,12 @@ namespace Character
             targetRotation.y += rotationAngle;
             motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(ActionCompletionCallback);
+            onRotation.Invoke(new MovementData(transform.rotation.eulerAngles, targetRotation, defaultMotionDuration));
         }
         
         public void RotateCounterClockwise()
         {
-            if (IsActing)
+            if (IsActing())
             {
                 return;
             }
@@ -91,8 +92,6 @@ namespace Character
 
         public void TryToFall()
         {
-            if (envDetection == null)
-                return;
             if (envDetection.IsAboveGround())
                 return;
             motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration);
