@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Character;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +12,7 @@ namespace Projectiles
         private Rigidbody rb;
 
         public UnityEvent<Collider> OnProjectileHit => onProjectileHit;
+        public UnityEvent<Projectile> OnBlowEffectFinished => onBlowEffectFinished;
 
         public Rigidbody Rigidbody
         {
@@ -23,10 +24,21 @@ namespace Projectiles
             }
         }
 
+        public void ToggleFreeze(bool value)
+        {
+            Rigidbody.isKinematic = value;
+            GetComponent<MeshRenderer>().enabled = !value;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             onProjectileHit.Invoke(GetComponent<Collider>());
             onBlowEffectFinished.Invoke(this);
+
+            if (collision.transform.parent.TryGetComponent(out PlayerMovement collidedPlayer))
+            {
+                collidedPlayer.ResetTransform();
+            }
         }
     }
 }

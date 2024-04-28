@@ -1639,7 +1639,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 923279479316344094, guid: 8e7bc9fa926a6a341a6e54f71dc913c0,
     type: 3}
   reloadDuration: 1
+  projectilePoolSize: 10
   showGizmos: 1
+  onProjectileFired:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7866790139567103524
 GameObject:
   m_ObjectHideFlags: 0
