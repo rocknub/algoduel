@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Projectiles;
 using UnityEngine;
 using UnityEngine.Events;
+using Object = UnityEngine.Object;
 
 namespace Character
 {
@@ -14,13 +15,16 @@ namespace Character
         [SerializeField] private ForceMode forceMode;
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private float reloadDuration;
-        [Min(1)][SerializeField] private int projectilePoolSize;
         [SerializeField] private bool showGizmos;
+        [Header("Pooling")]
+        [SerializeField] private float poolingDelay;
+        [Min(1)][SerializeField] private int projectilePoolSize;
         [Header("Events")] 
         [SerializeField] private UnityEvent<Projectile> onProjectileFired;
         [SerializeField] private UnityEvent onReload;
 
         private bool isReloading;
+        private int unqueuedProjectileCount = 0;
         private Queue<Projectile> projectilePool;
 
         private Vector3 fireDirection => fireOrigin.forward;
@@ -39,6 +43,7 @@ namespace Character
             
             StartCoroutine(Reload());
             onProjectileFired.Invoke(projectile);
+            StartCoroutine(PoolOnTime(projectile));
         }
 
         public override bool IsActing() => isReloading;
@@ -48,22 +53,24 @@ namespace Character
             isReloading = true;
             yield return new WaitForSeconds(reloadDuration);
             isReloading = false;
-            yield return new WaitForSeconds(reloadDuration * 1.5f);
             onReload.Invoke();
         }
 
-        private void FreezeAndAddToPool(Projectile projectile)
+        private IEnumerator PoolOnTime(Projectile projectile)
         {
-            if (projectilePool.Count < projectilePoolSize && projectilePool.Contains(projectile) == false) 
-            {
-                projectile.ToggleFreeze(true);
-                projectilePool.Enqueue(projectile);
-            }
-            else
-            {
-                Debug.LogWarning("A projectile couldn't be pooled!");
-                Destroy(projectile);
-            }
+            yield return new WaitForSeconds(poolingDelay);
+            TryFreezeAndAddToPool(projectile);
+        }
+
+        private void TryFreezeAndAddToPool(Projectile projectile)
+        {
+
+            if (projectile == null)
+                return;
+            if (projectilePool.Contains(projectile))
+                return;
+            projectile.ToggleFreeze(true);
+            projectilePool.Enqueue(projectile);
         }
 
         private Projectile InstantiateOrReuseProjectile()
@@ -78,8 +85,8 @@ namespace Character
             {
                 projectileRef = Instantiate(projectilePrefab, fireOrigin, false)
                     .GetComponent<Projectile>();
-                // projectileRef.OnBlowEffectFinished.AddListener(FreezeAndAddToPool);
-                // onReload.AddListener(() => FreezeAndAddToPool(projectileRef));
+                projectileRef.gameObject.name += "_" + unqueuedProjectileCount++;
+                projectileRef.OnBlowEffectFinished.AddListener(TryFreezeAndAddToPool);
             }
             return projectileRef;
         }
