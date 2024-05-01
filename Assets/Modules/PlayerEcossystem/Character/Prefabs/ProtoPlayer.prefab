@@ -1559,6 +1559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c4247999514eaca0908ba5f5a5ba73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerModel: {fileID: 133475258670953423}
+  materialTweenPeriod: 1
+  materialTweenLoopCount: 9
+  materialTweenColor: {r: 1, g: 0.39999998, b: 0.39999998, a: 0}
 --- !u!114 &6628951969272852649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3089,6 +3093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1453177285754631060, guid: 544421ce58e961543a769e591a1ca316,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453177285754631060, guid: 544421ce58e961543a769e591a1ca316,
+        type: 3}
       propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
@@ -3101,6 +3110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453177285754631060, guid: 544421ce58e961543a769e591a1ca316,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5201341097505371012, guid: 544421ce58e961543a769e591a1ca316,
         type: 3}

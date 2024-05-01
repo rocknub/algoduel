@@ -1,4 +1,5 @@
-﻿using Character;
+﻿using System;
+using Character;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ namespace Projectiles
         [SerializeField] private UnityEvent<Projectile> onBlowEffectFinished; 
 
         private Rigidbody rb;
+        private Renderer renderer;
+        private Collider collider;
 
         public UnityEvent<Collider> OnProjectileHit => onProjectileHit;
         public UnityEvent<Projectile> OnBlowEffectFinished => onBlowEffectFinished;
@@ -23,22 +26,48 @@ namespace Projectiles
                 return rb; 
             }
         }
+        
+        public Renderer Renderer
+        {
+            get
+            {
+                if (renderer == null)
+                    renderer = GetComponent<Renderer>();
+                return renderer; 
+            }
+        }
+        
+        public Collider Collider
+        {
+            get
+            {
+                if (collider == null)
+                    collider = GetComponent<Collider>();
+                return collider; 
+            }
+        }
 
         public void ToggleFreeze(bool value)
         {
             Rigidbody.isKinematic = value;
-            GetComponent<MeshRenderer>().enabled = !value;
+            Renderer.enabled = !value;
+            Collider.enabled = !value;
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collider)
         {
-            onProjectileHit.Invoke(GetComponent<Collider>());
-            onBlowEffectFinished.Invoke(this);
-
-            if (collision.transform.parent.TryGetComponent(out PlayerMovement collidedPlayer))
+            if (!collider.transform.parent.TryGetComponent(out PlayerManager hitPlayer))
             {
-                collidedPlayer.ResetTransform();
+                return;
             }
+            if (hitPlayer.IsInvulnerable)
+            {
+                return;
+            }
+            
+            hitPlayer.ReceiveHit();
+            onProjectileHit.Invoke(collider);
+            onBlowEffectFinished.Invoke(this);
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Character
             if (envDetection.IsAboveGround())
                 return;
             motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration);
-            motionTween.OnComplete(ResetTransform);
+            motionTween.OnComplete(manager.ReceiveHit);
         }
 
         [ContextMenu("Update Target Position")]
@@ -115,6 +115,7 @@ namespace Character
 
         public void ResetTransform()
         {
+            motionTween?.Kill();
             transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             UpdateTargetPosition();
             onTransformReset.Invoke();
