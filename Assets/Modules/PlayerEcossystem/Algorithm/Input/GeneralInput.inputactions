@@ -105,6 +105,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a576bef9-18d8-4248-884b-269c1451fc09",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateCounterClockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ebe60d7d-8343-4fce-bf4d-e6edd31e05a0",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
@@ -132,6 +143,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "RotateClockwise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a01484d7-3f40-48e9-9493-5b1006d5c968",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "RotateClockwise",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -330,6 +352,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf1e4a0f-f49d-4cbd-ba29-60598aec21ba",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false

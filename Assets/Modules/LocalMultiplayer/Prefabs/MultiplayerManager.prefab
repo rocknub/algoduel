@@ -52,19 +52,7 @@ MonoBehaviour:
   m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6299666311038163347}
-        m_TargetAssemblyTypeName: MultiplayerTester, Assembly-CSharp
-        m_MethodName: SetPlayerTransform
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_PlayerLeftEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -131,6 +119,10 @@ MonoBehaviour:
   - {fileID: 2655339248648963309}
   inputAction: {fileID: 1796331569566262565, guid: a051864c643cf21418eb0ee87bba50f3,
     type: 3}
+  recycleDevice: 0
+  recycleExceptionSchemes:
+  - Gamepad
+  - Joystick
   OnControlUserPrePaired: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
     type: 2}
   OnPairingConcluded: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}

@@ -13,6 +13,8 @@ public class MultiplayerManager : MonoBehaviour
 {
     public PlayerInput[] playerInputs;
     public InputActionReference inputAction;
+    public bool recycleDeviceScheme;
+    public string[] recycleExceptionSchemes;
 
     [Header("Game Events")] 
     [SerializeField] private IntGameEvent OnControlUserPrePaired;
@@ -25,14 +27,6 @@ public class MultiplayerManager : MonoBehaviour
     private void Start()
     {
         SetDevicesAndSchemes();
-    }
-
-    private void Update()
-    {
-        if (keyboardDevice != null)
-        {
-            //For detecting if keyboard was used
-        }
     }
 
     public void SetDevicesAndSchemes()
@@ -83,6 +77,21 @@ public class MultiplayerManager : MonoBehaviour
         if (foundBinding == null)
             return;
 
+        if (recycleDeviceScheme == false)
+        {
+            if (IsBindingWithinExceptions(foundBinding.Value))
+            {
+                if (IsDevicePrePaired(control.device))
+                {
+                    return;
+                }
+            }
+            else if (IsBindingUsed(foundBinding.Value))
+            {
+                return;
+            }
+        }
+
         var input = playerInputs[playerIndex];
         var user = input.user;
         PrePairUserAndDevice(control.device, user, foundBinding.Value);
@@ -109,5 +118,41 @@ public class MultiplayerManager : MonoBehaviour
         }
         InputUser.listenForUnpairedDeviceActivity = 0;
         OnPairingConcluded.Raise();
+    }
+
+    private bool IsDevicePrePaired(InputDevice device)
+    {
+        return prePairedUsersAndDevices
+            .Any(userDevicePair => userDevicePair?.Item2.deviceId == device.deviceId);
+    }
+    
+    private bool IsBindingWithinExceptions(InputBinding binding)
+    {
+        foreach (var exception in recycleExceptionSchemes)
+        {
+            if (binding.groups.Contains(exception))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsBindingUsed(InputBinding binding)
+    {
+        foreach (var userDevicePair in prePairedUsersAndDevices)
+        {
+            if (userDevicePair?.Item1.controlScheme == null)
+            {
+                continue;
+            }
+
+            if (userDevicePair.Item1.controlScheme.Value.bindingGroup == binding.groups)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
