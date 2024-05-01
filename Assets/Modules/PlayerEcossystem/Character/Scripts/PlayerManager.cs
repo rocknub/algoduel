@@ -7,39 +7,23 @@ namespace Character
 {
     public class PlayerManager : MonoBehaviour
     {
-        [SerializeField] private Transform playerModel;
-        [SerializeField] private float materialTweenPeriod;
-        [SerializeField] private int materialTweenLoopCount;
-        [SerializeField] private Color materialTweenColor;
+
 
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }
+        public PlayerRendering Rendering { get; private set; }
         
         public bool IsInvulnerable { get; private set; }
-
-        private List<Material> playerMaterials; 
-
+        
         private void Start()
         {
             EnvironmentDetection = GetComponent<PlayerEnvironmentDetection>();
+            Rendering = GetComponent<PlayerRendering>();
             Movement = GetComponent<PlayerMovement>().SetManager(this) as PlayerMovement;
             Fire = GetComponent<PlayerFire>().SetManager(this) as PlayerFire;
-            
-            GatherMaterials();
         }
-
-        private void GatherMaterials()
-        {
-            var childCount = playerModel.childCount;
-            playerMaterials = new List<Material>(childCount);
-            for (var i = 0; i < childCount; i++)
-            {
-                var renderer = playerModel.GetChild(i).GetComponent<Renderer>();
-                playerMaterials.AddRange(renderer.materials);
-            } 
-        }
-
+        
         public void ReceiveHit()
         {
 
@@ -47,18 +31,7 @@ namespace Character
             if (IsInvulnerable)
                 return;
             IsInvulnerable = true;
-            TweenMaterials(() => IsInvulnerable = false);
-        }
-
-        private void TweenMaterials(Action action)
-        {
-            var materialSeq = DOTween.Sequence();
-            foreach (var material in playerMaterials)
-            {
-                materialSeq.Join(material.DOColor(materialTweenColor, materialTweenPeriod).SetLoops(materialTweenLoopCount, LoopType.Yoyo).SetInverted());
-            }
-            materialSeq.OnComplete(action.Invoke);
-            materialSeq.Play();
+            Rendering.TweenMaterials(() => IsInvulnerable = false);
         }
         
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
