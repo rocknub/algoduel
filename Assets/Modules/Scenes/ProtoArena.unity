@@ -123,30 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &738460692 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2655339248648963309, guid: add96daa01a4d3041aa94295fcb4e750,
-    type: 3}
-  m_PrefabInstance: {fileID: 4997070725583017181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1081820316 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7581385110440791428, guid: add96daa01a4d3041aa94295fcb4e750,
-    type: 3}
-  m_PrefabInstance: {fileID: 4997070725583017181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1579663072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4677429366432436445, guid: 4926e3091af41484ebd17638293248d9,
@@ -269,7 +245,7 @@ PrefabInstance:
     - target: {fileID: 6177104045123705279, guid: 4926e3091af41484ebd17638293248d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.94
       objectReference: {fileID: 0}
     - target: {fileID: 6177104045123705279, guid: 4926e3091af41484ebd17638293248d9,
         type: 3}
@@ -434,11 +410,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2655339248648963309, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard2
-      objectReference: {fileID: 0}
     - target: {fileID: 2829867398048003192, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -689,21 +660,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6299666311038163347, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: playerInputs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6299666311038163347, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: playerInputs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1081820316}
-    - target: {fileID: 6299666311038163347, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: playerInputs.Array.data[1]
-      value: 
-      objectReference: {fileID: 738460692}
     - target: {fileID: 6765514743659422143, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -827,16 +783,6 @@ PrefabInstance:
     - target: {fileID: 7155610375973799361, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581385110440791428, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581385110440791428, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: m_NeverAutoSwitchControlSchemes
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7686061313658830097, guid: add96daa01a4d3041aa94295fcb4e750,
