@@ -7,14 +7,14 @@ namespace Projectiles
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private UnityEvent<Collider> onProjectileHit;
+        [SerializeField] private UnityEvent<Projectile> onProjectileHit;
         [SerializeField] private UnityEvent<Projectile> onBlowEffectFinished; 
 
         private Rigidbody rb;
         private Renderer renderer;
         private Collider collider;
 
-        public UnityEvent<Collider> OnProjectileHit => onProjectileHit;
+        public UnityEvent<Projectile> OnProjectileHit => onProjectileHit;
         public UnityEvent<Projectile> OnBlowEffectFinished => onBlowEffectFinished;
 
         public Rigidbody Rigidbody
@@ -66,8 +66,13 @@ namespace Projectiles
             }
             
             hitPlayer.ReceiveHit();
-            onProjectileHit.Invoke(collider);
+            onProjectileHit.Invoke(this);
             onBlowEffectFinished.Invoke(this);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            onProjectileHit.Invoke(this);
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Character
                     .GetComponent<Projectile>();
                 projectileRef.gameObject.name += "_" + unqueuedProjectileCount++;
                 // projectileRef.OnProjectileHit.AddListener();
-                projectileRef.OnBlowEffectFinished.AddListener(TryFreezeAndAddToPool);
+                projectileRef.OnProjectileHit.AddListener(TryFreezeAndAddToPool);
             }
             return projectileRef;
         }
