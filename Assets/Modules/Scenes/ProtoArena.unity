@@ -123,33 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1579663072 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4677429366432436445, guid: 4926e3091af41484ebd17638293248d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2272103696993695828}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1579663075
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579663072}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 26.58, y: 1, z: 20.75}
-  m_Center: {x: -0.16, y: 9.06, z: 0.1}
 --- !u!850595691 &1962100309
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -285,11 +258,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4677429366432436445, guid: 4926e3091af41484ebd17638293248d9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1579663075}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4926e3091af41484ebd17638293248d9, type: 3}
 --- !u!4 &2272103696993695829 stripped
 Transform:

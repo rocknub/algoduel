@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 311714a7be5bfda47aaabc994c190d8f, type: 3}
+  icon: {fileID: 21300000, guid: 7567b3a1a1a118540807755a6864c1ae, type: 3}
   OnExecution:
     m_PersistentCalls:
       m_Calls:
@@ -311,6 +311,8 @@ MonoBehaviour:
   defaultMotionDuration: 0.5
   motionEase: 4
   rotationAngle: 90
+  fallEase: 3
+  fallDuration: 0.5
   onTransformReset:
     m_PersistentCalls:
       m_Calls:
@@ -332,8 +334,21 @@ MonoBehaviour:
   onRotation:
     m_PersistentCalls:
       m_Calls: []
-  fallEase: 3
-  fallDuration: 0.5
+  onFall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1803697097794679232}
+        m_TargetAssemblyTypeName: MovementAudio, Assembly-CSharp
+        m_MethodName: PlayFallSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   showGizmos: 1
 --- !u!114 &6473101205355555385
 MonoBehaviour:
@@ -942,6 +957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ObstacleCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201341097505371012, guid: 544421ce58e961543a769e591a1ca316,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -175,3 +175,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 4438590437011434074}
   fireSfx: {fileID: 8300000, guid: edb9cccf7b3282645bd2f04b0aa107ef, type: 3}
+  fallSfx: {fileID: 8300000, guid: b4060b4a16b1e984b9fccedbd863895b, type: 3}

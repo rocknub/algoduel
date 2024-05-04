@@ -56,6 +56,11 @@ namespace Projectiles
 
         private void OnTriggerEnter(Collider collider)
         {
+            if ((this.collider.includeLayers & (1 << collider.gameObject.layer)) == 0)
+            {
+                Debug.Log("No collider found");
+                return;
+            }
             if (!collider.transform.parent.TryGetComponent(out PlayerManager hitPlayer))
             {
                 return;
@@ -66,6 +71,8 @@ namespace Projectiles
             }
             
             hitPlayer.ReceiveHit();
+            LayerMask mask = 1;
+            bool b = mask == gameObject.layer;
             onProjectileHit.Invoke(this);
             onBlowEffectFinished.Invoke(this);
         }
