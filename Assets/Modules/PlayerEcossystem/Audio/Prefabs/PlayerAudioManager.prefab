@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752728079096246638}
+  - component: {fileID: 2922312504031259228}
   m_Layer: 0
   m_Name: PlayerAudioManager
   m_TagString: Untagged
@@ -32,6 +33,41 @@ Transform:
   - {fileID: 3799734147766717185}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2922312504031259228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180855583040499682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7381095930314336185}
+        m_TargetAssemblyTypeName: PlayerAudio, Assembly-CSharp
+        m_MethodName: PlayInputConfirmationSfx
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &9014448901645580343
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,3 +212,7 @@ MonoBehaviour:
   source: {fileID: 4438590437011434074}
   fireSfx: {fileID: 8300000, guid: edb9cccf7b3282645bd2f04b0aa107ef, type: 3}
   fallSfx: {fileID: 8300000, guid: b4060b4a16b1e984b9fccedbd863895b, type: 3}
+  validationKey: 0
+  playerInputConfirmationSFX:
+    clip: {fileID: 8300000, guid: 1537fb0fd2660ea47b0bd0e6eabe8c0f, type: 3}
+    scale: 1

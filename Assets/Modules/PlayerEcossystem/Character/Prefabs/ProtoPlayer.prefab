@@ -367,7 +367,7 @@ MonoBehaviour:
     m_Bits: 64
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   positionOffset: {x: 0, y: 0, z: 0}
   showGizmos: 1
   obstacleCheckDebugDistance: 4

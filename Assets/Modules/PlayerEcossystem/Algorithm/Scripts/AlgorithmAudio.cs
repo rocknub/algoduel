@@ -25,11 +25,4 @@ namespace Algorithm
             source.PlayOneShot(clearSfx.clip, clearSfx.scale);
         }
     }
-
-    [Serializable]
-    public class ClipAndScale
-    {
-        public AudioClip clip;
-        [Range(0, 1)] public float scale;
-    }
 }
