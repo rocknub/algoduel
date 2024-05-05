@@ -1,12 +1,11 @@
+using Character;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class PlayerAudio : MonoBehaviour
+public class PlayerAudio : PlayerMonoBehaviour
 {
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip fireSfx;
     [SerializeField] private AudioClip fallSfx;
-    [SerializeField] private int validationKey;
     [SerializeField] private ClipAndScale playerInputConfirmationSFX;
 
     public void PlayFireAudio()
@@ -21,7 +20,7 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayInputConfirmationSfx(int entryKey)
     {
-        if (entryKey != validationKey)
+        if (entryKey != playerIndex)
         {
             return;
         }
