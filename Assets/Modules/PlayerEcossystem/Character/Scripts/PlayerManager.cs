@@ -7,8 +7,6 @@ namespace Character
 {
     public class PlayerManager : MonoBehaviour
     {
-
-
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }

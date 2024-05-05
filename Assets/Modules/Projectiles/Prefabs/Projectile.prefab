@@ -150,14 +150,13 @@ MonoBehaviour:
   onProjectileHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7014989157964365054}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
+      - m_Target: {fileID: 3655490863102121414}
+        m_TargetAssemblyTypeName: Projectiles.ProjectileAudio, Assembly-CSharp
+        m_MethodName: PlayCorrespondingCollisionSFX
+        m_Mode: 0
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1aa3e3f8f5137ae478bee769892c54f5,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -176,6 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8326798655346918170}
   - component: {fileID: 7014989157964365054}
+  - component: {fileID: 3655490863102121414}
   m_Layer: 8
   m_Name: ProjectileAudio
   m_TagString: Untagged
@@ -294,3 +294,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3655490863102121414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834725623998217001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7a361aaba643a2b0d626f48837e325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerAudios:
+  - name: Player
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    audioClip: {fileID: 8300000, guid: 1aa3e3f8f5137ae478bee769892c54f5, type: 3}
+    relativeVolume: 1
+  - name: Inorganic
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 192
+    audioClip: {fileID: 8300000, guid: 9128be52c87e78049a7c8f928dd092a6, type: 3}
+    relativeVolume: 1
