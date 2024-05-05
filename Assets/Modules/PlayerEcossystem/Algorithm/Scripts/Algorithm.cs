@@ -4,7 +4,6 @@ using Character;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Algorithm
 {
@@ -18,7 +17,7 @@ namespace Algorithm
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
         [SerializeField] private UnityEvent<int> OnExecution;
         [SerializeField] private UnityEvent OnSequenceEnd;
-        [SerializeField] private UnityEvent OnClearance;
+        [SerializeField] private UnityEvent<int> OnClearance;
 
         private List<Command> commandSequence;
         private Coroutine executionRoutine;
@@ -65,10 +64,10 @@ namespace Algorithm
 
         public void Clear()
         {
-            if (executionRoutine != null || commandSequence == null)
+            if (executionRoutine != null || commandSequence == null || commandSequence.Count == 0)
                 return;
+            OnClearance.Invoke(commandSequence.Count);
             commandSequence.Clear();
-            OnClearance.Invoke();
         }
 
         private void InsertCommand(Command command)
