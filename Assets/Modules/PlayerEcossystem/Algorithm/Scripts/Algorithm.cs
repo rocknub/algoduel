@@ -4,7 +4,6 @@ using Character;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Algorithm
 {
@@ -17,11 +16,13 @@ namespace Algorithm
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
         [SerializeField] private UnityEvent<int> OnExecution;
-        [SerializeField] private UnityEvent OnSequenceEnd;
-        [SerializeField] private UnityEvent OnClearance;
+        [SerializeField] private UnityEvent<float> OnSequenceEnd;
+        [SerializeField] private UnityEvent<float> OnClearance;
 
         private List<Command> commandSequence;
         private Coroutine executionRoutine;
+
+        public float SequenceFulfillmentRate;
         
         private void Start()
         {
@@ -65,10 +66,10 @@ namespace Algorithm
 
         public void Clear()
         {
-            if (executionRoutine != null || commandSequence == null)
+            if (executionRoutine != null || commandSequence == null || commandSequence.Count == 0)
                 return;
+            OnClearance.Invoke(SequenceFulfillmentRate);
             commandSequence.Clear();
-            OnClearance.Invoke();
         }
 
         private void InsertCommand(Command command)
@@ -101,7 +102,7 @@ namespace Algorithm
                 currentExecutionIndex++;
             }
             executionRoutine = null;
-            OnSequenceEnd.Invoke();
+            OnSequenceEnd.Invoke(SequenceFulfillmentRate);
         }
         public void Execute(InputAction.CallbackContext ctx)
         {
@@ -116,7 +117,7 @@ namespace Algorithm
                 return;
             StopCoroutine(executionRoutine);
             executionRoutine = null;
-            OnSequenceEnd.Invoke();
+            OnSequenceEnd.Invoke(SequenceFulfillmentRate);
         }
     }
 }

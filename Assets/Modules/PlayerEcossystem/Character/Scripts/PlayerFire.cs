@@ -86,8 +86,7 @@ namespace Character
                 projectileRef = Instantiate(projectilePrefab, fireOrigin, false)
                     .GetComponent<Projectile>();
                 projectileRef.gameObject.name += "_" + unqueuedProjectileCount++;
-                // projectileRef.OnProjectileHit.AddListener();
-                projectileRef.OnBlowEffectFinished.AddListener(TryFreezeAndAddToPool);
+                projectileRef.OnProjectileHit.AddListener(_ => TryFreezeAndAddToPool(projectileRef));
             }
             return projectileRef;
         }

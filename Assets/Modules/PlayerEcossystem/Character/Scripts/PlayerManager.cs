@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Character
 {
     public class PlayerManager : MonoBehaviour
     {
-
-
+        [field: SerializeField] public int PlayerIndex { get; private set; }
+        
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }

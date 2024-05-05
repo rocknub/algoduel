@@ -13,13 +13,15 @@ namespace Character
         [SerializeField] private float translationDistanceAlternate;
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
-        [SerializeField] private float rotationAngle = 90f; 
-        [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
-        [SerializeField] private UnityEvent<MovementData> onTranslation;
-        [SerializeField] private UnityEvent<MovementData> onRotation;
+        [SerializeField] private float rotationAngle = 90f;
         [Header("Uncontrolled Movements")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallDuration;
+        [Header("Events")]
+        [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
+        [SerializeField] private UnityEvent<MovementData> onTranslation;
+        [SerializeField] private UnityEvent<MovementData> onRotation;
+        [SerializeField] private UnityEvent onFall;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
 
@@ -94,6 +96,7 @@ namespace Character
         {
             if (envDetection.IsAboveGround())
                 return;
+            onFall.Invoke();
             motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration);
             motionTween.OnComplete(manager.ReceiveHit);
         }
