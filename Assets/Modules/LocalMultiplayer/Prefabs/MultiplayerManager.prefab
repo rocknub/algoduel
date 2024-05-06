@@ -1035,6 +1035,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4415114408644574241, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4fe212720feaa14dbd4f4cb7e9c202a,
+        type: 3}
     - target: {fileID: 4647156776481660158, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_Color.a
@@ -1230,6 +1236,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 5252160781291960402, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: <PlayerIndex>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5286591255784991892, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1324,6 +1335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EffectDistance.y
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188562074505075180, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -450
       objectReference: {fileID: 0}
     - target: {fileID: 6229335783922352200, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -1463,7 +1479,7 @@ PrefabInstance:
     - target: {fileID: 7136127979984092333, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -73
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7189491149986352992, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -1519,6 +1535,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552620863697367346, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552620863697367346, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7569953614892165268, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -1640,6 +1666,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 8052761717770405235, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: damageSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ddd9609418c7e4d45a66dd890a583361,
+        type: 3}
+    - target: {fileID: 8052761717770405235, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: victorySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c751ccee8cd9394ba083248276c17d7,
+        type: 3}
+    - target: {fileID: 8052761717770405235, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: alternateSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ddd9609418c7e4d45a66dd890a583361,
+        type: 3}
     - target: {fileID: 8330688213847627806, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1776,6 +1820,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d15d60f5c650acd44baaa6ec8c9607a0, type: 2}
+    - target: {fileID: 939984003157251067, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1437180109182476041, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using ScriptableObjectArchitecture;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Character
 {
     public class PlayerManager : MonoBehaviour
     {
         [field: SerializeField] public int PlayerIndex { get; private set; }
+        [field: SerializeField] public IntGameEvent OnPlayerDamaged { get; private set; }
         
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
@@ -12,6 +15,7 @@ namespace Character
         public PlayerRendering Rendering { get; private set; }
         
         public bool IsInvulnerable { get; private set; }
+        
         
         private void Start()
         {
@@ -23,8 +27,8 @@ namespace Character
         
         public void ReceiveHit()
         {
-
             Movement.ResetTransform();
+            OnPlayerDamaged.Raise(PlayerIndex);
             if (IsInvulnerable)
                 return;
             IsInvulnerable = true;

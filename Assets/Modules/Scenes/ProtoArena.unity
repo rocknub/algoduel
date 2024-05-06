@@ -349,22 +349,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1181157947027588017, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: validationKey
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1276326552802909974, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_Name
       value: MultiplayerManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1753245838950068548, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: _previouslyRegisteredEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
-        type: 2}
     - target: {fileID: 2275323197420270050, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -540,11 +529,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4724056615276562979, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: <PlayerIndex>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4761680015523480779, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -594,11 +578,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5298765355225753827, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5448195272387270662, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
@@ -650,12 +629,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6177551793448384557, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: _previouslyRegisteredEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
-        type: 2}
     - target: {fileID: 6765514743659422143, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_LocalPosition.x
