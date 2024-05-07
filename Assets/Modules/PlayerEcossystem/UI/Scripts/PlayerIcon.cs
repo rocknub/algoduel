@@ -20,7 +20,6 @@ namespace PlayerEcossystem.UI
         private void Start()
         {
             PlayerManager.OnPlayerDamaged.AddListener(FlashPanels);
-            Debug.Log(PlayerManager.PlayerIndex);
 
         }
 

@@ -1,6 +1,5 @@
 ﻿using ScriptableObjectArchitecture;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Character
 {
@@ -13,6 +12,7 @@ namespace Character
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }
         public PlayerRendering Rendering { get; private set; }
+        public PlayerVictoryCounter VictoryCounter { get; private set; }
         
         public bool IsInvulnerable { get; private set; }
         
@@ -21,6 +21,8 @@ namespace Character
         {
             EnvironmentDetection = GetComponent<PlayerEnvironmentDetection>();
             Rendering = GetComponent<PlayerRendering>();
+            VictoryCounter = GetComponent<PlayerVictoryCounter>();
+            OnPlayerDamaged.AddListener(VictoryCounter.TryCountVictory);
             Movement = GetComponent<PlayerMovement>().SetManager(this) as PlayerMovement;
             Fire = GetComponent<PlayerFire>().SetManager(this) as PlayerFire;
         }

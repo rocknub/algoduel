@@ -2,6 +2,7 @@ using Character;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace PlayerEcossystem.UI
@@ -12,6 +13,7 @@ namespace PlayerEcossystem.UI
         [SerializeField] private string inputConfirmationText;
         [SerializeField] private bool invertPanelMovement;
         [SerializeField] private float movementDuration;
+        [SerializeField] private UnityEvent onPanelRetracted;
 
         private RectTransform rectT;
 
@@ -28,7 +30,8 @@ namespace PlayerEcossystem.UI
 
         public void DetractPanel()
         {
-            rectT.DOMoveX(rectT.position.x + Screen.width / 2 * (invertPanelMovement ? -1 : 1), movementDuration);
+            rectT.DOMoveX(rectT.position.x + Screen.width / 2 * (invertPanelMovement ? -1 : 1), movementDuration)
+                .OnComplete(onPanelRetracted.Invoke);
         }
     }
 }
