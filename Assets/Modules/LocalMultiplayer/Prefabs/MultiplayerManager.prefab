@@ -690,6 +690,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 2482136651622589131, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482136651622589131, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: -11
+      objectReference: {fileID: 0}
     - target: {fileID: 2509971642814948723, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y

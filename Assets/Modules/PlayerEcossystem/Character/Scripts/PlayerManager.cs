@@ -17,7 +17,7 @@ namespace Character
         public bool IsInvulnerable { get; private set; }
         
         
-        private void Start()
+        private void Awake()
         {
             EnvironmentDetection = GetComponent<PlayerEnvironmentDetection>();
             Rendering = GetComponent<PlayerRendering>();

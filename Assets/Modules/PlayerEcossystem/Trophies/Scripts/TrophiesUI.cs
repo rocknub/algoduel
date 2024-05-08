@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Character
 {
-    public class TrophiesUI : MonoBehaviour
+    public class TrophiesUI : PlayerMonoBehaviour
     {
         [SerializeField] private Image[] trophyImages;
         [SerializeField] private float retractionXOffset;
@@ -24,9 +24,14 @@ namespace Character
         {
             rectTransform = GetComponent<RectTransform>();
             displayPosition = rectTransform.localPosition;
-            Debug.Log("a");
             rectTransform.localPosition = retractionPosition;
             SetTrophyImages();
+        }
+
+        private void Start()
+        {
+            PlayerManager.VictoryCounter.OnRoundWon.AddListener(HighlightTrophy);
+            PlayerManager.VictoryCounter.OnRoundWon.AddListener(_ => TempShowTrophies());
         }
 
         public void TempShowTrophies()
@@ -60,7 +65,16 @@ namespace Character
             {
                 for (int i = 0; i < transform.childCount; i++) SetTrophy(i);
             }
+        }
 
+        private void HighlightTrophy(int victories)
+        {
+            if (victories > trophyImages.Length)
+                return;
+            int index = victories - 1;
+            var trophyColor = trophyImages[index].color;
+            trophyColor.a = 1;
+            trophyImages[index].color = trophyColor;
         }
     }
 }
