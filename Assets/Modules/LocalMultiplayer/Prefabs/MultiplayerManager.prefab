@@ -1904,6 +1904,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8052761717770405235, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
+      propertyPath: loseSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a864ab6711b792b41ba58f055f550adf,
+        type: 3}
+    - target: {fileID: 8052761717770405235, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
       propertyPath: damageSprite
       value: 
       objectReference: {fileID: 21300000, guid: ddd9609418c7e4d45a66dd890a583361,
