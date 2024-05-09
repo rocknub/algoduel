@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 4378489929844822420}
   - component: {fileID: 7590371758039096455}
   - component: {fileID: 7946335808445786310}
+  - component: {fileID: 6432773936497390712}
   m_Layer: 5
   m_Name: CharacterIcon
   m_TagString: Untagged
@@ -273,10 +274,48 @@ MonoBehaviour:
   panel: {fileID: 4378489929844822420}
   damageSprite: {fileID: 21300000, guid: 5791506894b03634fb5e0005fea17357, type: 3}
   victorySprite: {fileID: 21300000, guid: 7de8e2d1e33d25146a161f86d0947aa9, type: 3}
+  loseSprite: {fileID: 21300000, guid: 5ec6e6e351fcfc147b14d90a57fadf17, type: 3}
   commandTransitionDuration: 0.2
   targetValue: 1
   loopAmount: 10
   loopType: 1
+  flashEase: 4
+  finalEase: 5
+--- !u!114 &6432773936497390712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801623751984300901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7946335808445786310}
+        m_TargetAssemblyTypeName: PlayerEcossystem.UI.PlayerIcon, Assembly-CSharp
+        m_MethodName: PresentFinalSprites
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &6456083475669719703
 GameObject:
   m_ObjectHideFlags: 0
