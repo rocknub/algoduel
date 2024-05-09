@@ -214,6 +214,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1ccc5e90-c5a9-4877-a025-9cf74625c154
     m_ActionName: Player/Fire Alt[/Keyboard/q,/DualShock4GamepadHID/buttonNorth,/Keyboard/pageUp]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Algorithm.Algorithm, Assembly-CSharp
+        m_MethodName: ClearLastSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 28e3013d-7744-40af-880e-17e96bbe3e78
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
