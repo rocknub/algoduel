@@ -51,6 +51,15 @@ public class AlgorithmVisual : MonoBehaviour
         commandIcon.DOFade(1, commandTransitionDuration);
     }
 
+    public void DisableCommandVisualization(int position)
+    {
+        Image commandIcon = commandSlotsParent.GetChild(position).GetChild(0).GetComponent<Image>();
+        commandIcon.DOFade(1, 0);
+        commandIcon.gameObject.SetActive(false);
+        commandIcon.DOFade(0, commandTransitionDuration);
+
+    }
+
     public void DisableAllSlotIcons()
     {
         for (int i = 0; i < commandSlotsParent.childCount; i++)

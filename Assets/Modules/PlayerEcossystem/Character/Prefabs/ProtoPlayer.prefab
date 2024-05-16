@@ -753,6 +753,11 @@ PrefabInstance:
       objectReference: {fileID: 24232913897770088}
     - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
         type: 3}
+      propertyPath: OnSlotCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 24232913897770088}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
       propertyPath: OnCommandLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 24232913897770088}
@@ -1006,6 +1011,11 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1343438530395038796}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1825828534036570626}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

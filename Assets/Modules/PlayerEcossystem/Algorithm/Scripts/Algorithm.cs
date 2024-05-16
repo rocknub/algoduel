@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Character;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,7 @@ namespace Algorithm
         
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
+        [SerializeField] private UnityEvent<int> OnSlotCleared;
         [SerializeField] private UnityEvent<int> OnExecution;
         [SerializeField] private UnityEvent<float> OnSequenceEnd;
         [SerializeField] private UnityEvent<float> OnClearance;
@@ -83,6 +85,18 @@ namespace Algorithm
             commandSequence.Add(command);
             OnCommandLoaded.Invoke(command, commandSequence.Count - 1);
         }
+
+        public void ClearLastSlot(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed == false)
+            {
+                return;
+            }
+            if (executionRoutine != null || commandSequence == null || commandSequence.Count == 0)
+                return;
+            commandSequence.Remove(commandSequence.Last());
+            OnSlotCleared.Invoke(commandSequence.Count);
+        } 
 
         private void ExecuteCommand(int executionIndex)
         {
