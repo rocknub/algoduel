@@ -368,6 +368,28 @@
                 {
                     "name": "",
                     "id": "bf1e4a0f-f49d-4cbd-ba29-60598aec21ba",
+                    "path": "<DualShockGamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6de6ea6e-2ad1-4d73-979e-80632c93bf0c",
+                    "path": "<XInputController>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1d541fd-0996-4ed9-b256-4887c044b992",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
