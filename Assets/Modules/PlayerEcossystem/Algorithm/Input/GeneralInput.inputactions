@@ -191,6 +191,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6f9876f8-c349-41c6-84c9-11018c041913",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1",
+                    "action": "Clear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b1c0f331-bde2-4b95-ad38-85abd78809a4",
                     "path": "<Keyboard>/delete",
                     "interactions": "",
@@ -369,6 +380,17 @@
                     "name": "",
                     "id": "cffc75c0-0460-4906-9d85-cb9d5d77332f",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1",
+                    "action": "ClearLastSlot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3b26e5c-0e82-4c82-a10f-524fbb6e1843",
+                    "path": "<Keyboard>/leftAlt",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard1",
