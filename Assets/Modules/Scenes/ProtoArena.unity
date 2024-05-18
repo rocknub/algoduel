@@ -729,6 +729,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3877017415542085640, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3971908474521494278, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1164,6 +1169,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7224115644480442468, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: inputRequestText
+      value: "Pressione o bot\xE3o de <br> <b>- EXECU\xC7\xC3O -</b>"
+      objectReference: {fileID: 0}
     - target: {fileID: 7581385110440791428, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1218,6 +1228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656546997475348833, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 8858818905446689391, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}

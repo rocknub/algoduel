@@ -10,6 +10,7 @@ namespace PlayerEcossystem.UI
     public class DevicePromptUI : PlayerMonoBehaviour
     {
         [SerializeField] private TMP_Text promptMesh;
+        [SerializeField] private string inputRequestText;
         [SerializeField] private string inputConfirmationText;
         [SerializeField] private bool invertPanelMovement;
         [SerializeField] private float movementDuration;
@@ -20,12 +21,20 @@ namespace PlayerEcossystem.UI
         private void Start()
         {
             rectT = GetComponent<RectTransform>();
+            promptMesh.text = playerIndex == 0 ? inputRequestText : inputConfirmationText;
         }
 
         public void TryChangeTextToConfirmInteraction(int secretKey)
         {
-            if (secretKey != playerIndex) return;
-            promptMesh.text = inputConfirmationText;
+            if (secretKey == playerIndex)
+            {
+                promptMesh.text = inputConfirmationText;
+            }
+            else if(secretKey == playerIndex - 1)
+            {
+                promptMesh.richText = true;
+                promptMesh.SetText(inputRequestText);
+            }
         }
 
         public void DetractPanel()
