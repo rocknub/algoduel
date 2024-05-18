@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationDistanceDefault: 4
-  translationDistanceAlternate: 3.5
+  translationDistanceAlternate: 4
   defaultMotionDuration: 0.5
   motionEase: 4
   rotationAngle: 90
