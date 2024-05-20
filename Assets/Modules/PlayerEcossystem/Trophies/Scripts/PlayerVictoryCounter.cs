@@ -1,4 +1,5 @@
-﻿using ScriptableObjectArchitecture;
+﻿using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
@@ -12,6 +13,12 @@ namespace Character
         [field: SerializeField] public IntGameEvent OnFinalVictory { get; private set; }
         
         public int CurrentVictories { private set; get; }
+
+        private void OnDisable()
+        {
+            OnRoundWon.RemoveAllListeners();
+            OnFinalVictory.RemoveAll();
+        }
 
         public void TryCountVictory(int entryIndex)
         {
