@@ -60,18 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Clear",
+                    "name": "ClearLastSlot",
                     "type": "Button",
-                    "id": "6d3f25b6-418e-4bfd-9567-aff2d325be1f",
+                    "id": "28e3013d-7744-40af-880e-17e96bbe3e78",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ClearLastSlot",
+                    "name": "Clear",
                     "type": "Button",
-                    "id": "28e3013d-7744-40af-880e-17e96bbe3e78",
+                    "id": "6d3f25b6-418e-4bfd-9567-aff2d325be1f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
@@ -225,7 +225,7 @@
                 {
                     "name": "",
                     "id": "79467e3c-0251-42b9-b136-1d8577e5d365",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -247,7 +247,7 @@
                 {
                     "name": "",
                     "id": "25cafaf9-8813-415e-bba8-ce2a0075b8e9",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

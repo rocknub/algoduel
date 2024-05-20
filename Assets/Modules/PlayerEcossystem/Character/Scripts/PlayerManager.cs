@@ -1,4 +1,5 @@
-﻿using ScriptableObjectArchitecture;
+﻿using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Character
@@ -22,17 +23,29 @@ namespace Character
             EnvironmentDetection = GetComponent<PlayerEnvironmentDetection>();
             Rendering = GetComponent<PlayerRendering>();
             VictoryCounter = GetComponent<PlayerVictoryCounter>();
-            OnPlayerDamaged.AddListener(VictoryCounter.TryCountVictory);
             Movement = GetComponent<PlayerMovement>().SetManager(this) as PlayerMovement;
             Fire = GetComponent<PlayerFire>().SetManager(this) as PlayerFire;
         }
-        
+
+        private void OnEnable()
+        {
+            OnPlayerDamaged.AddListener(VictoryCounter.TryCountVictory);
+        }
+
+        private void OnDisable()
+        {
+            OnPlayerDamaged.RemoveListener(VictoryCounter.TryCountVictory);
+            OnPlayerDamaged.RemoveAll();
+        }
+
         public void ReceiveHit()
         {
+
             Movement.ResetTransform();
             OnPlayerDamaged.Raise(PlayerIndex);
             if (IsInvulnerable)
                 return;
+
             IsInvulnerable = true;
             Rendering.TweenMaterials(() => IsInvulnerable = false);
         }

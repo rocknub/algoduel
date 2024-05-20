@@ -25,6 +25,11 @@ public class VictoryPanel : PlayerMonoBehaviour
         PlayerManager.VictoryCounter.OnFinalVictory.AddListener(TryDisplayVictoryMessage);
     }
 
+    private void OnDisable()
+    {
+        PlayerManager.VictoryCounter.OnFinalVictory.RemoveListener(TryDisplayVictoryMessage);
+    }
+
     public void TryDisplayVictoryMessage(int entryIndex)
     {
         if (entryIndex != PlayerManager.PlayerIndex)

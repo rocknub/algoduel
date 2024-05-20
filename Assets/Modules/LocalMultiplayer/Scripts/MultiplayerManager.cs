@@ -24,15 +24,30 @@ public class MultiplayerManager : MonoBehaviour
     private InputDevice keyboardDevice;
     private Tuple<InputUser, InputDevice>[] prePairedUsersAndDevices;
 
-    private void Start()
+    private void Awake()
     {
         SetDevicesAndSchemes();
     }
 
-    public void SetDevicesAndSchemes()
+    private void OnDisable()
     {
         foreach (var inputUser in InputUser.all)
         {
+            inputUser.UnpairDevicesAndRemoveUser();
+        }
+    }
+
+    public void SetDevicesAndSchemes()
+    {
+        for (var i = 0; i < InputUser.all.Count; i++)
+        {
+            var inputUser = InputUser.all[i];
+            // Debug.Log("A");
+            // if (i >= playerInputs.Length)
+            // {
+            //     inputUser.UnpairDevicesAndRemoveUser();
+            //     continue;
+            // }
             inputUser.UnpairDevices();
         }
         InputUser.listenForUnpairedDeviceActivity = 1;
