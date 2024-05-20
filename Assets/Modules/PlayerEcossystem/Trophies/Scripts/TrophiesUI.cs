@@ -34,6 +34,12 @@ namespace Character
             PlayerManager.VictoryCounter.OnRoundWon.AddListener(_ => TempShowTrophies());
         }
 
+        private void OnDisable()
+        {
+            PlayerManager.VictoryCounter.OnRoundWon.RemoveListener(HighlightTrophy);
+            PlayerManager.VictoryCounter.OnRoundWon.RemoveListener(_ => TempShowTrophies());
+        }
+
         public void TempShowTrophies()
         {
             var sequence = DOTween.Sequence();

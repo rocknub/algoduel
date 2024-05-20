@@ -1,8 +1,6 @@
-﻿using System;
-using Character;
+﻿using Character;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace PlayerEcossystem.UI
@@ -22,9 +20,14 @@ namespace PlayerEcossystem.UI
 
         private Tween flashTween;
 
-        private void Start()
+        private void OnEnable()
         {
             PlayerManager.OnPlayerDamaged.AddListener(FlashDamageSprite);
+        }
+
+        private void OnDisable()
+        {
+            PlayerManager.OnPlayerDamaged.RemoveListener(FlashDamageSprite);
         }
 
         public void FlashDamageSprite(int index)

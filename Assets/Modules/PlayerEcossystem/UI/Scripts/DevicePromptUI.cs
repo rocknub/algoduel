@@ -32,7 +32,6 @@ namespace PlayerEcossystem.UI
             }
             else if(secretKey == playerIndex - 1)
             {
-                promptMesh.richText = true;
                 promptMesh.SetText(inputRequestText);
             }
         }
