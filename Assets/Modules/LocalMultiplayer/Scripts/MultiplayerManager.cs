@@ -68,7 +68,6 @@ public class MultiplayerManager : MonoBehaviour
                 Debug.Log(pathPart.name);
             }
             Debug.Log($"Binding Control = {InputSystem.FindControl(binding.path)}");
-            // Debug.Log();
         }
     }
 
