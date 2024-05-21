@@ -473,6 +473,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMesh: {fileID: 3595352758896534904}
+  gameplayOnlyGraphics:
+  - {fileID: 3844502771761225773}
+  - {fileID: 6345370176978680777}
+  - {fileID: 3595352758896534904}
+  - {fileID: 4683937260456860185}
   inputRequestText: "Pressione o bot\xE3o de <br> <b>- EXECU\xC7\xC3O -</b>"
   inputConfirmationText: Aguarde o outro jogador
   invertPanelMovement: 1

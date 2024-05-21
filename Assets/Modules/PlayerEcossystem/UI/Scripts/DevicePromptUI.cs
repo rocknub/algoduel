@@ -1,8 +1,10 @@
+using System;
 using Character;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 namespace PlayerEcossystem.UI
@@ -10,6 +12,7 @@ namespace PlayerEcossystem.UI
     public class DevicePromptUI : PlayerMonoBehaviour
     {
         [SerializeField] private TMP_Text promptMesh;
+        [SerializeField] private Graphic[] gameplayOnlyGraphics;
         [SerializeField] private string inputRequestText;
         [SerializeField] private string inputConfirmationText;
         [SerializeField] private bool invertPanelMovement;
@@ -17,12 +20,23 @@ namespace PlayerEcossystem.UI
         [SerializeField] private UnityEvent onPanelRetracted;
 
         private RectTransform rectT;
+        private bool areGameplayGraphicsEnabled;
 
         private void Start()
         {
             rectT = GetComponent<RectTransform>();
+            EnableGameplayGraphics(true);
             promptMesh.text = playerIndex == 0 ? inputRequestText : inputConfirmationText;
         }
+
+        private void EnableGameplayGraphics(bool value)
+        {
+            Array.ForEach(gameplayOnlyGraphics, g => g.enabled = value);
+            areGameplayGraphicsEnabled = value;
+        }
+
+        [ContextMenu("Toggle Gameplay Graphics")]
+        private void ToggleGameplayGraphics() => EnableGameplayGraphics(!areGameplayGraphicsEnabled); 
 
         public void TryChangeTextToConfirmInteraction(int secretKey)
         {

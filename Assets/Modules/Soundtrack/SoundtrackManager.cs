@@ -8,12 +8,15 @@ namespace Modules.Soundtrack
     {
         public AudioClip duelSoundtrack;
         public float duelTweenDuration;
-        
+        public float initialVolume;
+        public float gameplayVolume;
+
         private AudioSource source;
 
         private void Start()
         {
             source = GetComponent<AudioSource>();
+            source.volume = initialVolume;
         }
 
         public void SetDuelSoundtrack()
@@ -24,7 +27,7 @@ namespace Modules.Soundtrack
                 source.Play();
             }
 
-            source.DOFade(source.volume * 2, duelTweenDuration);
+            source.DOFade(gameplayVolume, duelTweenDuration);
         }
     }
 }

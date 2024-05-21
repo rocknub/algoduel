@@ -347,11 +347,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DevicePromptPositioner
       objectReference: {fileID: 0}
-    - target: {fileID: 8968256530268826782, guid: e65fb0233a48a54459de276c171911c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
