@@ -49,7 +49,9 @@ namespace Character
             IsInvulnerable = true;
             Rendering.TweenMaterials(() => IsInvulnerable = false);
         }
-        
+
+        public void TryPauseGame() => GameManager.Instance.PauseGame();
+
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
     }
 }

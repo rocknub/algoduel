@@ -2,16 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
     public float freezeDuration = 2.0f;
+    public float pauseThreshold = 0.01f;
+    public bool isGamePaused => Time.timeScale < pauseThreshold;
+    [SerializeField] private BoolGameEvent onGamePauseToggle;
 
-    public void FreezeGame()
+    private Coroutine endGameRoutine;
+
+    public void EndGame()
     {
-        StartCoroutine(FreezeGameCoroutine());
+        endGameRoutine = StartCoroutine(FreezeGameCoroutine());
     }
     
     private IEnumerator FreezeGameCoroutine()
@@ -19,7 +26,7 @@ public class GameManager : MonoBehaviour
         float originalTimeScale = Time.timeScale;
         float elapsedTime = 0;
         
-        while (Time.timeScale > 0.01f)
+        while (Time.timeScale > pauseThreshold)
         {
             elapsedTime += Time.deltaTime;
             Time.timeScale = Mathf.Lerp(originalTimeScale, 0, elapsedTime / freezeDuration);
@@ -33,6 +40,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         DOTween.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PauseGame()
+    {
+        if (endGameRoutine != null)
+            return;
+        Time.timeScale = isGamePaused ? 1.0f : 0.0f;
+        onGamePauseToggle.Raise(isGamePaused);
     }
 
     private void OnDisable()

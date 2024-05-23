@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "fcb45d38-e918-4fc5-a688-0dca13339a14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -461,6 +470,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ClearLastSlot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f8a5df6-0643-40d9-adca-b18d66dcb6ac",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b58aa72d-ffb3-4f08-8459-c7fbfdfa352f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard1;Keyboard2",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

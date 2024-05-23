@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86c4ceef338166448d3b213ae4a7752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freezeDuration: 2
+  pauseThreshold: 0.01
+  onGamePauseToggle: {fileID: 11400000, guid: dbf5e6d672985834a9fa3965e3535f15, type: 2}
 --- !u!114 &1010454302868174262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +72,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2440904310676985850}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: FreezeGame
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
