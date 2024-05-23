@@ -8,11 +8,13 @@ using UnityEngine.InputSystem;
 
 namespace Algorithm
 {
-    public class Algorithm : MonoBehaviour
+    public class Algorithm : PlayerMonoBehaviour
     {
         [SerializeField] private int maxCommands = 10;
         [SerializeField] private Transform commandsParent;
         [SerializeField] private PlayerManager player;
+
+        [SerializeField] private bool clearAlgorithmOnConclusion;
         
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
@@ -68,10 +70,18 @@ namespace Algorithm
 
         public void Clear()
         {
-            if (executionRoutine != null || commandSequence == null || commandSequence.Count == 0)
+            if (executionRoutine != null || commandSequence == null || commandSequence.Count == 0 || GameManager.Instance.isGamePaused)
                 return;
             OnClearance.Invoke(SequenceFulfillmentRate);
             commandSequence.Clear();
+        }
+
+        public void TryClear(int entry)
+        {
+            if (entry != playerIndex)
+            {
+                
+            }
         }
 
         private void InsertCommand(Command command)
@@ -88,7 +98,7 @@ namespace Algorithm
 
         public void ClearLastSlot(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || GameManager.Instance.isGamePaused)
             {
                 return;
             }
@@ -117,10 +127,11 @@ namespace Algorithm
             }
             executionRoutine = null;
             OnSequenceEnd.Invoke(SequenceFulfillmentRate);
+            Clear();
         }
         public void Execute(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false || executionRoutine != null)
+            if (ctx.performed == false || executionRoutine != null  || GameManager.Instance.isGamePaused)
                 return;
             executionRoutine = StartCoroutine(ExecuteCoroutine());
         }

@@ -20,14 +20,14 @@ namespace Algorithm
     
         public void Execute(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || GameManager.Instance.isGamePaused)
                 return;
             Execute();
         }
 
         public void Load(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || GameManager.Instance.isGamePaused)
                 return; 
             DoLoad(this);
         }
