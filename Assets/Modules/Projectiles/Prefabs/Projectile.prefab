@@ -230,7 +230,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 64
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -332,7 +332,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 192
     audioClip: {fileID: 8300000, guid: 9128be52c87e78049a7c8f928dd092a6, type: 3}
-    relativeVolume: 0.907
+    relativeVolume: 1
 --- !u!1 &7113225442999805747
 GameObject:
   m_ObjectHideFlags: 0

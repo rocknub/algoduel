@@ -146,7 +146,7 @@ MonoBehaviour:
     scale: 1
   clearSfx:
     clip: {fileID: 8300000, guid: ff6079b74a680fe41a37b5e0b01b2423, type: 3}
-    scale: 0.2
+    scale: 0.8
 --- !u!1 &6641216201456230585
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +195,8 @@ MonoBehaviour:
   maxCommands: 10
   commandsParent: {fileID: 0}
   player: {fileID: 0}
+  clearAlgorithmOnConclusion: 1
+  clearAlgorithmOnHalt: 1
   OnMaximumDefined:
     m_PersistentCalls:
       m_Calls: []

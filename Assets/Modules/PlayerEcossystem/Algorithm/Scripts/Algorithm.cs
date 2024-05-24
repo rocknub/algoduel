@@ -14,8 +14,9 @@ namespace Algorithm
         [SerializeField] private Transform commandsParent;
         [SerializeField] private PlayerManager player;
 
-        [SerializeField] private bool clearAlgorithmOnConclusion;
-        
+        [SerializeField] private bool clearAlgorithmOnConclusion = true;
+        [SerializeField] private bool clearAlgorithmOnHalt = true;
+
         [SerializeField] private UnityEvent<int> OnMaximumDefined;
         [SerializeField] private UnityEvent<Command, int> OnCommandLoaded;
         [SerializeField] private UnityEvent<int> OnSlotCleared;
@@ -75,15 +76,7 @@ namespace Algorithm
             OnClearance.Invoke(SequenceFulfillmentRate);
             commandSequence.Clear();
         }
-
-        public void TryClear(int entry)
-        {
-            if (entry != playerIndex)
-            {
-                
-            }
-        }
-
+        
         private void InsertCommand(Command command)
         {
             if (executionRoutine != null)
@@ -127,7 +120,10 @@ namespace Algorithm
             }
             executionRoutine = null;
             OnSequenceEnd.Invoke(SequenceFulfillmentRate);
-            Clear();
+            if (clearAlgorithmOnConclusion)
+            {
+                Clear();
+            }
         }
         public void Execute(InputAction.CallbackContext ctx)
         {
@@ -143,6 +139,10 @@ namespace Algorithm
             StopCoroutine(executionRoutine);
             executionRoutine = null;
             OnSequenceEnd.Invoke(SequenceFulfillmentRate);
+            if (clearAlgorithmOnHalt)
+            {
+                Clear();
+            }
         }
     }
 }

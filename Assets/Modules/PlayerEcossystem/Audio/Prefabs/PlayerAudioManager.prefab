@@ -119,7 +119,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 16
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -212,7 +212,6 @@ MonoBehaviour:
   source: {fileID: 4438590437011434074}
   fireSfx: {fileID: 8300000, guid: edb9cccf7b3282645bd2f04b0aa107ef, type: 3}
   fallSfx: {fileID: 8300000, guid: b4060b4a16b1e984b9fccedbd863895b, type: 3}
-  validationKey: 0
   playerInputConfirmationSFX:
     clip: {fileID: 8300000, guid: 1537fb0fd2660ea47b0bd0e6eabe8c0f, type: 3}
     scale: 1

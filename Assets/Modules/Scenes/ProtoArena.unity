@@ -124,53 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1674493993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3349385663046748486, guid: 8f2518f215024924780085774961aeb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7078886107032219187}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1674493996 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 144933519847946599, guid: 8f2518f215024924780085774961aeb7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7078886107032219187}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1674493998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674493993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeveloperDescription:
-    _value: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
-    type: 2}
-  _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1674493996}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_loop
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &2272103696993695828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -896,6 +849,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6129526527705851047, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6218577406566160208, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -954,6 +912,11 @@ PrefabInstance:
     - target: {fileID: 6231043575774716859, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312319276949731914, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6453574060542693766, guid: add96daa01a4d3041aa94295fcb4e750,
@@ -1743,11 +1706,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3349385663046748486, guid: 8f2518f215024924780085774961aeb7,
-        type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1674493998}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2518f215024924780085774961aeb7, type: 3}
 --- !u!1001 &8148180055176374720
 PrefabInstance:

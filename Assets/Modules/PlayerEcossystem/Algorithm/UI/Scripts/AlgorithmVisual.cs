@@ -45,7 +45,8 @@ public class AlgorithmVisual : MonoBehaviour
     public void EnableCommandVisualization(Command command, int position)
     {
         Image commandIcon = commandSlotsParent.GetChild(position).GetChild(0).GetComponent<Image>();
-        commandIcon.sprite = command.Icon;
+        commandIcon.sprite = command.IconData.icon;
+        commandIcon.transform.localScale = command.IconData.presentationScale;
         commandIcon.DOFade(0, 0);
         commandIcon.gameObject.SetActive(true);
         commandIcon.DOFade(1, commandTransitionDuration);
