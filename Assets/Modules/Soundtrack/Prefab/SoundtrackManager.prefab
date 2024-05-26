@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8022077589950204417}
   - component: {fileID: 144933519847946599}
   - component: {fileID: 83565760582018511}
+  - component: {fileID: 1833687908105252305}
   - component: {fileID: 2241214219565869399}
   m_Layer: 0
   m_Name: SoundtrackManager
@@ -44,15 +45,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f65b1f24f9a3b7343b3244ef089e004e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.09
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 207
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -165,6 +166,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1833687908105252305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349385663046748486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
+    type: 2}
+  _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 144933519847946599}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_loop
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2241214219565869399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72e77b2f15480295c4cc598b72ef95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duelSoundtrack: {fileID: 8300000, guid: f65b1f24f9a3b7343b3244ef089e004e, type: 3}
+  duelSoundtrack: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
   duelTweenDuration: 1
-  initialVolume: 0.4
-  gameplayVolume: 1
+  initialVolume: 0.1
+  gameplayVolume: 0.2

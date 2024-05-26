@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1092970673916274458}
   - component: {fileID: 7415913438445214945}
   - component: {fileID: 4783210705353322463}
+  - component: {fileID: 4586649487699853384}
+  - component: {fileID: 2670176975702398839}
   m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -105,6 +107,55 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4586649487699853384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179469389403780111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: dbf5e6d672985834a9fa3965e3535f15, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2670176975702398839}
+        m_TargetAssemblyTypeName: GameObjectDisabler, Assembly-CSharp
+        m_MethodName: DisableThem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
+--- !u!114 &2670176975702398839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7179469389403780111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58527cbb39544fab05684ff6da801da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 6593251686039778363}
 --- !u!1001 &952345348257561556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,6 +668,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1159066503112339978, guid: 1c037e43f36bb02469f271b6f2ff920d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341082859978190055, guid: 1c037e43f36bb02469f271b6f2ff920d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2648343865226272936, guid: 1c037e43f36bb02469f271b6f2ff920d,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -947,6 +1008,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8600390216365128495, guid: 1c037e43f36bb02469f271b6f2ff920d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f658bc44db691fa4fa685c7fcb27de7d,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -955,6 +1022,12 @@ PrefabInstance:
 --- !u!224 &215081777485971026 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7913913984242922515, guid: 1c037e43f36bb02469f271b6f2ff920d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8011834925097306689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6593251686039778363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3769563549938695802, guid: 1c037e43f36bb02469f271b6f2ff920d,
     type: 3}
   m_PrefabInstance: {fileID: 8011834925097306689}
   m_PrefabAsset: {fileID: 0}

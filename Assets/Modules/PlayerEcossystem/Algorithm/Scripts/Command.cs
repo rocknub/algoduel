@@ -7,10 +7,11 @@ namespace Algorithm
     public class Command : MonoBehaviour
     {
         [SerializeField] private Sprite icon;
+        [SerializeField] private IconData iconData;
         public UnityEvent OnExecution;
         public UnityAction<Command> DoLoad;
 
-        public Sprite Icon => icon;
+        public IconData IconData => iconData;
 
         public Command Execute()
         {
@@ -20,14 +21,14 @@ namespace Algorithm
     
         public void Execute(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || GameManager.Instance.isGamePaused)
                 return;
             Execute();
         }
 
         public void Load(InputAction.CallbackContext ctx)
         {
-            if (ctx.performed == false)
+            if (ctx.performed == false || GameManager.Instance.isGamePaused)
                 return; 
             DoLoad(this);
         }
