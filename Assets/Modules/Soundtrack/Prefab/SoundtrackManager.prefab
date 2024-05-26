@@ -45,7 +45,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9d8284136fd64ca42aa526dbd06d1c98, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.09
   m_Pitch: 1
@@ -53,7 +53,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 207
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72e77b2f15480295c4cc598b72ef95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duelSoundtrack: {fileID: 8300000, guid: 9d8284136fd64ca42aa526dbd06d1c98, type: 3}
+  duelSoundtrack: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
   duelTweenDuration: 1
-  initialVolume: 0.3
-  gameplayVolume: 0.6
+  initialVolume: 0.1
+  gameplayVolume: 0.2

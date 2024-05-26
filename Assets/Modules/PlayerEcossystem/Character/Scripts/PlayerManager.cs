@@ -1,6 +1,7 @@
 ﻿using System;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Character
 {
@@ -50,7 +51,12 @@ namespace Character
             Rendering.TweenMaterials(() => IsInvulnerable = false);
         }
 
-        public void TryPauseGame() => GameManager.Instance.PauseGame();
+        public void TryPauseGame(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed == false)
+                return;
+            GameManager.Instance.PauseGame();  
+        } 
 
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
     }

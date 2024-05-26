@@ -20,7 +20,6 @@ namespace Projectiles
             {
                 if ((layerAudio.layerMask & (1 << collider.gameObject.layer)) == 0) 
                     continue;
-                Debug.Log("Audio Playerd!");
                 _source.PlayOneShot(layerAudio.audioClip, layerAudio.relativeVolume);
                 break;
             }
