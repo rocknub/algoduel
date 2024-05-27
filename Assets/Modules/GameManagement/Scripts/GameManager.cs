@@ -15,6 +15,19 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private BoolGameEvent onGamePauseToggle;
 
     private Coroutine endGameRoutine;
+    private Camera camera;
+
+    public Camera Camera
+    {
+        get
+        {
+            if (camera == null)
+            {
+                camera = Camera.main;
+            }
+            return camera;
+        }
+    }
 
     public void EndGame()
     {

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -13,7 +14,7 @@ namespace Character
         [SerializeField] private float translationDistanceAlternate;
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
-        [SerializeField] private float rotationAngle = 90f;
+        [FormerlySerializedAs("rotationAngle")] [SerializeField] private float defaultRotationAngle = 90f;
         [Header("Uncontrolled Movements")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallDuration;
@@ -24,6 +25,7 @@ namespace Character
         [SerializeField] private UnityEvent onFall;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
+        [SerializeField] private CardinalDirection debugDirection;
 
         private Tween motionTween;
         private Vector3 targetPosition;
@@ -41,7 +43,57 @@ namespace Character
         
         public override bool IsActing() => motionTween is { active: true };
 
-        public void Move()
+        [ContextMenu("Debug Coordinates")]
+        private void DebugCoordinates()
+        {
+            var camera = Camera.main;
+            var camForward = debugDirection switch
+            {
+                CardinalDirection.Up => camera.transform.forward,
+                CardinalDirection.Down => -camera.transform.forward,
+                CardinalDirection.Left => -camera.transform.right,
+                CardinalDirection.Right => camera.transform.right,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            camForward.y = 0f;
+            var projectedDirection = camForward.normalized;
+            var signedAngle = Vector3.SignedAngle(transform.forward, projectedDirection, Vector3.down);
+            Debug.Log(signedAngle);
+        }
+
+        public float GetCameraRelativeRotation(CardinalDirection direction)
+        {
+            var camera = GameManager.Instance.Camera;
+            var camDirection = direction switch
+            {
+                CardinalDirection.Up => camera.transform.forward,
+                CardinalDirection.Down => -camera.transform.forward,
+                CardinalDirection.Left => -camera.transform.right,
+                CardinalDirection.Right => camera.transform.right,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            camDirection.y = 0f;
+            return Vector3.SignedAngle(transform.forward, camDirection.normalized,Vector3.up);
+        }
+        
+        public void MoveRelativeToCamera(CardinalDirection direction)
+        {
+            float angle = GetCameraRelativeRotation(direction);
+            if (Mathf.Approximately(angle, 0.0f))
+            {
+                MoveForward();
+            }
+            else
+            {
+                Rotate(angle, defaultMotionDuration, true);
+            }
+        }
+        public void MoveForwardRelativeToCamera() => MoveRelativeToCamera(CardinalDirection.Up);
+        public void MoveRightRelativeToCamera() => MoveRelativeToCamera(CardinalDirection.Right);
+        public void MoveBackwardRelativeToCamera() => MoveRelativeToCamera(CardinalDirection.Down);
+        public void MoveLeftRelativeToCamera() => MoveRelativeToCamera(CardinalDirection.Left);
+
+        public void MoveForward()
         {
             if (IsActing())
             {
@@ -60,17 +112,32 @@ namespace Character
             onTranslation.Invoke(new MovementData(transform.position, targetPosition, defaultMotionDuration));
         }
 
-        public void RotateClockwise()
+        public void RotateClockwise() => Rotate(defaultRotationAngle, defaultMotionDuration, true);
+        // {
+        //     if (IsActing())
+        //     {
+        //         return;
+        //     }
+        //     Vector3 targetRotation = transform.rotation.eulerAngles;
+        //     targetRotation.y += defaultRotationAngle;
+        //     motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
+        //     motionTween.OnComplete(ActionCompletionCallback);
+        //     onRotation.Invoke(new MovementData(transform.rotation.eulerAngles, targetRotation, defaultMotionDuration));
+        // }
+
+        public void Rotate(float angle, float duration, bool doTriggerCallback)
         {
             if (IsActing())
             {
                 return;
             }
             Vector3 targetRotation = transform.rotation.eulerAngles;
-            targetRotation.y += rotationAngle;
-            motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
+            targetRotation.y += angle;
+            motionTween = transform.DORotate(targetRotation, duration).SetEase(motionEase);
+            onRotation.Invoke(new MovementData(transform.rotation.eulerAngles, targetRotation, duration));
+            if (doTriggerCallback == false)
+                return;
             motionTween.OnComplete(ActionCompletionCallback);
-            onRotation.Invoke(new MovementData(transform.rotation.eulerAngles, targetRotation, defaultMotionDuration));
         }
         
         public void RotateCounterClockwise()
@@ -80,7 +147,7 @@ namespace Character
                 return;
             }
             Vector3 targetRotation = transform.rotation.eulerAngles;
-            targetRotation.y -= rotationAngle;
+            targetRotation.y -= defaultRotationAngle;
             motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
             motionTween.OnComplete(ActionCompletionCallback);
 
