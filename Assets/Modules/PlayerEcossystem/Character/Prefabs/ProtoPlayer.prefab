@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5035212569291636695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5345320782444991796}
+  - component: {fileID: 3323834858421708870}
+  m_Layer: 0
+  m_Name: MoveDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5345320782444991796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035212569291636695}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6644383245732462562}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3323834858421708870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035212569291636695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconData:
+    icon: {fileID: 21300000, guid: 3297302548131294197c60f3cf2ffc06, type: 3}
+    presentationScale: {x: 1, y: -1, z: 1}
+  OnExecution:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6628951969272852649}
+        m_TargetAssemblyTypeName: Character.PlayerMovement, Assembly-CSharp
+        m_MethodName: MoveBackwardRelativeToCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5095352810127969917
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +156,7 @@ GameObject:
   - component: {fileID: 3964625671678204071}
   - component: {fileID: 6888340716334361911}
   m_Layer: 0
-  m_Name: Rotate-90
+  m_Name: MoveRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,16 +189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: ec0ca8dc8646b4548ad081770b2b16a2, type: 3}
   iconData:
-    icon: {fileID: 21300000, guid: ec0ca8dc8646b4548ad081770b2b16a2, type: 3}
-    presentationScale: {x: 1.8, y: 1.8, z: 1}
+    icon: {fileID: 21300000, guid: f9308fbf4cb76fe47b0ddd82ce0072f0, type: 3}
+    presentationScale: {x: 1, y: 1, z: 1}
   OnExecution:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6628951969272852649}
-        m_TargetAssemblyTypeName: Character.Player, Assembly-CSharp
-        m_MethodName: RotateClockwise
+        m_TargetAssemblyTypeName: Character.PlayerMovement, Assembly-CSharp
+        m_MethodName: MoveRightRelativeToCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -190,7 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7567b3a1a1a118540807755a6864c1ae, type: 3}
   iconData:
     icon: {fileID: 21300000, guid: 7567b3a1a1a118540807755a6864c1ae, type: 3}
     presentationScale: {x: 1, y: 1, z: 1}
@@ -241,6 +301,7 @@ Transform:
   - {fileID: 3541696952081567731}
   - {fileID: 3964625671678204071}
   - {fileID: 5772015934558961062}
+  - {fileID: 5345320782444991796}
   - {fileID: 3859423339271357056}
   m_Father: {fileID: 6532739057295432171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -321,7 +382,7 @@ MonoBehaviour:
   translationDistanceAlternate: 4
   defaultMotionDuration: 0.5
   motionEase: 4
-  rotationAngle: 90
+  defaultRotationAngle: 90
   fallEase: 3
   fallDuration: 0.5
   onTransformReset:
@@ -361,6 +422,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   showGizmos: 1
+  debugDirection: 0
 --- !u!114 &6473101205355555385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,7 +528,7 @@ GameObject:
   - component: {fileID: 5772015934558961062}
   - component: {fileID: 6709385795004805457}
   m_Layer: 0
-  m_Name: Rotate90
+  m_Name: MoveLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,16 +561,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: f658bc44db691fa4fa685c7fcb27de7d, type: 3}
   iconData:
-    icon: {fileID: 21300000, guid: f658bc44db691fa4fa685c7fcb27de7d, type: 3}
-    presentationScale: {x: 1.8, y: 1.8, z: 1}
+    icon: {fileID: 21300000, guid: bb7bee8c6c05fe24cb0b47d521b2a5bc, type: 3}
+    presentationScale: {x: 1, y: 1, z: 1}
   OnExecution:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6628951969272852649}
-        m_TargetAssemblyTypeName: Character.Player, Assembly-CSharp
-        m_MethodName: RotateCounterClockwise
+        m_TargetAssemblyTypeName: Character.PlayerMovement, Assembly-CSharp
+        m_MethodName: MoveLeftRelativeToCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,7 +590,7 @@ GameObject:
   - component: {fileID: 3541696952081567731}
   - component: {fileID: 4095856313479395041}
   m_Layer: 0
-  m_Name: Move
+  m_Name: MoveUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,16 +623,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41138dcedf57a844b04c49bc18ff068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 62eef3ad8d6687840b8b02addf848b7b, type: 3}
   iconData:
-    icon: {fileID: 21300000, guid: 62eef3ad8d6687840b8b02addf848b7b, type: 3}
+    icon: {fileID: 21300000, guid: 3297302548131294197c60f3cf2ffc06, type: 3}
     presentationScale: {x: 1, y: 1, z: 1}
   OnExecution:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6628951969272852649}
         m_TargetAssemblyTypeName: Character.Player, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: MoveForwardRelativeToCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -990,6 +1050,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
         type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: ed3c8984-d251-446d-9ddf-306a3aa05540
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: Player/Down[/Keyboard/downArrow,/Keyboard/s,/XInputControllerWindows1/dpad/down,/XInputControllerWindows1/leftStick/down]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4095856313479395041}
@@ -1035,6 +1120,16 @@ PrefabInstance:
       objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3323834858421708870}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TryPauseGame
       objectReference: {fileID: 0}
@@ -1045,7 +1140,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Algorithm.Command, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128770442279871149, guid: 6eefc8a87838e54408ebbfb0f7c5badf,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
