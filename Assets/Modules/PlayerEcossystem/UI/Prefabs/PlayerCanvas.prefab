@@ -417,6 +417,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7824742240544326649}
     m_Modifications:
+    - target: {fileID: 378075043948294714, guid: 2072b2afadf828847824b52cbff2eb9c,
+        type: 3}
+      propertyPath: retractionXOffset
+      value: -400
+      objectReference: {fileID: 0}
     - target: {fileID: 2207106844396569194, guid: 2072b2afadf828847824b52cbff2eb9c,
         type: 3}
       propertyPath: m_AnchorMax.y
