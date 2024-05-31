@@ -158,6 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825399770690626277}
   - component: {fileID: 849987415896568543}
+  - component: {fileID: 821301264681223442}
   m_Layer: 0
   m_Name: Algorithm
   m_TagString: Untagged
@@ -193,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d91c7b69a14ac284e1aae2026058ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCommands: 10
+  maxCommands: 2
+  maximumIncrementStep: 2
   commandsParent: {fileID: 0}
   player: {fileID: 0}
   clearAlgorithmOnConclusion: 1
@@ -313,3 +315,38 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   SequenceFulfillmentRate: 0
+--- !u!114 &821301264681223442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641216201456230585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 6a7ec03b63d3ad742ad5d62c366f4d82, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 849987415896568543}
+        m_TargetAssemblyTypeName: Algorithm.Algorithm, Assembly-CSharp
+        m_MethodName: TryIncrementMaximumSlots
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0

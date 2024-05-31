@@ -805,6 +805,11 @@ PrefabInstance:
       objectReference: {fileID: 6644383245732462562}
     - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
         type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
       propertyPath: OnClearance.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 24232913897770088}
@@ -833,6 +838,31 @@ PrefabInstance:
       propertyPath: OnCommandLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 24232913897770088}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 24232913897770088}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AdjustSlotsVisibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AlgorithmVisual, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6641216201456230585, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
         type: 3}
       propertyPath: m_Name
@@ -973,6 +1003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 3DCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603752521150547877, guid: 166474595762b824dbd7535d2e5884c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -68,4 +68,12 @@ public class AlgorithmVisual : MonoBehaviour
             commandSlotsParent.GetChild(i).GetChild(0).gameObject.SetActive(false);
         }
     }
+
+    public void AdjustSlotsVisibility(int quantity)
+    {
+        for (int i = 0; i < commandSlotsParent.childCount; i++)
+        {
+            commandSlotsParent.GetChild(i).gameObject.SetActive(i < quantity);            
+        }
+    }
 }
