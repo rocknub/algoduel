@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GraphicsFader : MonoBehaviour
@@ -13,10 +14,20 @@ public class GraphicsFader : MonoBehaviour
     [SerializeField] private LoopType loopType;
     [SerializeField] private Graphic[] graphics;
     [Range(0, 1)] [SerializeField] private float[] targetAlphas;
+    [SerializeField] private bool fadeOnAwake;
+    [SerializeField] private bool unscaledTime;
 
     private float[] originalAlpha;
     
-    public Tween[] Tween { get; private set; } //TODO: Precisa ser um array de tweens
+    public Tween[] Tween { get; private set; } 
+
+    private void Awake()
+    {
+        if (fadeOnAwake)
+        {
+            StartFade();
+        }
+    }
 
     [ContextMenu("Start Fade")]
     public void StartFade()
@@ -28,6 +39,10 @@ public class GraphicsFader : MonoBehaviour
             var graphic = graphics[i];
             originalAlpha[i] = graphic.color.a;
             Tween[i] = graphic.DOFade(targetAlphas[i], duration).SetLoops(loopCount, loopType).SetEase(easeType);
+            if (unscaledTime)
+            {
+                Tween[i].SetUpdate(UpdateType.Normal, true);
+            }
         }
     }
 

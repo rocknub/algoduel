@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameObjectChainAwakener : PlayerMonoBehaviour
 {
     [SerializeField] private bool startDisabled;
+    [SerializeField] private bool startEnabled;
     [SerializeField] private GameObject[] gameObjects;
     [SerializeField] private float[] delayTimes;
 
@@ -14,6 +15,10 @@ public class GameObjectChainAwakener : PlayerMonoBehaviour
         if (startDisabled)
         {
             Array.ForEach(gameObjects, go => go.SetActive(false));
+        }
+        if (startEnabled)
+        {
+            Array.ForEach(gameObjects, go => go.SetActive(true));
         }
     }
 
