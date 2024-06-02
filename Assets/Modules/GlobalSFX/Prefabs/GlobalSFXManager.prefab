@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6134679826884204368}
   - component: {fileID: 812721897637995016}
   - component: {fileID: 5704956517800278100}
+  - component: {fileID: 1432202298872499540}
   m_Layer: 0
   m_Name: GlobalSFXManager
   m_TagString: Untagged
@@ -145,6 +146,9 @@ MonoBehaviour:
   duelStartSfx:
     clip: {fileID: 8300000, guid: 3162d9cf41ae16d478bec593b659dc52, type: 3}
     scale: 0.5
+  winningSfx:
+    clip: {fileID: 8300000, guid: 4544dbd1689740c41a64f6d119c2f986, type: 3}
+    scale: 1
 --- !u!114 &5704956517800278100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +175,40 @@ MonoBehaviour:
       - m_Target: {fileID: 812721897637995016}
         m_TargetAssemblyTypeName: GlobalSFX.GlobalSFXManager, Assembly-CSharp
         m_MethodName: PlayDuelStartSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1432202298872499540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745556926971492479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 812721897637995016}
+        m_TargetAssemblyTypeName: GlobalSFX.GlobalSFXManager, Assembly-CSharp
+        m_MethodName: PlayWinningSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

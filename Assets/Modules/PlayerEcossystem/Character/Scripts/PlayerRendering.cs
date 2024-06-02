@@ -11,8 +11,12 @@ namespace Character
         [SerializeField] private float materialTweenPeriod;
         [SerializeField] private int materialTweenLoopCount;
         [SerializeField] private Color materialTweenColor;
+        [SerializeField] private RendererTweener[] tweeners;
         
-        private List<Material> playerMaterials;
+        private List<Material[]> opaqueMaterials;
+        private List<List<Material>> toBeTransparentMaterials;
+        
+        
 
         private void Start()
         {
@@ -21,21 +25,27 @@ namespace Character
 
         private void GatherMaterials()
         {
-            var childCount = playerModel.childCount;
-            playerMaterials = new List<Material>(childCount);
-            for (var i = 0; i < childCount; i++)
+            tweeners = playerModel.GetComponentsInChildren<RendererTweener>();
+            foreach (var tweener in tweeners)
             {
-                var renderer = playerModel.GetChild(i).GetComponent<Renderer>();
-                playerMaterials.AddRange(renderer.materials);
-            } 
+                tweener.materialTweenColor = materialTweenColor;
+                tweener.materialTweenPeriod = materialTweenPeriod;
+                tweener.materialTweenLoopCount = materialTweenLoopCount;
+                tweener.GatherMaterials();
+            }
         }
         
         public void TweenMaterials(Action action)
         {
             var materialSeq = DOTween.Sequence();
-            foreach (var material in playerMaterials)
+            foreach (var tweener in tweeners)
             {
-                materialSeq.Join(material.DOColor(materialTweenColor, materialTweenPeriod).SetLoops(materialTweenLoopCount, LoopType.Yoyo).SetInverted());
+                var materialTweeners = tweener.TweenMaterials();
+                foreach (var t in materialTweeners)
+                {
+                    materialSeq.Join(t);
+
+                }
             }
             materialSeq.OnComplete(action.Invoke);
             materialSeq.Play();

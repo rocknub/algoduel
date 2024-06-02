@@ -53,11 +53,10 @@ namespace Character
 
         private void SetTrophyImages()
         {
-            trophyImages = new Image[transform.childCount];
+            trophyImages = GetComponentsInChildren<Image>();
 
             void SetTrophy(int index)
             {
-                trophyImages[index] = transform.GetChild(index).GetComponent<Image>();
                 var trophyColor = trophyImages[index].color;
                 trophyColor.a = startingSpriteAlpha;
                 trophyImages[index].color = trophyColor;
@@ -65,11 +64,11 @@ namespace Character
 
             if (invertTrophiesOrder)
             {
-                for (int i = transform.childCount-1; i >= 0; i--) SetTrophy(i);
+                for (int i = trophyImages.Length-1; i >= 0; i--) SetTrophy(i);
             }
             else
             {
-                for (int i = 0; i < transform.childCount; i++) SetTrophy(i);
+                for (int i = 0; i < trophyImages.Length; i++) SetTrophy(i);
             }
         }
 

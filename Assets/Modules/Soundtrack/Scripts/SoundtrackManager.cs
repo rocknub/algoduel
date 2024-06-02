@@ -16,7 +16,7 @@ namespace Modules.Soundtrack
         private void Start()
         {
             source = GetComponent<AudioSource>();
-            source.volume = initialVolume;
+            // source.volume = initialVolume;
         }
 
         public void SetDuelSoundtrack()
@@ -27,7 +27,7 @@ namespace Modules.Soundtrack
                 source.Play();
             }
 
-            source.DOFade(gameplayVolume, duelTweenDuration);
+            // source.DOFade(gameplayVolume, duelTweenDuration);
         }
     }
 }

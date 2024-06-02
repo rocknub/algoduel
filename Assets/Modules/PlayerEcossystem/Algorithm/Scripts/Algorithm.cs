@@ -10,7 +10,8 @@ namespace Algorithm
 {
     public class Algorithm : PlayerMonoBehaviour
     {
-        [SerializeField] private int maxCommands = 10;
+        [SerializeField] private int maxCommands;
+        [SerializeField] private int maximumIncrementStep; //TODO separar maximo de atual
         [SerializeField] private Transform commandsParent;
         [SerializeField] private PlayerManager player;
 
@@ -32,6 +33,7 @@ namespace Algorithm
         private void Start()
         {
             SetCommandCallbacks();
+            DefineMaximumSlots(maxCommands);
         }
 
         private void SetCommandCallbacks()
@@ -50,23 +52,22 @@ namespace Algorithm
         public void DefineMaximumSlots(int? maximum = null)
         {
             maximum ??= maxCommands;
-            if (commandSequence == null)
+            if (commandSequence == null || commandSequence.Capacity != maximum)
             {
                 commandSequence = new List<Command>(maximum.Value);
-            }
-            else if (commandSequence.Capacity != maximum)
-            {
-                int copyLength = maximum.Value < commandSequence.Capacity ? maximum.Value : commandSequence.Capacity;
-                Command[] tempArray = new Command[maximum.Value];
-                commandSequence.CopyTo(0, tempArray, 0, copyLength);
-                commandSequence = new List<Command>(maximum.Value);
-                for (var i = 0; i < tempArray.Length; i++)
-                {
-                    commandSequence[i] = tempArray[i];
-                }
             }
             OnMaximumDefined.Invoke(maximum.Value);
             maxCommands = maximum.Value;
+        }
+
+        [ContextMenu("Increment Maximum Slots")]
+        public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(maxCommands + incrementValue);
+
+        public void TryIncrementMaximumSlots(int entryIndex)
+        {
+            if (entryIndex != playerIndex)
+                return;
+            IncrementMaximumSlots(maximumIncrementStep);
         }
 
         public void Clear()

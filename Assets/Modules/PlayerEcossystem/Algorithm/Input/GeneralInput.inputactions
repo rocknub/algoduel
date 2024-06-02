@@ -418,6 +418,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9e8c563d-c9a3-4afc-a9a8-354688305dde",
+                    "path": "<DualShockGamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cffc75c0-0460-4906-9d85-cb9d5d77332f",
                     "path": "<Keyboard>/x",
                     "interactions": "",

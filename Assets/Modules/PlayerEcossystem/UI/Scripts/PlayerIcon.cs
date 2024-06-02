@@ -1,6 +1,8 @@
-﻿using Character;
+﻿using System;
+using Character;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PlayerEcossystem.UI
@@ -17,8 +19,16 @@ namespace PlayerEcossystem.UI
         [SerializeField] private LoopType loopType;
         [SerializeField] private Ease flashEase;
         [SerializeField] private Ease finalEase;
+        [SerializeField] private UnityEvent onActivation;
 
         private Tween flashTween;
+        private float originalAlpha;
+
+        private void Awake()
+        {
+            originalAlpha = panel.color.a;
+            panel.enabled = false;
+        }
 
         private void OnEnable()
         {
@@ -28,6 +38,17 @@ namespace PlayerEcossystem.UI
         private void OnDisable()
         {
             PlayerManager.OnPlayerDamaged.RemoveListener(FlashDamageSprite);
+        }
+
+        public void TryActivate(int index)
+        {
+            if (playerIndex != index)
+            {
+                return;
+            }
+            panel.DOFade(0.0f, 0);
+            panel.enabled = true;
+            onActivation.Invoke();
         }
 
         public void FlashDamageSprite(int index)

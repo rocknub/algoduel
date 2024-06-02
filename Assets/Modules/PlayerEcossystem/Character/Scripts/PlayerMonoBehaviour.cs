@@ -6,7 +6,7 @@ namespace Character
 {
     public abstract class PlayerMonoBehaviour : MonoBehaviour
     {
-        [CanBeNull] private PlayerManager playerManager = null;
+        [CanBeNull][SerializeField] private PlayerManager playerManager = null;
 
         protected PlayerManager PlayerManager
         {
