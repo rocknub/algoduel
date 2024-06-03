@@ -386,6 +386,12 @@ MonoBehaviour:
   defaultRotationAngle: 90
   fallEase: 3
   fallDuration: 0.5
+  useRandomRespawn: 1
+  randomRespawnOffsets:
+  - {x: 4, y: 0, z: 0}
+  - {x: -4, y: 0, z: 0}
+  - {x: 0, y: 0, z: 4}
+  - {x: 0, y: 0, z: -4}
   onTransformReset:
     m_PersistentCalls:
       m_Calls:

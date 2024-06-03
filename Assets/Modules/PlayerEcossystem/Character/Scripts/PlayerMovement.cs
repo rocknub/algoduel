@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Character
 {
@@ -18,6 +19,8 @@ namespace Character
         [Header("Uncontrolled Movements")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallDuration;
+        [SerializeField] private bool useRandomRespawn;
+        [SerializeField] private Vector3[] randomRespawnOffsets;
         [Header("Events")]
         [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
         [SerializeField] private UnityEvent<MovementData> onTranslation;
@@ -113,17 +116,6 @@ namespace Character
         }
 
         public void RotateClockwise() => Rotate(defaultRotationAngle, defaultMotionDuration, true);
-        // {
-        //     if (IsActing())
-        //     {
-        //         return;
-        //     }
-        //     Vector3 targetRotation = transform.rotation.eulerAngles;
-        //     targetRotation.y += defaultRotationAngle;
-        //     motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
-        //     motionTween.OnComplete(ActionCompletionCallback);
-        //     onRotation.Invoke(new MovementData(transform.rotation.eulerAngles, targetRotation, defaultMotionDuration));
-        // }
 
         public void Rotate(float angle, float duration, bool doTriggerCallback)
         {
@@ -140,18 +132,7 @@ namespace Character
             motionTween.OnComplete(ActionCompletionCallback);
         }
         
-        public void RotateCounterClockwise()
-        {
-            if (IsActing())
-            {
-                return;
-            }
-            Vector3 targetRotation = transform.rotation.eulerAngles;
-            targetRotation.y -= defaultRotationAngle;
-            motionTween = transform.DORotate(targetRotation, defaultMotionDuration).SetEase(motionEase);
-            motionTween.OnComplete(ActionCompletionCallback);
-
-        }
+        public void RotateCounterClockwise() => Rotate(-defaultRotationAngle, defaultMotionDuration, true);
 
         private void ActionCompletionCallback()
         {
@@ -171,7 +152,6 @@ namespace Character
         [ContextMenu("Update Target Position")]
         public Vector3 UpdateTargetPosition()
         {
-
             float translationDistance = IsHorizontallyDirected() ? translationDistanceAlternate : translationDistanceDefault;
             targetPosition = transform.position + transform.forward * translationDistance;
             return targetPosition;
@@ -186,7 +166,12 @@ namespace Character
         public void ResetTransform()
         {
             motionTween?.Kill();
-            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            var respawnPosition = Vector3.zero;
+            if (useRandomRespawn)
+            {
+                respawnPosition = randomRespawnOffsets[Random.Range(0, randomRespawnOffsets.Length)];
+            }
+            transform.SetLocalPositionAndRotation(respawnPosition, Quaternion.identity);
             UpdateTargetPosition();
             onTransformReset.Invoke();
         }
