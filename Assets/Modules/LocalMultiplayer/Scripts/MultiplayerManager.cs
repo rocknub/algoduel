@@ -12,17 +12,21 @@ using UnityEngine.Serialization;
 public class MultiplayerManager : MonoBehaviour
 {
     public PlayerInput[] playerInputs;
+    public int minNecessaryPlayers;
     public InputActionReference inputAction;
+    public InputActionReference conclusionAction;
     public bool recycleDeviceScheme;
     public string[] recycleExceptionSchemes;
 
     [Header("Game Events")] 
     [SerializeField] private IntGameEvent OnControlUserPrePaired;
-    [FormerlySerializedAs("OnBothUsersPrePaired")] [SerializeField] private GameEvent OnPairingConcluded;
+    [SerializeField] private GameEvent OnPairingConcluded;
 
     private int playerIndex = 0;
     private InputDevice keyboardDevice;
-    private Tuple<InputUser, InputDevice>[] prePairedUsersAndDevices;
+    private List<Tuple<InputUser, InputDevice>> prePairedUsersAndDevices;
+
+    private bool CanConcludeUserDevicePairing => playerIndex >= minNecessaryPlayers;
 
     private void Awake()
     {
@@ -42,17 +46,12 @@ public class MultiplayerManager : MonoBehaviour
         for (var i = 0; i < InputUser.all.Count; i++)
         {
             var inputUser = InputUser.all[i];
-            // Debug.Log("A");
-            // if (i >= playerInputs.Length)
-            // {
-            //     inputUser.UnpairDevicesAndRemoveUser();
-            //     continue;
-            // }
             inputUser.UnpairDevices();
         }
         InputUser.listenForUnpairedDeviceActivity = 1;
-        InputUser.onUnpairedDeviceUsed += UnpairedDeviceResponse;
-        prePairedUsersAndDevices = new Tuple<InputUser, InputDevice>[playerInputs.Length];
+        InputUser.onUnpairedDeviceUsed += TryPrePairDevice;
+        InputUser.onUnpairedDeviceUsed += TryConcludeUserDevicePairing;
+        prePairedUsersAndDevices = new List<Tuple<InputUser, InputDevice>>(playerInputs.Length);
     }
 
     [ContextMenu("Debug Controls")]
@@ -71,24 +70,13 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
-    public void UnpairedDeviceResponse(InputControl control, InputEventPtr ptr)
+    public void TryPrePairDevice(InputControl control, InputEventPtr ptr)
     {
         if (control is not ButtonControl)
             return;
         if (playerIndex > playerInputs.Length-1)
             return;
-
-        InputBinding? foundBinding = null;
-        var parsedPathComponents = new InputControlPath.ParsedPathComponent[inputAction.action.bindings.Count];
-        foreach (var binding in inputAction.action.bindings)
-        {
-            parsedPathComponents = InputControlPath.Parse(binding.path).ToArray();
-            if (parsedPathComponents[1].name.Equals(control.name) == false) continue;
-            foundBinding = binding;
-            break;
-        }
-
-        if (foundBinding == null)
+        if (InputMethods.TryGetBinding(control, inputAction.action, out var foundBinding) == false)
             return;
 
         if (recycleDeviceScheme == false)
@@ -114,16 +102,12 @@ public class MultiplayerManager : MonoBehaviour
 
     private void PrePairUserAndDevice(InputDevice device, InputUser user, InputBinding binding)
     {
-        prePairedUsersAndDevices[playerIndex] = new Tuple<InputUser, InputDevice>(user, device);
+        prePairedUsersAndDevices.Add(new Tuple<InputUser, InputDevice>(user, device));
         user.ActivateControlScheme(binding.groups);
         OnControlUserPrePaired.Raise(playerIndex);
-        if (playerIndex >= playerInputs.Length - 1)
-        {
-            ConcludeUserDevicePairing();
-        }
     }
 
-    public void ConcludeUserDevicePairing()
+    private void ConcludeUserDevicePairing()
     {
         foreach (var userDeviceTuple in prePairedUsersAndDevices)
         {
@@ -132,6 +116,15 @@ public class MultiplayerManager : MonoBehaviour
         }
         InputUser.listenForUnpairedDeviceActivity = 0;
         OnPairingConcluded.Raise();
+    }
+
+    public void TryConcludeUserDevicePairing(InputControl control, InputEventPtr ptr)
+    {
+        if (CanConcludeUserDevicePairing == false)
+            return;
+        if (InputMethods.TryGetBinding(control, conclusionAction.action, out var foundBinding) == false)
+            return;
+        ConcludeUserDevicePairing();
     }
 
     private bool IsDevicePrePaired(InputDevice device)
