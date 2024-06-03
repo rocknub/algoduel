@@ -11,7 +11,8 @@ namespace Algorithm
     public class Algorithm : PlayerMonoBehaviour
     {
         [SerializeField] private int maxCommands;
-        [SerializeField] private int maximumIncrementStep; //TODO separar maximo de atual
+        [SerializeField] private int maximumIncrementStep;
+        [SerializeField] private float rechargePeriod;
         [SerializeField] private Transform commandsParent;
         [SerializeField] private PlayerManager player;
 
@@ -25,11 +26,13 @@ namespace Algorithm
         [SerializeField] private UnityEvent<float> OnSequenceEnd;
         [SerializeField] private UnityEvent<float> OnClearance;
 
+        private bool isRecharging;
         private List<Command> commandSequence;
         private Coroutine executionRoutine;
+        private Coroutine rechargeRoutine;
 
         public float SequenceFulfillmentRate;
-        
+
         private void Start()
         {
             SetCommandCallbacks();
@@ -76,11 +79,19 @@ namespace Algorithm
                 return;
             OnClearance.Invoke(SequenceFulfillmentRate);
             commandSequence.Clear();
+            rechargeRoutine = StartCoroutine(Recharge());
+        }
+
+        private IEnumerator Recharge()
+        {
+            isRecharging = true;
+            yield return new WaitForSeconds(rechargePeriod);
+            isRecharging = false;
         }
         
         private void InsertCommand(Command command)
         {
-            if (executionRoutine != null)
+            if (isRecharging || executionRoutine != null)
                 return;
             if (commandSequence == null)
                 DefineMaximumSlots();
@@ -110,7 +121,7 @@ namespace Algorithm
 
         private IEnumerator ExecuteCoroutine()
         {
-            if (commandSequence == null || commandSequence.Count == 0)
+            if (isRecharging || commandSequence == null || commandSequence.Count == 0)
                 yield break;
             var currentExecutionIndex = 0;
             while (currentExecutionIndex < commandSequence.Count)
