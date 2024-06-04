@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
-using UnityEngine.Serialization;
 
 public class MultiplayerManager : MonoBehaviour
 {
@@ -21,6 +20,7 @@ public class MultiplayerManager : MonoBehaviour
     [Header("Game Events")] 
     [SerializeField] private IntGameEvent OnControlUserPrePaired;
     [SerializeField] private GameEvent OnPairingConcluded;
+    [SerializeField] private GameEvent OnPlayersReady;
 
     private int playerIndex = 0;
     private InputDevice keyboardDevice;
@@ -98,6 +98,10 @@ public class MultiplayerManager : MonoBehaviour
         var user = input.user;
         PrePairUserAndDevice(control.device, user, foundBinding.Value);
         playerIndex++;
+        if (CanConcludeUserDevicePairing)
+        {
+            OnPlayersReady.Raise();
+        }
     }
 
     private void PrePairUserAndDevice(InputDevice device, InputUser user, InputBinding binding)

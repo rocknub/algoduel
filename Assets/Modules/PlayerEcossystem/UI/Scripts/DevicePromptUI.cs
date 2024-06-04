@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -14,7 +15,8 @@ namespace PlayerEcossystem.UI
         [SerializeField] private TMP_Text promptMesh;
         [SerializeField] private Graphic[] gameplayOnlyGraphics;
         [SerializeField] private string inputRequestText;
-        [SerializeField] private string inputConfirmationText;
+        [FormerlySerializedAs("inputConfirmationText")] [SerializeField] private string waitingText;
+        [SerializeField] private string gameStartText;
         [SerializeField] private bool invertPanelMovement;
         [SerializeField] private float movementDuration;
         [SerializeField] private UnityEvent onPanelRetracted;
@@ -26,7 +28,7 @@ namespace PlayerEcossystem.UI
         {
             rectT = GetComponent<RectTransform>();
             EnableGameplayGraphics(true);
-            promptMesh.text = playerIndex == 0 ? inputRequestText : inputConfirmationText;
+            promptMesh.text = playerIndex == 0 ? inputRequestText : waitingText;
         }
 
         private void EnableGameplayGraphics(bool value)
@@ -42,12 +44,17 @@ namespace PlayerEcossystem.UI
         {
             if (secretKey == playerIndex)
             {
-                promptMesh.text = inputConfirmationText;
+                promptMesh.text = waitingText;
             }
             else if(secretKey == playerIndex - 1)
             {
                 promptMesh.SetText(inputRequestText);
             }
+        }
+
+        public void SetConclusionText()
+        {
+            promptMesh.SetText(gameStartText);
         }
 
         public void DetractPanel()

@@ -130,6 +130,7 @@ MonoBehaviour:
   OnControlUserPrePaired: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
     type: 2}
   OnPairingConcluded: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
+  OnPlayersReady: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59, type: 2}
 --- !u!1 &3111376436135346923
 GameObject:
   m_ObjectHideFlags: 0

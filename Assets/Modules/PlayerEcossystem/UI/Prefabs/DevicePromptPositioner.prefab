@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 6947253645906111764}
   - component: {fileID: 8063492840453342987}
   - component: {fileID: 8947674886756281880}
+  - component: {fileID: 7668190050946975447}
   m_Layer: 5
   m_Name: DevicePromptPositioner
   m_TagString: Untagged
@@ -472,6 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913d3371de594c7499d5f6c438c049ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   promptMesh: {fileID: 3595352758896534904}
   gameplayOnlyGraphics:
   - {fileID: 3844502771761225773}
@@ -479,7 +481,8 @@ MonoBehaviour:
   - {fileID: 3595352758896534904}
   - {fileID: 4683937260456860185}
   inputRequestText: "Pressione o bot\xE3o de <br> <b>- EXECU\xC7\xC3O -</b>"
-  inputConfirmationText: Aguarde o outro jogador
+  waitingText: Aguarde o outro jogador
+  gameStartText: Pressione 'START' para iniciar o jogo
   invertPanelMovement: 1
   movementDuration: 1
   onPanelRetracted:
@@ -558,6 +561,41 @@ MonoBehaviour:
       - m_Target: {fileID: 6947253645906111764}
         m_TargetAssemblyTypeName: DevicePromptUI, Assembly-CSharp
         m_MethodName: DetractPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7668190050946975447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8968256530268826782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59,
+    type: 2}
+  _event: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6947253645906111764}
+        m_TargetAssemblyTypeName: PlayerEcossystem.UI.DevicePromptUI, Assembly-CSharp
+        m_MethodName: SetConclusionText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
