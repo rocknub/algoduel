@@ -17,7 +17,8 @@ namespace PlayerEcossystem.UI
         [SerializeField] private string inputRequestText;
         [FormerlySerializedAs("inputConfirmationText")] [SerializeField] private string waitingText;
         [SerializeField] private string gameStartText;
-        [SerializeField] private bool invertPanelMovement;
+        [FormerlySerializedAs("invertPanelMovement")] [SerializeField] private bool invertPanelMovementX;
+        [SerializeField] private bool invertPanelMovementY;
         [SerializeField] private float movementDuration;
         [SerializeField] private UnityEvent onPanelRetracted;
 
@@ -59,7 +60,10 @@ namespace PlayerEcossystem.UI
 
         public void DetractPanel()
         {
-            rectT.DOMoveX(rectT.position.x + Screen.width / 2 * (invertPanelMovement ? -1 : 1), movementDuration)
+            var targetPosition = Vector3.zero;
+            targetPosition.x = rectT.position.x + Screen.width / 2 * (invertPanelMovementX ? -1 : 1);
+            targetPosition.y = rectT.position.y + Screen.height / 2 * (invertPanelMovementY ? -1 : 1);
+            rectT.DOMove(targetPosition, movementDuration)
                 .OnComplete(onPanelRetracted.Invoke);
         }
     }

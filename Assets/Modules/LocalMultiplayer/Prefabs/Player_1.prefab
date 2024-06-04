@@ -152,6 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 240719082339710020, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 240719082339710020, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -260,6 +265,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.09803922
       objectReference: {fileID: 0}
+    - target: {fileID: 2360651031400229756, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: invertPanelMovementY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360651031400229756, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: gameplayOnlyGraphics.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360651031400229756, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: gameplayOnlyGraphics.Array.data[4]
+      value: 
+      objectReference: {fileID: 3747441989558143467}
     - target: {fileID: 2596403133545010108, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -383,6 +403,11 @@ PrefabInstance:
     - target: {fileID: 3092693097060203779, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092693097060203779, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092693097060203779, guid: e1f886133120c5f45b73785f4007adee,
@@ -559,6 +584,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393967705512778420, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -540
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393967705512778420, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -270
       objectReference: {fileID: 0}
     - target: {fileID: 5438297416260089530, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
@@ -760,6 +795,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7377951367086527554, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Name
+      value: ScreenSeparatorVertical
+      objectReference: {fileID: 0}
     - target: {fileID: 7569953614892165268, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_Name
@@ -800,11 +840,33 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 704eb909dda7bf14abd3bcb60f2098f3, type: 2}
+    - target: {fileID: 8648457092201330530, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648457092201330530, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f886133120c5f45b73785f4007adee, type: 3}
+--- !u!114 &3747441989558143467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2611561186843290281, guid: e1f886133120c5f45b73785f4007adee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1170856405033476930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5374839712855423657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6532739057295432171, guid: e1f886133120c5f45b73785f4007adee,
