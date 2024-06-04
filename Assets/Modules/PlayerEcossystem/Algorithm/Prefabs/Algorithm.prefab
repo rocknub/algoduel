@@ -194,8 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d91c7b69a14ac284e1aae2026058ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   maxCommands: 2
   maximumIncrementStep: 2
+  rechargePeriod: 0.25
   commandsParent: {fileID: 0}
   player: {fileID: 0}
   clearAlgorithmOnConclusion: 1

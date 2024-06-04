@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,8 +34,9 @@ namespace Character
 
         private Tween motionTween;
         private Vector3 targetPosition;
+        private List<Vector3> respawnList;
         private PlayerEnvironmentDetection envDetection => manager.EnvironmentDetection;
-        
+
         private void OnValidate()
         {
             UpdateTargetPosition();
@@ -169,7 +172,12 @@ namespace Character
             var respawnPosition = Vector3.zero;
             if (useRandomRespawn)
             {
-                respawnPosition = randomRespawnOffsets[Random.Range(0, randomRespawnOffsets.Length)];
+                if (respawnList == null || respawnList.Count == 0)
+                {
+                    respawnList = randomRespawnOffsets.ToList();
+                }
+                respawnPosition = respawnList[Random.Range(0, respawnList.Count)];
+                respawnList.Remove(respawnPosition);
             }
             transform.SetLocalPositionAndRotation(respawnPosition, Quaternion.identity);
             UpdateTargetPosition();
