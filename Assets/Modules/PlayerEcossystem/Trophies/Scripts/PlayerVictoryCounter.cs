@@ -22,7 +22,7 @@ namespace Character
 
         public void TryCountVictory(int entryIndex)
         {
-            if (playerIndex == entryIndex)
+            if (playerIndex != entryIndex)
             {
                 return;
             }          

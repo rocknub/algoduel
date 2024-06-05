@@ -367,6 +367,8 @@ MonoBehaviour:
   <PlayerIndex>k__BackingField: 0
   <OnPlayerDamaged>k__BackingField: {fileID: 11400000, guid: 6a7ec03b63d3ad742ad5d62c366f4d82,
     type: 2}
+  <OnPlayerSuccessHit>k__BackingField: {fileID: 11400000, guid: 1c39d1f3708342f4098fc86fcc45071a,
+    type: 2}
 --- !u!114 &6628951969272852649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1719,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4918657411698154231, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918657411698154231, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2063,6 +2070,11 @@ PrefabInstance:
     - target: {fileID: 7926005068099949488, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926005068099949488, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7926005068099949488, guid: ba3b4f30b2173364d968bba48faed1de,

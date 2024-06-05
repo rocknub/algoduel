@@ -131,6 +131,8 @@ MonoBehaviour:
     type: 2}
   OnPairingConcluded: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
   OnPlayersReady: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59, type: 2}
+  OnPlayerLimitReached: {fileID: 11400000, guid: d82fbaecc59e359448f6b24e62ba1cd8,
+    type: 2}
 --- !u!1 &3111376436135346923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,6 +1261,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7528493526300463872, guid: 238645884fdf3e241b1dfc04442bd4c0,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d82fbaecc59e359448f6b24e62ba1cd8,
+        type: 2}
     - target: {fileID: 7930365027901472924, guid: 238645884fdf3e241b1dfc04442bd4c0,
         type: 3}
       propertyPath: m_Pivot.y

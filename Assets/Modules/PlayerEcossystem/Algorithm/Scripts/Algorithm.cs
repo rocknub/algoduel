@@ -5,12 +5,14 @@ using Character;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Algorithm
 {
     public class Algorithm : PlayerMonoBehaviour
     {
-        [SerializeField] private int maxCommands;
+        [SerializeField] private int maximumSlots;
+        [FormerlySerializedAs("maxCommands")] [SerializeField] private int initialAvailableSlots;
         [SerializeField] private int maximumIncrementStep;
         [SerializeField] private float rechargePeriod;
         [SerializeField] private Transform commandsParent;
@@ -36,7 +38,7 @@ namespace Algorithm
         private void Start()
         {
             SetCommandCallbacks();
-            DefineMaximumSlots(maxCommands);
+            DefineMaximumSlots(initialAvailableSlots);
         }
 
         private void SetCommandCallbacks()
@@ -54,17 +56,19 @@ namespace Algorithm
 
         public void DefineMaximumSlots(int? maximum = null)
         {
-            maximum ??= maxCommands;
+            if (initialAvailableSlots >= maximumSlots)
+                return;
+            maximum ??= initialAvailableSlots;
             if (commandSequence == null || commandSequence.Capacity != maximum)
             {
                 commandSequence = new List<Command>(maximum.Value);
             }
             OnMaximumDefined.Invoke(maximum.Value);
-            maxCommands = maximum.Value;
+            initialAvailableSlots = maximum.Value;
         }
 
         [ContextMenu("Increment Maximum Slots")]
-        public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(maxCommands + incrementValue);
+        public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(initialAvailableSlots + incrementValue);
 
         public void TryIncrementMaximumSlots(int entryIndex)
         {
@@ -95,7 +99,7 @@ namespace Algorithm
                 return;
             if (commandSequence == null)
                 DefineMaximumSlots();
-            else if (commandSequence.Count >= maxCommands)
+            else if (commandSequence.Count >= initialAvailableSlots)
                 return;
             commandSequence.Add(command);
             OnCommandLoaded.Invoke(command, commandSequence.Count - 1);

@@ -21,6 +21,7 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField] private IntGameEvent OnControlUserPrePaired;
     [SerializeField] private GameEvent OnPairingConcluded;
     [SerializeField] private GameEvent OnPlayersReady;
+    [SerializeField] private GameEvent OnPlayerLimitReached;
 
     private int playerIndex = 0;
     private InputDevice keyboardDevice;
@@ -98,6 +99,11 @@ public class MultiplayerManager : MonoBehaviour
         var user = input.user;
         PrePairUserAndDevice(control.device, user, foundBinding.Value);
         playerIndex++;
+        if (playerIndex == playerInputs.Length)
+        {
+            OnPlayerLimitReached.Raise();
+            return;
+        }
         if (CanConcludeUserDevicePairing)
         {
             OnPlayersReady.Raise();

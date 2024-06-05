@@ -9,7 +9,8 @@ namespace Character
     {
         [field: SerializeField] public int PlayerIndex { get; private set; }
         [field: SerializeField] public IntGameEvent OnPlayerDamaged { get; private set; }
-        
+        [field: SerializeField] private IntGameEvent OnPlayerSuccessHit { get; set; }
+
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }
@@ -30,13 +31,13 @@ namespace Character
 
         private void OnEnable()
         {
-            OnPlayerDamaged.AddListener(VictoryCounter.TryCountVictory);
+            OnPlayerSuccessHit.AddListener(VictoryCounter.TryCountVictory);
         }
 
         private void OnDisable()
         {
-            OnPlayerDamaged.RemoveListener(VictoryCounter.TryCountVictory);
-            OnPlayerDamaged.RemoveAll();
+            OnPlayerSuccessHit.RemoveListener(VictoryCounter.TryCountVictory);
+            OnPlayerSuccessHit.RemoveAll();
         }
 
         public void ReceiveHit()
@@ -59,5 +60,10 @@ namespace Character
         } 
 
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
+
+        public void ConcludeAttackSuccess()
+        {
+            OnPlayerSuccessHit.Raise(PlayerIndex);
+        }
     }
 }

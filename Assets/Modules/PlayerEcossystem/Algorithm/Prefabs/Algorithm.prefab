@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
-  maxCommands: 2
+  maximumSlots: 10
+  initialAvailableSlots: 2
   maximumIncrementStep: 2
   rechargePeriod: 0.25
   commandsParent: {fileID: 0}
