@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Algorithm;
+using Character;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlgorithmVisual : MonoBehaviour
+public class AlgorithmVisual : PlayerMonoBehaviour
 {
     [SerializeField] private Transform commandSlotsParent;
     [SerializeField] private Image[] bgPanels;
@@ -14,6 +16,7 @@ public class AlgorithmVisual : MonoBehaviour
 
     private List<Transform> commandSlots;
     private Image currentActiveSlot;
+    private bool shouldBeEnabledOnGameplay;
 
     public void EmphasizeSlot(int index)
     {
@@ -75,5 +78,18 @@ public class AlgorithmVisual : MonoBehaviour
         {
             commandSlotsParent.GetChild(i).gameObject.SetActive(i < quantity);            
         }
+    }
+
+    public void SetGameplayStatus(int index)
+    {
+        if (shouldBeEnabledOnGameplay)
+            return;
+        shouldBeEnabledOnGameplay = index == playerIndex;
+    }
+
+    public void TryDisable()
+    {
+        if (shouldBeEnabledOnGameplay == false)
+            Array.ForEach(bgPanels, p => p.gameObject.SetActive(false));
     }
 }

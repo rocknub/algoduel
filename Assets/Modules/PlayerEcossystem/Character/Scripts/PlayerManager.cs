@@ -18,6 +18,7 @@ namespace Character
         public PlayerVictoryCounter VictoryCounter { get; private set; }
         
         public bool IsInvulnerable { get; private set; }
+        public bool IsPlayerReady { get; private set; }
         
         
         private void Awake()
@@ -61,9 +62,31 @@ namespace Character
 
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
 
-        public void ConcludeAttackSuccess()
+        public void TryConcludeAttackSuccess(Collider collider)
         {
-            OnPlayerSuccessHit.Raise(PlayerIndex);
+            if (collider.transform.parent.TryGetComponent(out PlayerManager hitManager) == false)
+            {
+                Debug.Log("No player found -> "  + collider.transform.parent.name);
+                return;
+            }
+            if (hitManager.PlayerIndex != PlayerIndex)
+            {
+                OnPlayerSuccessHit.Raise(PlayerIndex);
+            }
+        }
+
+        public void TrySetPlayerReady(int entryIndex)
+        {
+            if (IsPlayerReady)
+                return;
+            IsPlayerReady = entryIndex == PlayerIndex;
+        }
+        
+        //TODO: Colocar chamadas dependentes como callback disso
+        public void TryDisable()
+        {
+            if (IsPlayerReady == false)
+                gameObject.SetActive(false);
         }
     }
 }

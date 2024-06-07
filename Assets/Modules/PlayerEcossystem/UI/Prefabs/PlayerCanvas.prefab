@@ -686,7 +686,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4852324881599505806, guid: 2072b2afadf828847824b52cbff2eb9c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6222323141664236334}
   m_SourcePrefab: {fileID: 100100000, guid: 2072b2afadf828847824b52cbff2eb9c, type: 3}
 --- !u!224 &471014764759068466 stripped
 RectTransform:
@@ -694,13 +698,53 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6053003068741596706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1681670040446178220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4852324881599505806, guid: 2072b2afadf828847824b52cbff2eb9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6053003068741596706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6222323141664236334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681670040446178220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5854581690659980312}
+        m_TargetAssemblyTypeName: Character.TrophiesUI, Assembly-CSharp
+        m_MethodName: TryDisable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5854581690659980312 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 378075043948294714, guid: 2072b2afadf828847824b52cbff2eb9c,
     type: 3}
   m_PrefabInstance: {fileID: 6053003068741596706}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1681670040446178220}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83725829b2354de1b33ad703289764ba, type: 3}
@@ -854,6 +898,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3892571330269028756, guid: 1c037e43f36bb02469f271b6f2ff920d,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+        type: 2}
     - target: {fileID: 4859826964236306370, guid: 1c037e43f36bb02469f271b6f2ff920d,
         type: 3}
       propertyPath: m_AnchorMax.y
