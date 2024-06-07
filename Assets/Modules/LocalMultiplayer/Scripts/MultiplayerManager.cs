@@ -119,13 +119,14 @@ public class MultiplayerManager : MonoBehaviour
 
     private void ConcludeUserDevicePairing()
     {
+        OnPairingConcluded.Raise();
+
         foreach (var userDeviceTuple in prePairedUsersAndDevices)
         {
             InputUser.PerformPairingWithDevice(userDeviceTuple.Item2, userDeviceTuple.Item1,
                 InputUserPairingOptions.UnpairCurrentDevicesFromUser);
         }
         InputUser.listenForUnpairedDeviceActivity = 0;
-        OnPairingConcluded.Raise();
     }
 
     public void TryConcludeUserDevicePairing(InputControl control, InputEventPtr ptr)
