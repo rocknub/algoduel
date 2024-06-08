@@ -81,5 +81,11 @@ namespace Character
             trophyColor.a = 1;
             trophyImages[index].color = trophyColor;
         }
+        
+        public void TryDisable()
+        {
+            if (PlayerManager.IsPlayerReady == false)
+                gameObject.SetActive(false);
+        }
     }
 }

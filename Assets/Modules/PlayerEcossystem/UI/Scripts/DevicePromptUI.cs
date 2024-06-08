@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -14,8 +15,10 @@ namespace PlayerEcossystem.UI
         [SerializeField] private TMP_Text promptMesh;
         [SerializeField] private Graphic[] gameplayOnlyGraphics;
         [SerializeField] private string inputRequestText;
-        [SerializeField] private string inputConfirmationText;
-        [SerializeField] private bool invertPanelMovement;
+        [FormerlySerializedAs("inputConfirmationText")] [SerializeField] private string waitingText;
+        [SerializeField] private string gameStartText;
+        [FormerlySerializedAs("invertPanelMovement")] [SerializeField] private bool invertPanelMovementX;
+        [SerializeField] private bool invertPanelMovementY;
         [SerializeField] private float movementDuration;
         [SerializeField] private UnityEvent onPanelRetracted;
 
@@ -26,7 +29,7 @@ namespace PlayerEcossystem.UI
         {
             rectT = GetComponent<RectTransform>();
             EnableGameplayGraphics(true);
-            promptMesh.text = playerIndex == 0 ? inputRequestText : inputConfirmationText;
+            promptMesh.text = playerIndex == 0 ? inputRequestText : waitingText;
         }
 
         private void EnableGameplayGraphics(bool value)
@@ -42,7 +45,7 @@ namespace PlayerEcossystem.UI
         {
             if (secretKey == playerIndex)
             {
-                promptMesh.text = inputConfirmationText;
+                promptMesh.text = waitingText;
             }
             else if(secretKey == playerIndex - 1)
             {
@@ -50,9 +53,17 @@ namespace PlayerEcossystem.UI
             }
         }
 
+        public void SetConclusionText()
+        {
+            promptMesh.SetText(gameStartText);
+        }
+
         public void DetractPanel()
         {
-            rectT.DOMoveX(rectT.position.x + Screen.width / 2 * (invertPanelMovement ? -1 : 1), movementDuration)
+            var targetPosition = Vector3.zero;
+            targetPosition.x = rectT.position.x + Screen.width / 2 * (invertPanelMovementX ? -1 : 1);
+            targetPosition.y = rectT.position.y + Screen.height / 2 * (invertPanelMovementY ? -1 : 1);
+            rectT.DOMove(targetPosition, movementDuration)
                 .OnComplete(onPanelRetracted.Invoke);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Projectiles;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
@@ -22,8 +23,9 @@ namespace Character
         [Header("Events")] 
         [SerializeField] private UnityEvent<Projectile> onProjectileFired;
         [SerializeField] private UnityEvent onReload;
+        // [SerializeField] private IntGameEvent onOtherPlayerHit;
 
-        private bool isReloading;
+            private bool isReloading;
         private int unqueuedProjectileCount = 0;
         private Queue<Projectile> projectilePool;
 
@@ -87,6 +89,7 @@ namespace Character
                     .GetComponent<Projectile>();
                 projectileRef.gameObject.name += "_" + unqueuedProjectileCount++;
                 projectileRef.OnProjectileHit.AddListener(_ => TryFreezeAndAddToPool(projectileRef));
+                projectileRef.OnProjectileHit.AddListener(manager.TryConcludeAttackSuccess);
             }
             return projectileRef;
         }

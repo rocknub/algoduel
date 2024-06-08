@@ -5,13 +5,16 @@ using Character;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Algorithm
 {
     public class Algorithm : PlayerMonoBehaviour
     {
-        [SerializeField] private int maxCommands;
-        [SerializeField] private int maximumIncrementStep; //TODO separar maximo de atual
+        [SerializeField] private int maximumSlots;
+        [FormerlySerializedAs("maxCommands")] [SerializeField] private int initialAvailableSlots;
+        [SerializeField] private int maximumIncrementStep;
+        [SerializeField] private float rechargePeriod;
         [SerializeField] private Transform commandsParent;
         [SerializeField] private PlayerManager player;
 
@@ -25,15 +28,17 @@ namespace Algorithm
         [SerializeField] private UnityEvent<float> OnSequenceEnd;
         [SerializeField] private UnityEvent<float> OnClearance;
 
+        private bool isRecharging;
         private List<Command> commandSequence;
         private Coroutine executionRoutine;
+        private Coroutine rechargeRoutine;
 
         public float SequenceFulfillmentRate;
-        
+
         private void Start()
         {
             SetCommandCallbacks();
-            DefineMaximumSlots(maxCommands);
+            DefineMaximumSlots(initialAvailableSlots);
         }
 
         private void SetCommandCallbacks()
@@ -51,17 +56,19 @@ namespace Algorithm
 
         public void DefineMaximumSlots(int? maximum = null)
         {
-            maximum ??= maxCommands;
+            if (initialAvailableSlots >= maximumSlots)
+                return;
+            maximum ??= initialAvailableSlots;
             if (commandSequence == null || commandSequence.Capacity != maximum)
             {
                 commandSequence = new List<Command>(maximum.Value);
             }
             OnMaximumDefined.Invoke(maximum.Value);
-            maxCommands = maximum.Value;
+            initialAvailableSlots = maximum.Value;
         }
 
         [ContextMenu("Increment Maximum Slots")]
-        public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(maxCommands + incrementValue);
+        public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(initialAvailableSlots + incrementValue);
 
         public void TryIncrementMaximumSlots(int entryIndex)
         {
@@ -76,15 +83,23 @@ namespace Algorithm
                 return;
             OnClearance.Invoke(SequenceFulfillmentRate);
             commandSequence.Clear();
+            rechargeRoutine = StartCoroutine(Recharge());
+        }
+
+        private IEnumerator Recharge()
+        {
+            isRecharging = true;
+            yield return new WaitForSeconds(rechargePeriod);
+            isRecharging = false;
         }
         
         private void InsertCommand(Command command)
         {
-            if (executionRoutine != null)
+            if (isRecharging || executionRoutine != null)
                 return;
             if (commandSequence == null)
                 DefineMaximumSlots();
-            else if (commandSequence.Count >= maxCommands)
+            else if (commandSequence.Count >= initialAvailableSlots)
                 return;
             commandSequence.Add(command);
             OnCommandLoaded.Invoke(command, commandSequence.Count - 1);
@@ -110,7 +125,7 @@ namespace Algorithm
 
         private IEnumerator ExecuteCoroutine()
         {
-            if (commandSequence == null || commandSequence.Count == 0)
+            if (isRecharging || commandSequence == null || commandSequence.Count == 0)
                 yield break;
             var currentExecutionIndex = 0;
             while (currentExecutionIndex < commandSequence.Count)

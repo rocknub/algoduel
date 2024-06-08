@@ -510,7 +510,18 @@
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard1;Keyboard2",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb71e870-05d2-41d0-b3d8-1ee2b15c3ec7",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

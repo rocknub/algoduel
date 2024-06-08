@@ -5,20 +5,26 @@ using UnityEngine;
 
 namespace Character
 {
-    public class PlayerRendering : MonoBehaviour
+    public class PlayerRendering : PlayerMonoBehaviour
     {
         [SerializeField] private Transform playerModel;
         [SerializeField] private float materialTweenPeriod;
         [SerializeField] private int materialTweenLoopCount;
         [SerializeField] private Color materialTweenColor;
         [SerializeField] private RendererTweener[] tweeners;
+        [Space] [SerializeField] 
+        private bool shouldModelStartDisabled;
         
         private List<Material[]> opaqueMaterials;
         private List<List<Material>> toBeTransparentMaterials;
-        
-        
 
-        private void Start()
+
+        private void Awake()
+        {
+            playerModel.gameObject.gameObject.SetActive(!shouldModelStartDisabled);
+        }
+
+        private void OnEnable()
         {
             GatherMaterials();
         }
@@ -49,6 +55,13 @@ namespace Character
             }
             materialSeq.OnComplete(action.Invoke);
             materialSeq.Play();
+        }
+
+        public void TryActivateModel(int index)
+        {
+            if (index != playerIndex)
+                return;
+            playerModel.gameObject.SetActive(true);
         }
     }
 }

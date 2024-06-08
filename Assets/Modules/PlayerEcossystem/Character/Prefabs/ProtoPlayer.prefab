@@ -320,6 +320,8 @@ GameObject:
   - component: {fileID: 5448912926202914875}
   - component: {fileID: 6842136227661519974}
   - component: {fileID: 1772257404405619685}
+  - component: {fileID: 7919040645433804368}
+  - component: {fileID: 207584689131413135}
   m_Layer: 0
   m_Name: ProtoPlayer
   m_TagString: Untagged
@@ -367,6 +369,8 @@ MonoBehaviour:
   <PlayerIndex>k__BackingField: 0
   <OnPlayerDamaged>k__BackingField: {fileID: 11400000, guid: 6a7ec03b63d3ad742ad5d62c366f4d82,
     type: 2}
+  <OnPlayerSuccessHit>k__BackingField: {fileID: 11400000, guid: 1c39d1f3708342f4098fc86fcc45071a,
+    type: 2}
 --- !u!114 &6628951969272852649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +390,12 @@ MonoBehaviour:
   defaultRotationAngle: 90
   fallEase: 3
   fallDuration: 0.5
+  useRandomRespawn: 1
+  randomRespawnOffsets:
+  - {x: 4, y: 0, z: 0}
+  - {x: -4, y: 0, z: 0}
+  - {x: 0, y: 0, z: 4}
+  - {x: 0, y: 0, z: -4}
   onTransformReset:
     m_PersistentCalls:
       m_Calls:
@@ -496,11 +506,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7455f0a272c436c9645ae0601a64c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   playerModel: {fileID: 133475258670953423}
   materialTweenPeriod: 0.5
   materialTweenLoopCount: 21
   materialTweenColor: {r: 0, g: 0, b: 0, a: 0}
   tweeners: []
+  shouldModelStartDisabled: 0
 --- !u!114 &1772257404405619685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,13 +525,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b0dc0e7ae64c24b1392da2563b1df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 0}
+  playerManager: {fileID: 5252160781291960402}
   maxVictories: 5
   <OnRoundWon>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
   <OnFinalVictory>k__BackingField: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
     type: 2}
+--- !u!114 &7919040645433804368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569953614892165268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6842136227661519974}
+        m_TargetAssemblyTypeName: Character.PlayerRendering, Assembly-CSharp
+        m_MethodName: TryActivateModel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5252160781291960402}
+        m_TargetAssemblyTypeName: Character.PlayerManager, Assembly-CSharp
+        m_MethodName: TrySetPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
+--- !u!114 &207584689131413135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569953614892165268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+    type: 2}
+  _event: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5252160781291960402}
+        m_TargetAssemblyTypeName: Character.PlayerManager, Assembly-CSharp
+        m_MethodName: TryDisable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8981026034697937206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4918657411698154231, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918657411698154231, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1859,6 +1958,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6425212157510577109, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+        type: 2}
     - target: {fileID: 6486929047852239924, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2061,6 +2166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7926005068099949488, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926005068099949488, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2069,6 +2179,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7998375979752942492, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 8038955132886132077, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
       propertyPath: m_AnchorMax.y

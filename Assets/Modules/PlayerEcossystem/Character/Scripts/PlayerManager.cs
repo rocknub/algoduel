@@ -9,7 +9,8 @@ namespace Character
     {
         [field: SerializeField] public int PlayerIndex { get; private set; }
         [field: SerializeField] public IntGameEvent OnPlayerDamaged { get; private set; }
-        
+        [field: SerializeField] private IntGameEvent OnPlayerSuccessHit { get; set; }
+
         public PlayerEnvironmentDetection EnvironmentDetection { get; private set; }
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }
@@ -17,6 +18,7 @@ namespace Character
         public PlayerVictoryCounter VictoryCounter { get; private set; }
         
         public bool IsInvulnerable { get; private set; }
+        public bool IsPlayerReady { get; private set; }
         
         
         private void Awake()
@@ -30,13 +32,13 @@ namespace Character
 
         private void OnEnable()
         {
-            OnPlayerDamaged.AddListener(VictoryCounter.TryCountVictory);
+            OnPlayerSuccessHit.AddListener(VictoryCounter.TryCountVictory);
         }
 
         private void OnDisable()
         {
-            OnPlayerDamaged.RemoveListener(VictoryCounter.TryCountVictory);
-            OnPlayerDamaged.RemoveAll();
+            OnPlayerSuccessHit.RemoveListener(VictoryCounter.TryCountVictory);
+            OnPlayerSuccessHit.RemoveAll();
         }
 
         public void ReceiveHit()
@@ -59,5 +61,32 @@ namespace Character
         } 
 
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
+
+        public void TryConcludeAttackSuccess(Collider collider)
+        {
+            if (collider.transform.parent.TryGetComponent(out PlayerManager hitManager) == false)
+            {
+                Debug.Log("No player found -> "  + collider.transform.parent.name);
+                return;
+            }
+            if (hitManager.PlayerIndex != PlayerIndex)
+            {
+                OnPlayerSuccessHit.Raise(PlayerIndex);
+            }
+        }
+
+        public void TrySetPlayerReady(int entryIndex)
+        {
+            if (IsPlayerReady)
+                return;
+            IsPlayerReady = entryIndex == PlayerIndex;
+        }
+        
+        //TODO: Colocar chamadas dependentes como callback disso
+        public void TryDisable()
+        {
+            if (IsPlayerReady == false)
+                gameObject.SetActive(false);
+        }
     }
 }

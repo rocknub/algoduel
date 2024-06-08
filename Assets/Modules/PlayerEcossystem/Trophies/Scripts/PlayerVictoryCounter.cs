@@ -17,12 +17,12 @@ namespace Character
         private void OnDisable()
         {
             OnRoundWon.RemoveAllListeners();
-            OnFinalVictory.RemoveAll();
+            // OnFinalVictory.RemoveAll();
         }
 
         public void TryCountVictory(int entryIndex)
         {
-            if (playerIndex == entryIndex)
+            if (playerIndex != entryIndex)
             {
                 return;
             }          
@@ -33,6 +33,7 @@ namespace Character
         {
             CurrentVictories++;
             OnRoundWon.Invoke(CurrentVictories);
+
             if (CurrentVictories >= maxVictories)
             {
                 OnFinalVictory.Raise(entryIndex);

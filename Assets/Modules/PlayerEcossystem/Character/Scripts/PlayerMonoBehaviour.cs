@@ -17,7 +17,15 @@ namespace Character
                 return playerManager;
             }
         }
-        
+
+        //TODO: Chamar getready por metodo abstrato
+        // protected void Start()
+        // {
+        //     PlayerManager.
+        // }
+
+        // protected abstract void SetPlayer(); 
+
         protected int playerIndex  => PlayerManager.PlayerIndex;
 
     }
