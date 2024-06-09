@@ -1,4 +1,5 @@
 ﻿using System;
+using Coffee.UIExtensions;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,8 +16,9 @@ namespace Character
         public PlayerMovement Movement { get; private set; }
         public PlayerFire Fire { get; private set; }
         public PlayerRendering Rendering { get; private set; }
+        public PlayerAnimation Animation { get; private set; }
         public PlayerVictoryCounter VictoryCounter { get; private set; }
-        
+
         public bool IsInvulnerable { get; private set; }
         public bool IsPlayerReady { get; private set; }
         
@@ -26,13 +28,20 @@ namespace Character
             EnvironmentDetection = GetComponent<PlayerEnvironmentDetection>();
             Rendering = GetComponent<PlayerRendering>();
             VictoryCounter = GetComponent<PlayerVictoryCounter>();
-            Movement = GetComponent<PlayerMovement>().SetManager(this) as PlayerMovement;
-            Fire = GetComponent<PlayerFire>().SetManager(this) as PlayerFire;
+            Animation = GetComponent<PlayerAnimation>().SetManager<PlayerAnimation>(this);
+            Movement = GetComponent<PlayerMovement>().SetManager<PlayerMovement>(this);
+            Fire = GetComponent<PlayerFire>().SetManager<PlayerFire>(this);
         }
 
         private void OnEnable()
         {
             OnPlayerSuccessHit.AddListener(VictoryCounter.TryCountVictory);
+            Movement.OnTranslation.AddListener(Animation.SetMoveAnimation);
+            Movement.OnRotation.AddListener(Animation.SetMoveAnimation);
+            Movement.OnFall.AddListener(Animation.SetFallAnimation);
+            Movement.OnTransformReset.AddListener(Animation.ResetAnimations);
+            Fire.OnReload.AddListener(Animation.ResetAnimations);
+            Fire.OnFireStart.AddListener(Animation.SetFireAnimation);
         }
 
         private void OnDisable()
@@ -66,7 +75,6 @@ namespace Character
         {
             if (collider.transform.parent.TryGetComponent(out PlayerManager hitManager) == false)
             {
-                Debug.Log("No player found -> "  + collider.transform.parent.name);
                 return;
             }
             if (hitManager.PlayerIndex != PlayerIndex)

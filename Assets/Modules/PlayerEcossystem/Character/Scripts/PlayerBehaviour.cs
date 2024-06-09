@@ -5,17 +5,16 @@ namespace Character
     public abstract class PlayerBehaviour : MonoBehaviour
     {
         protected PlayerManager manager;
-        public abstract bool IsActing();
 
-        public PlayerBehaviour SetManager(PlayerManager manager)
+        public T SetManager<T> (PlayerManager manager) where T : PlayerBehaviour
         {
             if (this.manager != null)
             {
                 Debug.LogWarning("Manager has already been set. It is " + manager.name);
-                return this;
+                return this as T;
             }
             this.manager = manager;
-            return this;
+            return this as T;
         }
     }
 }
