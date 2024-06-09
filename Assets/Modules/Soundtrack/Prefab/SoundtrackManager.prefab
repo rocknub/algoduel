@@ -48,7 +48,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d154890f808850e43907038b8c7b2a68, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -216,10 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c72e77b2f15480295c4cc598b72ef95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duelSoundtrack: {fileID: 8300000, guid: 941904e4abe616a4ca661b1b68563f35, type: 3}
-  duelTweenDuration: 1
-  initialVolume: 0.1
-  gameplayVolume: 0.2
+  duelSoundtrack: {fileID: 8300000, guid: d154890f808850e43907038b8c7b2a68, type: 3}
 --- !u!1 &5320668148315756434
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +289,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
+    type: 2}
   _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
   _response:
     m_PersistentCalls:
@@ -361,7 +359,7 @@ MonoBehaviour:
   sources:
   - {fileID: 144933519847946599}
   targetVolume:
-  - 0.2
+  - 1
   fadeOnAwake: 0
   unscaledTime: 0
 --- !u!114 &4193205713809735508
@@ -381,7 +379,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+    type: 2}
   _event: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
   _response:
     m_PersistentCalls:
@@ -449,6 +448,6 @@ MonoBehaviour:
   sources:
   - {fileID: 144933519847946599}
   targetVolume:
-  - 0.1
+  - 0.5
   fadeOnAwake: 1
   unscaledTime: 0

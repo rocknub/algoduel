@@ -2773,23 +2773,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 220606630441370365, guid: 8f2518f215024924780085774961aeb7,
+    - target: {fileID: 144933519847946599, guid: 8f2518f215024924780085774961aeb7,
         type: 3}
-      propertyPath: _previouslyRegisteredEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
-        type: 2}
+      propertyPath: Priority
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3349385663046748486, guid: 8f2518f215024924780085774961aeb7,
         type: 3}
       propertyPath: m_Name
       value: SoundtrackManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4193205713809735508, guid: 8f2518f215024924780085774961aeb7,
-        type: 3}
-      propertyPath: _previouslyRegisteredEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
-        type: 2}
     - target: {fileID: 8022077589950204417, guid: 8f2518f215024924780085774961aeb7,
         type: 3}
       propertyPath: m_LocalPosition.x
