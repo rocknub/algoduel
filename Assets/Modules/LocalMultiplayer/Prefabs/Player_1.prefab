@@ -140,6 +140,76 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6602799174567660409}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6602799174567660409}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFiringStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFiringStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Character.PlayerFire, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Character.PlayerFire, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onEndFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 198266039924654200, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onBeginFireAnimation.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 240719082339710020, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -863,3 +933,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1170856405033476930}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6602799174567660409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5448912926202914875, guid: e1f886133120c5f45b73785f4007adee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1170856405033476930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48814df51c4c46879686a3836d2e2586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,16 +12,12 @@ namespace Character
         [SerializeField] private float fireForce;
         [SerializeField] private ForceMode forceMode;
         [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private float fireDelay;
-        [SerializeField] private float reloadDuration;
         [SerializeField] private bool showGizmos;
         [Header("Pooling")]
         [SerializeField] private float poolingDelay;
         [Min(1)][SerializeField] private int projectilePoolSize;
         [Header("Events")]
-        [SerializeField] private UnityEvent onFireStart;
         [SerializeField] private UnityEvent<Projectile> onProjectileFired;
-        [SerializeField] private UnityEvent onReload;
 
         private bool isReloading;
         private bool isFiring;
@@ -30,45 +26,22 @@ namespace Character
 
         private Vector3 fireDirection => fireOrigin.forward;
 
-        public UnityEvent OnFireStart => onFireStart;
-        public UnityEvent<Projectile> OnProjectileFired => onProjectileFired;
-        public UnityEvent OnReload => onReload;
-
         private void Awake()
         {
             projectilePool = new Queue<Projectile>(projectilePoolSize);
         }
         
-        public bool IsActing() => isReloading || isFiring;
+        public bool IsActing() => isFiring;
 
         public void Fire()
         {
-            StartCoroutine(FireCoroutine());
-        }
-
-        public IEnumerator FireCoroutine()
-        {
-            isFiring = true;
-            onFireStart.Invoke();
-            yield return new WaitForSeconds(fireDelay);
-            
             var projectile = InstantiateOrReuseProjectile();
             projectile.transform.position = fireOrigin.position;
             projectile.transform.SetParent(null);
             projectile.Rigidbody.AddForce(fireDirection * fireForce, forceMode);
-            isFiring = false;
             
-            StartCoroutine(Reload());
             onProjectileFired.Invoke(projectile);
             StartCoroutine(PoolOnTime(projectile));
-        }
-        
-        private IEnumerator Reload()
-        {
-            isReloading = true;
-            yield return new WaitForSeconds(reloadDuration);
-            isReloading = false;
-            onReload.Invoke();
         }
 
         private IEnumerator PoolOnTime(Projectile projectile)
@@ -105,6 +78,11 @@ namespace Character
                 projectileRef.OnProjectileHit.AddListener(manager.TryConcludeAttackSuccess);
             }
             return projectileRef;
+        }
+
+        public void SetFiringStatus(bool value)
+        {
+            isFiring = value;
         }
 
         private void OnDrawGizmosSelected()

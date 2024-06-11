@@ -257,9 +257,9 @@ MonoBehaviour:
   OnExecution:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5448912926202914875}
-        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
-        m_MethodName: Fire
+      - m_Target: {fileID: 7967580139331344164}
+        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
+        m_MethodName: StartFireAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -320,7 +320,6 @@ GameObject:
   - component: {fileID: 5448912926202914875}
   - component: {fileID: 6842136227661519974}
   - component: {fileID: 1772257404405619685}
-  - component: {fileID: 3932730966202863327}
   - component: {fileID: 7919040645433804368}
   - component: {fileID: 207584689131413135}
   m_Layer: 0
@@ -390,6 +389,7 @@ MonoBehaviour:
   motionEase: 4
   defaultRotationAngle: 90
   fallEase: 3
+  fallInterval: 0
   fallDuration: 0.5
   useRandomRespawn: 1
   randomRespawnOffsets:
@@ -473,7 +473,6 @@ MonoBehaviour:
   forceMode: 1
   projectilePrefab: {fileID: 923279479316344094, guid: 8e7bc9fa926a6a341a6e54f71dc913c0,
     type: 3}
-  reloadDuration: 0.5
   showGizmos: 1
   poolingDelay: 1.5
   projectilePoolSize: 10
@@ -533,22 +532,6 @@ MonoBehaviour:
       m_Calls: []
   <OnFinalVictory>k__BackingField: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
     type: 2}
---- !u!114 &3932730966202863327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7569953614892165268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe9ba188023433ead6a75cadc0bbc27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5756645428583683165}
-  moveAnimName: IsMoving
-  fallAnimName: IsFalling
-  fireAnimName: IsFiring
 --- !u!114 &7919040645433804368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,6 +829,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5756645428583683165}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70de40a14d3a5994c81d9d89dcddea7d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7967580139331344164}
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: 70de40a14d3a5994c81d9d89dcddea7d,
         type: 3}
       insertIndex: -1
@@ -937,6 +924,67 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7967580139331344164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761640118297749877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe9ba188023433ead6a75cadc0bbc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5756645428583683165}
+  moveAnimName: IsMoving
+  fallAnimName: IsFalling
+  fireAnimName: IsFiring
+  onFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBeginFireAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: SetFiringStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onEndFireAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: SetFiringStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &998930482024277568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 70de40a14d3a5994c81d9d89dcddea7d,

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Character;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAnimation : PlayerBehaviour
 {
@@ -8,9 +10,13 @@ public class PlayerAnimation : PlayerBehaviour
     [SerializeField] private string moveAnimName;
     [SerializeField] private string fallAnimName;
     [SerializeField] private string fireAnimName;
+    [Header("Events")]
+    [SerializeField] private UnityEvent onFire;
+    [SerializeField] private UnityEvent onBeginFireAnimation;
+    [SerializeField] public UnityEvent onEndFireAnimation;
 
     private Coroutine moveRoutine;
-    
+
     public void SetMoveAnimation(MovementData movementData)
     {
         if (moveRoutine != null)
@@ -29,8 +35,9 @@ public class PlayerAnimation : PlayerBehaviour
         animator.SetBool(fallAnimName, true);
     }
 
-    public void SetFireAnimation()
+    public void StartFireAnimation()
     {
+        onBeginFireAnimation.Invoke();
         animator.SetBool(fireAnimName, true);
     }
 
@@ -39,5 +46,12 @@ public class PlayerAnimation : PlayerBehaviour
         animator.SetBool(moveAnimName, false);
         animator.SetBool(fallAnimName, false);
         animator.SetBool(fireAnimName, false);
+    }
+    
+    public UnityEvent OnFire => onFire;
+
+    public void Fire()
+    {
+        onFire.Invoke();
     }
 }
