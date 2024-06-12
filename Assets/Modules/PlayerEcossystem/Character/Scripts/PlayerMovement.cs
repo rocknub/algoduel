@@ -158,10 +158,11 @@ namespace Character
         }
         public IEnumerator FallRoutine()
         {
-            onFall.Invoke();
-            yield return new WaitForSeconds(fallInterval);
-            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration);
+            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).Pause();
             motionTween.OnComplete(manager.ReceiveHit);
+            yield return new WaitForSeconds(fallInterval);
+            motionTween.Play();
+            onFall.Invoke();
         }
 
         [ContextMenu("Update Target Position")]
