@@ -257,7 +257,7 @@ MonoBehaviour:
   OnExecution:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7967580139331344164}
+      - m_Target: {fileID: 4824005418371840058}
         m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
         m_MethodName: StartFireAnimation
         m_Mode: 1
@@ -342,6 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7086547963935258676}
   - {fileID: 133475258670953423}
   - {fileID: 8770770063629910876}
   - {fileID: 6644383245732462562}
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
-  playerModel: {fileID: 133475258670953423}
+  playerModel: {fileID: 7086547963935258676}
   materialTweenPeriod: 0.5
   materialTweenLoopCount: 21
   materialTweenColor: {r: 0, g: 0, b: 0, a: 0}
@@ -817,6 +818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PenguinModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70de40a14d3a5994c81d9d89dcddea7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1718,6 +1724,188 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7281096315654565260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7337138599795466207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532739057295432171}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0500002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalPenguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 16222d30f00fe244dbda31c404830c45,
+        type: 2}
+    - target: {fileID: 5866666021909216657, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 051953e664c1e3b49938175bafa7a705,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4824005418371840058}
+  m_SourcePrefab: {fileID: 100100000, guid: 051953e664c1e3b49938175bafa7a705, type: 3}
+--- !u!95 &3798879775303213646 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 051953e664c1e3b49938175bafa7a705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7337138599795466207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7086547963935258676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 051953e664c1e3b49938175bafa7a705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7337138599795466207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7571581762012226190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 051953e664c1e3b49938175bafa7a705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7337138599795466207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4824005418371840058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571581762012226190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe9ba188023433ead6a75cadc0bbc27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3798879775303213646}
+  moveAnimName: IsMoving
+  fallAnimName: IsFalling
+  fireAnimName: IsFiring
+  onFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBeginFireAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: SetFiringStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onEndFireAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5448912926202914875}
+        m_TargetAssemblyTypeName: Character.PlayerFire, Assembly-CSharp
+        m_MethodName: SetFiringStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &7974158772032448500
 PrefabInstance:
   m_ObjectHideFlags: 0

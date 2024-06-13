@@ -40,8 +40,6 @@ namespace Character
             Movement.OnRotation.AddListener(Animation.SetMoveAnimation);
             Movement.OnFall.AddListener(Animation.SetFallAnimation);
             Movement.OnTransformReset.AddListener(Animation.ResetAnimations);
-            // Fire.OnReload.AddListener(Animation.ResetAnimations);
-            // Fire.OnFireStart.AddListener(Animation.SetFireAnimation);
         }
 
         private void OnDisable()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6765514743659422143}
   - component: {fileID: 4539421764869507658}
   - component: {fileID: 6299666311038163347}
+  - component: {fileID: 2243607700643124905}
   m_Layer: 0
   m_Name: MultiplayerManager
   m_TagString: Untagged
@@ -134,6 +135,40 @@ MonoBehaviour:
   OnPlayersReady: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59, type: 2}
   OnPlayerLimitReached: {fileID: 11400000, guid: d82fbaecc59e359448f6b24e62ba1cd8,
     type: 2}
+--- !u!114 &2243607700643124905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276326552802909974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: d82fbaecc59e359448f6b24e62ba1cd8, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3111376436135346923
 GameObject:
   m_ObjectHideFlags: 0
