@@ -50,8 +50,8 @@ Material:
     - _RefractionAmout: -0.52
     - _Smootheness: 1
     m_Colors:
-    - _Color: {r: 0.08271327, g: 0.52810436, b: 1.3488619, a: 0}
-    - _FresnalColor: {r: 0.5028527, g: 3.1847456, b: 4.634989, a: 0}
+    - _Color: {r: 0.13586682, g: 0.12972555, b: 1.2062207, a: 0}
+    - _FresnalColor: {r: 1.6858639, g: 1.9962909, b: 4.1175475, a: 0}
     - _IceTiling: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1291004095680932953
