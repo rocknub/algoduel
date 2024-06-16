@@ -835,6 +835,36 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a4e505ecc2f96994f85a9c8fd60cac69, type: 2}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[0].x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[1].z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[2].x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[2].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[3].x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: randomRespawnOffsets.Array.data[3].z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6851462738200875466, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_AnchorMax.y
