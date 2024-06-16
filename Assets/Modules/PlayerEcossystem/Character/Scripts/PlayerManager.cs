@@ -65,6 +65,13 @@ namespace Character
                 return;
             GameManager.Instance.PauseGame();  
         } 
+        
+        public void TryResetGame(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed == false)
+                return;
+            GameManager.Instance.EndGame();  
+        } 
 
         public bool CanAct => Movement.IsActing() == false && Fire.IsActing() == false;
 
