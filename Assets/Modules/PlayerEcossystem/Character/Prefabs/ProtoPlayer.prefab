@@ -393,7 +393,7 @@ MonoBehaviour:
   fallDuration: 0.5
   afterFallHeight: 20
   landingDuration: 1
-  landEase: 2
+  landEase: 17
   useRandomRespawn: 1
   randomRespawnOffsets:
   - {x: 4, y: 0, z: 0}
@@ -446,7 +446,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   onFall:
     m_PersistentCalls:

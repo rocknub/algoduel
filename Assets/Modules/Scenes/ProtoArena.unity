@@ -1564,16 +1564,6 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 2269046536207731633, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
-      propertyPath: fallEase
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2269046536207731633, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
-      propertyPath: landEase
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2269046536207731633, guid: add96daa01a4d3041aa94295fcb4e750,
-        type: 3}
       propertyPath: randomRespawnOffsets.Array.data[4].z
       value: 0
       objectReference: {fileID: 0}

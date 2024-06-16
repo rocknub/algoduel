@@ -779,6 +779,11 @@ PrefabInstance:
       propertyPath: debugDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onTrip.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6842136227661519974, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: shouldModelStartDisabled
