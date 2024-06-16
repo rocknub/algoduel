@@ -29,6 +29,7 @@ namespace Character
         [SerializeField] private UnityEvent onTransformReset;
         [SerializeField] private UnityEvent<MovementData> onTranslation;
         [SerializeField] private UnityEvent<MovementData> onRotation;
+        [SerializeField] private UnityEvent onTrip;
         [SerializeField] private UnityEvent onFall;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
@@ -160,6 +161,7 @@ namespace Character
         {
             motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).Pause();
             motionTween.OnComplete(ResetTransform);
+            onTrip.Invoke();
             yield return new WaitForSeconds(fallInterval);
             motionTween.Play();
             onFall.Invoke();

@@ -389,7 +389,7 @@ MonoBehaviour:
   motionEase: 4
   defaultRotationAngle: 90
   fallEase: 3
-  fallInterval: 0
+  fallInterval: 0.5
   fallDuration: 0.5
   useRandomRespawn: 1
   randomRespawnOffsets:
@@ -418,6 +418,21 @@ MonoBehaviour:
   onRotation:
     m_PersistentCalls:
       m_Calls: []
+  onTrip:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4824005418371840058}
+        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
+        m_MethodName: BeginFallAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onFall:
     m_PersistentCalls:
       m_Calls:
@@ -433,18 +448,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 4824005418371840058}
+        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
+        m_MethodName: EndFallAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
   showGizmos: 1
   debugDirection: 0
 --- !u!114 &6473101205355555385
@@ -1525,6 +1540,8 @@ MonoBehaviour:
   hitAnimName: hitTrigger
   winAnimName: winTrigger
   loseAnimName: loseTrigger
+  beginFallAnimName: beginFall
+  endFallAnimName: endFall
   onFire:
     m_PersistentCalls:
       m_Calls:

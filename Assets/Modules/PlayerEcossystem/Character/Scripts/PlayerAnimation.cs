@@ -13,6 +13,8 @@ public class PlayerAnimation : PlayerBehaviour
     [SerializeField] private string hitAnimName;
     [SerializeField] private string winAnimName;
     [SerializeField] private string loseAnimName;
+    [SerializeField] private string beginFallAnimName;
+    [SerializeField] private string endFallAnimName;
     [Header("Events")]
     [SerializeField] private UnityEvent onFire;
     [SerializeField] private UnityEvent onBeginFireAnimation;
@@ -38,6 +40,16 @@ public class PlayerAnimation : PlayerBehaviour
         animator.SetBool(fallAnimName, true);
     }
 
+    public void BeginFallAnimation()
+    {
+        animator.SetTrigger(beginFallAnimName);
+    }
+    
+    public void EndFallAnimation()
+    {
+        animator.SetTrigger(endFallAnimName);
+    }
+    
     public void StartFireAnimation()
     {
         onBeginFireAnimation.Invoke();
