@@ -50,7 +50,6 @@ namespace Character
 
         public void ReceiveHit()
         {
-
             Movement.ResetTransform();
             OnPlayerDamaged.Raise(PlayerIndex);
             if (IsInvulnerable)

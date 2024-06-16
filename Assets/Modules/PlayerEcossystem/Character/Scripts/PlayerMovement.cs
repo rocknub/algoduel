@@ -159,10 +159,11 @@ namespace Character
         public IEnumerator FallRoutine()
         {
             motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).Pause();
-            motionTween.OnComplete(manager.ReceiveHit);
+            motionTween.OnComplete(ResetTransform);
             yield return new WaitForSeconds(fallInterval);
             motionTween.Play();
             onFall.Invoke();
+            Debug.Log("Fall");
         }
 
         [ContextMenu("Update Target Position")]
