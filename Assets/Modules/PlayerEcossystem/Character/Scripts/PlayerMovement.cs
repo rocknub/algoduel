@@ -19,10 +19,14 @@ namespace Character
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
         [SerializeField] private float defaultRotationAngle = 90f;
-        [Header("Uncontrolled Movements")]
+        [Header("Fall and Landing")]
         [SerializeField] private Ease fallEase;
         [SerializeField] private float fallInterval;
         [SerializeField] private float fallDuration;
+        [SerializeField] private float afterFallHeight;
+        [SerializeField] private float landingDuration;
+        [SerializeField] private Ease landEase;
+        [Header("Respawn Movements")]
         [SerializeField] private bool useRandomRespawn;
         [SerializeField] private Vector3[] randomRespawnOffsets;
         [Header("Events")]
@@ -31,6 +35,7 @@ namespace Character
         [SerializeField] private UnityEvent<MovementData> onRotation;
         [SerializeField] private UnityEvent onTrip;
         [SerializeField] private UnityEvent onFall;
+        [SerializeField] private UnityEvent onLand;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
         [SerializeField] private CardinalDirection debugDirection;
@@ -159,13 +164,23 @@ namespace Character
         }
         public IEnumerator FallRoutine()
         {
-            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).Pause();
-            motionTween.OnComplete(ResetTransform);
+            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).SetEase(fallEase).Pause();
+            motionTween.OnComplete(LandRoutine);
             onTrip.Invoke();
             yield return new WaitForSeconds(fallInterval);
             motionTween.Play();
             onFall.Invoke();
-            Debug.Log("Fall");
+        }
+
+        public void LandRoutine()
+        {
+            ResetTransform();
+            var originalPosition = transform.position;
+            var landingStartPos = originalPosition;
+            landingStartPos.y += afterFallHeight;
+            transform.position = landingStartPos;
+            motionTween = transform.DOMoveY(originalPosition.y, landingDuration).SetEase(landEase);
+            motionTween.OnComplete(onLand.Invoke);
         }
 
         [ContextMenu("Update Target Position")]

@@ -35,9 +35,9 @@ public class PlayerAnimation : PlayerBehaviour
         animator.SetBool(moveAnimName, false);
     }
 
-    public void SetFallAnimation()
+    public void SetFallAnimation(bool value)
     {
-        animator.SetBool(fallAnimName, true);
+        animator.SetBool(fallAnimName, value);
     }
 
     public void BeginFallAnimation()
@@ -80,7 +80,7 @@ public class PlayerAnimation : PlayerBehaviour
     public void ResetAnimations()
     {
         animator.SetBool(moveAnimName, false);
-        animator.SetBool(fallAnimName, false);
+        // animator.SetBool(fallAnimName, false);
         animator.SetBool(fireAnimName, false);
     }
     

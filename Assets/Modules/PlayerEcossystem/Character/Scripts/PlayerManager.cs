@@ -38,7 +38,7 @@ namespace Character
             OnPlayerSuccessHit.AddListener(VictoryCounter.TryCountVictory);
             Movement.OnTranslation.AddListener(Animation.SetMoveAnimation);
             Movement.OnRotation.AddListener(Animation.SetMoveAnimation);
-            Movement.OnFall.AddListener(Animation.SetFallAnimation);
+            // Movement.OnFall.AddListener(Animation.SetFallAnimation);
             Movement.OnTransformReset.AddListener(Animation.ResetAnimations);
         }
 
