@@ -165,7 +165,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7761764377556243360}
+      - m_Target: {fileID: 7569625400422036352}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -375,15 +375,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7390691182973594860}
     m_Modifications:
+    - target: {fileID: 4327207521837289325, guid: b1a5f87a8428cbb4cb7966658567b496,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355028485318042757, guid: b1a5f87a8428cbb4cb7966658567b496,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4356780303931524499, guid: b1a5f87a8428cbb4cb7966658567b496,
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8476435450391029842, guid: b1a5f87a8428cbb4cb7966658567b496,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8491995678025231462, guid: b1a5f87a8428cbb4cb7966658567b496,
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492840260893187388, guid: b1a5f87a8428cbb4cb7966658567b496,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8493313393373109348, guid: b1a5f87a8428cbb4cb7966658567b496,
         type: 3}
@@ -465,9 +485,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1a5f87a8428cbb4cb7966658567b496, type: 3}
---- !u!1 &7761764377556243360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8582097823250335858, guid: b1a5f87a8428cbb4cb7966658567b496,
+--- !u!198 &7569625400422036352 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8476435450391029842, guid: b1a5f87a8428cbb4cb7966658567b496,
     type: 3}
   m_PrefabInstance: {fileID: 2066852148137171922}
   m_PrefabAsset: {fileID: 0}
@@ -768,6 +788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: IceBigExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849757244293993475, guid: 780d17f39011b6b4f8c35f236a80b2c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

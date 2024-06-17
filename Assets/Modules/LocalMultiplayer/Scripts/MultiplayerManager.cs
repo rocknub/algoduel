@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ScriptableObjectArchitecture;
@@ -16,18 +17,22 @@ public class MultiplayerManager : MonoBehaviour
     public InputActionReference conclusionAction;
     public bool recycleDeviceScheme;
     public string[] recycleExceptionSchemes;
-
+    public float inputInterval;
+    
     [Header("Game Events")] 
     [SerializeField] private IntGameEvent OnControlUserPrePaired;
     [SerializeField] private GameEvent OnPairingConcluded;
     [SerializeField] private GameEvent OnPlayersReady;
     [SerializeField] private GameEvent OnPlayerLimitReached;
+    [SerializeField] private GameEvent OnInputIntervalFinished;
 
     private int playerIndex = 0;
     private InputDevice keyboardDevice;
     private List<Tuple<InputUser, InputDevice>> prePairedUsersAndDevices;
 
-    private bool CanConcludeUserDevicePairing => playerIndex >= minNecessaryPlayers;
+    private bool isTimerOn;
+    
+    private bool CanConcludeUserDevicePairing => isTimerOn == false && playerIndex >= minNecessaryPlayers;
 
     private void Awake()
     {
@@ -79,6 +84,8 @@ public class MultiplayerManager : MonoBehaviour
             return;
         if (InputMethods.TryGetBinding(control, inputAction.action, out var foundBinding) == false)
             return;
+        if (isTimerOn)
+            return;
 
         if (recycleDeviceScheme == false)
         {
@@ -115,6 +122,7 @@ public class MultiplayerManager : MonoBehaviour
         prePairedUsersAndDevices.Add(new Tuple<InputUser, InputDevice>(user, device));
         user.ActivateControlScheme(binding.groups);
         OnControlUserPrePaired.Raise(playerIndex);
+        StartCoroutine(SetIntervalCoroutine(device));
     }
 
     private void ConcludeUserDevicePairing()
@@ -172,5 +180,15 @@ public class MultiplayerManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator SetIntervalCoroutine(InputDevice device)
+    {
+        (device as Gamepad)?.SetMotorSpeeds(0.25f, 0.75f);
+        isTimerOn = true;
+        yield return new WaitForSeconds(inputInterval);
+        isTimerOn = false;
+        (device as Gamepad)?.SetMotorSpeeds(0.0f, 0.0f);
+        OnPlayerLimitReached.Raise();
     }
 }

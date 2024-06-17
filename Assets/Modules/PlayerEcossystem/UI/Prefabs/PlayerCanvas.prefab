@@ -349,11 +349,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3844502771761225773, guid: e65fb0233a48a54459de276c171911c7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.5019608
-      objectReference: {fileID: 0}
     - target: {fileID: 6947253645906111764, guid: e65fb0233a48a54459de276c171911c7,
         type: 3}
       propertyPath: onPanelRetracted.m_PersistentCalls.m_Calls.Array.data[0].m_Target

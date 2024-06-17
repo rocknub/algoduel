@@ -2147,6 +2147,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7190552898745130422, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 7824742240544326649, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
       propertyPath: m_Pivot.x

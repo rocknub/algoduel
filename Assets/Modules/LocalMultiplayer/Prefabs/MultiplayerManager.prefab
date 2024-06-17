@@ -129,11 +129,14 @@ MonoBehaviour:
   recycleExceptionSchemes:
   - Gamepad
   - Joystick
+  inputInterval: 2
   OnControlUserPrePaired: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
     type: 2}
   OnPairingConcluded: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
   OnPlayersReady: {fileID: 11400000, guid: ac9aa5a9f5ba1264aad95b3bb238aa59, type: 2}
   OnPlayerLimitReached: {fileID: 11400000, guid: d82fbaecc59e359448f6b24e62ba1cd8,
+    type: 2}
+  OnInputIntervalFinished: {fileID: 11400000, guid: f15ab4c6f5fa3c947b97046a89d48007,
     type: 2}
 --- !u!114 &2243607700643124905
 MonoBehaviour:

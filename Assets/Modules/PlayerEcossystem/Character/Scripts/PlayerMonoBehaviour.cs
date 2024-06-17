@@ -13,9 +13,15 @@ namespace Character
             get
             {
                 if (playerManager != null) return playerManager;
-                playerManager = GetComponentInParent<PlayerManager>();
+                SetPlayerManager();
                 return playerManager;
             }
+        }
+
+        [ContextMenu("Set Player Manager")]
+        private void SetPlayerManager()
+        {
+            playerManager = GetComponentInParent<PlayerManager>();
         }
 
         //TODO: Chamar getready por metodo abstrato

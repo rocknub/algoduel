@@ -1405,6 +1405,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1558297838928096777, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 1559072321741544416, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1435,6 +1441,12 @@ PrefabInstance:
       propertyPath: _previouslyRegisteredEvent
       value: 
       objectReference: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+        type: 2}
+    - target: {fileID: 1570499908610404813, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
         type: 2}
     - target: {fileID: 1608495153606643600, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
@@ -1662,6 +1674,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2562575569459235837, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 2829867398048003192, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1827,6 +1845,12 @@ PrefabInstance:
       propertyPath: _previouslyRegisteredEvent
       value: 
       objectReference: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+        type: 2}
+    - target: {fileID: 3371922372240402053, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
         type: 2}
     - target: {fileID: 3412105458587886853, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
@@ -2467,6 +2491,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6130696116119685656, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 6154881335996357108, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: _previouslyRegisteredEvent
@@ -2498,6 +2528,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6160710274174064092, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 6231043575774716859, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2789,6 +2825,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7144025009185976300, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 7155610375973799361, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2955,6 +2997,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7962308660198883988, guid: add96daa01a4d3041aa94295fcb4e750,
+        type: 3}
+      propertyPath: _previouslyRegisteredEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9,
+        type: 2}
     - target: {fileID: 8031278833393409103, guid: add96daa01a4d3041aa94295fcb4e750,
         type: 3}
       propertyPath: m_IsActive
