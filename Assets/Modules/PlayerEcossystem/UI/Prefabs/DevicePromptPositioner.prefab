@@ -131,6 +131,7 @@ MonoBehaviour:
   onNegativeCallback:
     m_PersistentCalls:
       m_Calls: []
+  playerIndexOffset: 0
 --- !u!114 &8357829971374029328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +253,9 @@ GameObject:
   - component: {fileID: 5992120260461240516}
   - component: {fileID: 7631939018350239056}
   - component: {fileID: 6345370176978680777}
+  - component: {fileID: 2079169686683690428}
+  - component: {fileID: 7317999301721912338}
+  - component: {fileID: 3351179934217943103}
   m_Layer: 5
   m_Name: PlayerLabel
   m_TagString: Untagged
@@ -316,7 +320,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -376,6 +380,97 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2079169686683690428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280694253741742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75d0e64ee802bf4aaaf3d385da353d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  easeType: 3
+  loopCount: 0
+  loopType: 0
+  graphics:
+  - {fileID: 6345370176978680777}
+  - {fileID: 3595352758896534904}
+  targetAlphas:
+  - 1
+  - 1
+  fadeOnAwake: 0
+  unscaledTime: 0
+--- !u!114 &7317999301721912338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280694253741742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0758912399345e39b8c09dde9d94b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
+  onPositiveCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2079169686683690428}
+        m_TargetAssemblyTypeName: GraphicsFader, Assembly-CSharp
+        m_MethodName: StartFade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onNegativeCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  playerIndexOffset: -1
+--- !u!114 &3351179934217943103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280694253741742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 70fb6969a7c21f748b1c05be5bbaddd9, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7317999301721912338}
+        m_TargetAssemblyTypeName: PlayerCallbackTrigger, Assembly-CSharp
+        m_MethodName: TriggerCallbacks
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &5847030890004281387
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +620,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
