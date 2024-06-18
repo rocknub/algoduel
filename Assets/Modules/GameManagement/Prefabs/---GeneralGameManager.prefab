@@ -48,6 +48,7 @@ MonoBehaviour:
   freezeDuration: 2
   pauseThreshold: 0.01
   onGamePauseToggle: {fileID: 11400000, guid: dbf5e6d672985834a9fa3965e3535f15, type: 2}
+  onEndGame: {fileID: 11400000, guid: 0756cc40220f87a4588ae308ad357904, type: 2}
 --- !u!114 &1010454302868174262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +66,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76,
+    type: 2}
   _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
   _response:
     m_PersistentCalls:

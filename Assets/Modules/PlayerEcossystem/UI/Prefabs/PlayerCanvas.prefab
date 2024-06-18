@@ -349,6 +349,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3280694253741742156, guid: e65fb0233a48a54459de276c171911c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595352758896534904, guid: e65fb0233a48a54459de276c171911c7,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345370176978680777, guid: e65fb0233a48a54459de276c171911c7,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947253645906111764, guid: e65fb0233a48a54459de276c171911c7,
+        type: 3}
+      propertyPath: movementDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6947253645906111764, guid: e65fb0233a48a54459de276c171911c7,
         type: 3}
       propertyPath: onPanelRetracted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -721,7 +741,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1,
+    type: 2}
   _event: {fileID: 11400000, guid: 36b5a8eb3384e034f83c7e56870f1ca1, type: 2}
   _response:
     m_PersistentCalls:

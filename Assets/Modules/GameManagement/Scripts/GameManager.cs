@@ -13,6 +13,7 @@ public class GameManager : MonoSingleton<GameManager>
     public float pauseThreshold = 0.01f;
     public bool isGamePaused => Time.timeScale < pauseThreshold;
     [SerializeField] private BoolGameEvent onGamePauseToggle;
+    [SerializeField] private GameEvent onEndGame;
 
     private Coroutine endGameRoutine;
     private Camera camera;
@@ -36,6 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
     
     private IEnumerator FreezeGameCoroutine()
     {
+        onEndGame.Raise();
         float originalTimeScale = Time.timeScale;
         float elapsedTime = 0;
         

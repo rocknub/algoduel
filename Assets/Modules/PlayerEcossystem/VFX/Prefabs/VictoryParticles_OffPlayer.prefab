@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   startDisabled: 1
+  startEnabled: 0
   gameObjects:
   - {fileID: 6927733451842451621}
   delayTimes:
@@ -125,11 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4612905027188246, guid: 7eb8f523cb26ac047a04fb50bb44bdcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.17
+      value: 8.85
       objectReference: {fileID: 0}
     - target: {fileID: 4612905027188246, guid: 7eb8f523cb26ac047a04fb50bb44bdcd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.500357
+      value: 58.96
       objectReference: {fileID: 0}
     - target: {fileID: 4612905027188246, guid: 7eb8f523cb26ac047a04fb50bb44bdcd, type: 3}
       propertyPath: m_LocalRotation.w

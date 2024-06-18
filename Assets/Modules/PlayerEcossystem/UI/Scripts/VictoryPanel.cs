@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Character;
 using DG.Tweening;
+using ScriptableObjectArchitecture;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class VictoryPanel : PlayerMonoBehaviour

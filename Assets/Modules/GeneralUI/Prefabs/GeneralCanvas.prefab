@@ -1067,7 +1067,7 @@ MonoBehaviour:
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
   _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 1d7d181e2c9fd424ca554d25f6af3b76, type: 2}
+  _event: {fileID: 11400000, guid: 0756cc40220f87a4588ae308ad357904, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bec5755ff157e9042a4ad44ec2cab3a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4646b9eab53e224288ba38e286fbc00, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

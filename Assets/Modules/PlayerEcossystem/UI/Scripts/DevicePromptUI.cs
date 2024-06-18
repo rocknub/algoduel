@@ -15,9 +15,9 @@ namespace PlayerEcossystem.UI
         [SerializeField] private TMP_Text promptMesh;
         [SerializeField] private Graphic[] gameplayOnlyGraphics;
         [SerializeField] private string inputRequestText;
-        [FormerlySerializedAs("inputConfirmationText")] [SerializeField] private string waitingText;
+        [SerializeField] private string waitingText;
         [SerializeField] private string gameStartText;
-        [FormerlySerializedAs("invertPanelMovement")] [SerializeField] private bool invertPanelMovementX;
+        [SerializeField] private bool invertPanelMovementX;
         [SerializeField] private bool invertPanelMovementY;
         [SerializeField] private float movementDuration;
         [SerializeField] private UnityEvent onPanelRetracted;
@@ -53,8 +53,12 @@ namespace PlayerEcossystem.UI
             }
         }
 
-        public void SetConclusionText()
+        public void SetConclusionText(int entryIndex)
         {
+            if (entryIndex < 1)
+                return;
+            if (entryIndex != playerIndex)
+                return;
             promptMesh.SetText(gameStartText);
         }
 
@@ -63,7 +67,7 @@ namespace PlayerEcossystem.UI
             var targetPosition = Vector3.zero;
             targetPosition.x = rectT.position.x + Screen.width / 2 * (invertPanelMovementX ? -1 : 1);
             targetPosition.y = rectT.position.y + Screen.height / 2 * (invertPanelMovementY ? -1 : 1);
-            rectT.DOMove(targetPosition, movementDuration)
+            rectT.DOMove(targetPosition, movementDuration).SetUpdate(UpdateType.Normal, true)
                 .OnComplete(onPanelRetracted.Invoke);
         }
     }

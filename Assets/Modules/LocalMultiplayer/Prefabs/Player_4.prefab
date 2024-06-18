@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7789700443764897159}
+  - component: {fileID: 4453493899083073981}
   m_Layer: 0
   m_Name: Player_4
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   - {fileID: 8585880917631629187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4453493899083073981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444029094351247589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1416cb2a5046a4a566c96bf93a9311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallArenaPos: {x: 2.08, y: 10.8, z: -1.2}
+  bigArenaPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &4735246190869884027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,6 +125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931643595377364933, guid: 2e37fd886ba48ff46b0e7e885fef621c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.9
       objectReference: {fileID: 0}
     - target: {fileID: 6931643595377364933, guid: 2e37fd886ba48ff46b0e7e885fef621c,
         type: 3}
@@ -225,16 +245,51 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94d9810d351f40c48b4fe32ee28df514, type: 2}
+    - target: {fileID: 888567125616419259, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b20eb3e8be927c64ea388a61049f65a6, type: 2}
     - target: {fileID: 939984003157251067, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1089274189218691332, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b20eb3e8be927c64ea388a61049f65a6, type: 2}
     - target: {fileID: 1202155918356367841, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1225745604176616001, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d7533d990420584fa6971aa98acc001, type: 2}
+    - target: {fileID: 1225745604176616001, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9aa0bbc9ab809b1429759fcc1afb2781, type: 2}
+    - target: {fileID: 1225745604176616001, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b20eb3e8be927c64ea388a61049f65a6, type: 2}
+    - target: {fileID: 1225745604176616001, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94d9810d351f40c48b4fe32ee28df514, type: 2}
+    - target: {fileID: 1229528771517327542, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9aa0bbc9ab809b1429759fcc1afb2781, type: 2}
     - target: {fileID: 1266622667719565247, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -1014,6 +1069,11 @@ PrefabInstance:
       propertyPath: debugDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6628951969272852649, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: onTrip.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6842136227661519974, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: shouldModelStartDisabled
@@ -1079,6 +1139,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286344607475521543, guid: e1f886133120c5f45b73785f4007adee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9aa0bbc9ab809b1429759fcc1afb2781, type: 2}
     - target: {fileID: 7377951367086527554, guid: e1f886133120c5f45b73785f4007adee,
         type: 3}
       propertyPath: m_Name

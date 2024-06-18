@@ -12,7 +12,7 @@ namespace Algorithm
     public class Algorithm : PlayerMonoBehaviour
     {
         [SerializeField] private int maximumSlots;
-        [FormerlySerializedAs("maxCommands")] [SerializeField] private int initialAvailableSlots;
+        [SerializeField] private int initialAvailableSlots;
         [SerializeField] private int maximumIncrementStep;
         [SerializeField] private float rechargePeriod;
         [SerializeField] private Transform commandsParent;
@@ -67,7 +67,14 @@ namespace Algorithm
             initialAvailableSlots = maximum.Value;
         }
 
-        [ContextMenu("Increment Maximum Slots")]
+        [ContextMenu("Set To Maximum Slots")]
+        private void DebugSetToMaximumSlots()
+        {
+            if (Application.isPlaying == false || Application.isEditor == false)
+                return;
+            DefineMaximumSlots(maximumSlots);
+        }
+
         public void IncrementMaximumSlots(int incrementValue) => DefineMaximumSlots(initialAvailableSlots + incrementValue);
 
         public void TryIncrementMaximumSlots(int entryIndex)

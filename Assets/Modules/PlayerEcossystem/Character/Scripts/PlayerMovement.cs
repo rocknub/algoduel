@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -9,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace Character
 {
-    public class PlayerMovement : PlayerBehaviour
+    public class PlayerMovement : PlayerBehaviour, IPlayerActor
     {
         //TODO(Marlus - Maybe) Create a grid to calculate distance
         [Header("Directed Movements")]
@@ -17,17 +18,24 @@ namespace Character
         [SerializeField] private float translationDistanceAlternate;
         [SerializeField] private float defaultMotionDuration;
         [SerializeField] private Ease motionEase;
-        [FormerlySerializedAs("rotationAngle")] [SerializeField] private float defaultRotationAngle = 90f;
-        [Header("Uncontrolled Movements")]
+        [SerializeField] private float defaultRotationAngle = 90f;
+        [Header("Fall and Landing")]
         [SerializeField] private Ease fallEase;
+        [SerializeField] private float fallInterval;
         [SerializeField] private float fallDuration;
+        [SerializeField] private float afterFallHeight;
+        [SerializeField] private float landingDuration;
+        [SerializeField] private Ease landEase;
+        [Header("Respawn Movements")]
         [SerializeField] private bool useRandomRespawn;
         [SerializeField] private Vector3[] randomRespawnOffsets;
         [Header("Events")]
-        [FormerlySerializedAs("OnTransformReset")] [SerializeField] private UnityEvent onTransformReset;
+        [SerializeField] private UnityEvent onTransformReset;
         [SerializeField] private UnityEvent<MovementData> onTranslation;
         [SerializeField] private UnityEvent<MovementData> onRotation;
+        [SerializeField] private UnityEvent onTrip;
         [SerializeField] private UnityEvent onFall;
+        [SerializeField] private UnityEvent onLand;
         [Header("Debug")] 
         [SerializeField] private bool showGizmos = true;
         [SerializeField] private CardinalDirection debugDirection;
@@ -36,6 +44,11 @@ namespace Character
         private Vector3 targetPosition;
         private List<Vector3> respawnList;
         private PlayerEnvironmentDetection envDetection => manager.EnvironmentDetection;
+        
+        public UnityEvent<MovementData> OnTranslation => onTranslation;
+        public UnityEvent<MovementData> OnRotation => onRotation;
+        public UnityEvent OnFall => onFall;
+        public UnityEvent OnTransformReset => onTransformReset;
 
         private void OnValidate()
         {
@@ -47,7 +60,7 @@ namespace Character
             UpdateTargetPosition();
         }
         
-        public override bool IsActing() => motionTween is { active: true };
+        public bool IsActing() => motionTween is { active: true };
 
         [ContextMenu("Debug Coordinates")]
         private void DebugCoordinates()
@@ -147,9 +160,27 @@ namespace Character
         {
             if (envDetection.IsAboveGround())
                 return;
+            StartCoroutine(FallRoutine());
+        }
+        public IEnumerator FallRoutine()
+        {
+            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration).SetEase(fallEase).Pause();
+            motionTween.OnComplete(LandRoutine);
+            onTrip.Invoke();
+            yield return new WaitForSeconds(fallInterval);
+            motionTween.Play();
             onFall.Invoke();
-            motionTween = transform.DOMoveY(transform.position.y - 20f, fallDuration);
-            motionTween.OnComplete(manager.ReceiveHit);
+        }
+
+        public void LandRoutine()
+        {
+            ResetTransform();
+            var originalPosition = transform.position;
+            var landingStartPos = originalPosition;
+            landingStartPos.y += afterFallHeight;
+            transform.position = landingStartPos;
+            motionTween = transform.DOMoveY(originalPosition.y, landingDuration).SetEase(landEase);
+            motionTween.OnComplete(onLand.Invoke);
         }
 
         [ContextMenu("Update Target Position")]
@@ -182,6 +213,14 @@ namespace Character
             transform.SetLocalPositionAndRotation(respawnPosition, Quaternion.identity);
             UpdateTargetPosition();
             onTransformReset.Invoke();
+        }
+
+        private void OnDisable()
+        { 
+            onTransformReset.RemoveAllListeners();
+            onTranslation.RemoveAllListeners();
+            onRotation.RemoveAllListeners();
+            onFall.RemoveAllListeners();        
         }
 
         private void OnDrawGizmosSelected()
