@@ -184,7 +184,7 @@ public class MultiplayerManager : MonoBehaviour
 
     private IEnumerator SetIntervalCoroutine(InputDevice device)
     {
-        (device as Gamepad)?.SetMotorSpeeds(0.25f, 0.75f);
+        (device as Gamepad)?.SetMotorSpeeds(0.5f, 0.5f);
         isTimerOn = true;
         yield return new WaitForSeconds(inputInterval);
         isTimerOn = false;

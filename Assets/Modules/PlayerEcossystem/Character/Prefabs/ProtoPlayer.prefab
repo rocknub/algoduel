@@ -857,6 +857,11 @@ PrefabInstance:
       objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
         type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 5252160781291960402}
+    - target: {fileID: 849987415896568543, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
       propertyPath: commandsParent
       value: 
       objectReference: {fileID: 6644383245732462562}
@@ -920,6 +925,11 @@ PrefabInstance:
       propertyPath: OnMaximumDefined.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4378097706024947658, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 6641216201456230585, guid: 4f1daef2b451ec048a0c7dfb41a0c9c0,
         type: 3}
       propertyPath: m_Name
@@ -1720,6 +1730,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6532739057295432171}
     m_Modifications:
+    - target: {fileID: 53139073573281714, guid: ba3b4f30b2173364d968bba48faed1de,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 5252160781291960402}
     - target: {fileID: 968224701762463892, guid: ba3b4f30b2173364d968bba48faed1de,
         type: 3}
       propertyPath: m_AnchorMax.y

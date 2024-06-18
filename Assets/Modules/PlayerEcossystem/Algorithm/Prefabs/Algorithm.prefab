@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 825399770690626277}
   - component: {fileID: 849987415896568543}
   - component: {fileID: 821301264681223442}
+  - component: {fileID: 4378097706024947658}
   m_Layer: 0
   m_Name: Algorithm
   m_TagString: Untagged
@@ -352,4 +353,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4378097706024947658}
+        m_TargetAssemblyTypeName: PlayerCallbackTrigger, Assembly-CSharp
+        m_MethodName: TriggerCallbacks
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _debugValue: 0
+--- !u!114 &4378097706024947658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641216201456230585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0758912399345e39b8c09dde9d94b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
+  onPositiveCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 849987415896568543}
+        m_TargetAssemblyTypeName: Algorithm.Algorithm, Assembly-CSharp
+        m_MethodName: Clear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onNegativeCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  playerIndexOffset: 0
