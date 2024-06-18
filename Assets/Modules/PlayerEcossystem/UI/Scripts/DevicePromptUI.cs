@@ -67,7 +67,7 @@ namespace PlayerEcossystem.UI
             var targetPosition = Vector3.zero;
             targetPosition.x = rectT.position.x + Screen.width / 2 * (invertPanelMovementX ? -1 : 1);
             targetPosition.y = rectT.position.y + Screen.height / 2 * (invertPanelMovementY ? -1 : 1);
-            rectT.DOMove(targetPosition, movementDuration)
+            rectT.DOMove(targetPosition, movementDuration).SetUpdate(UpdateType.Normal, true)
                 .OnComplete(onPanelRetracted.Invoke);
         }
     }
